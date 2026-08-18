@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "slurpyb-agent-skills",
+  "description": "A curated collection of AI agent plugins and skills for Claude Code",
+  "version": "0.1",
+  "owner": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb",
+    "email": "slurpyb@fastmail.com"
+  },
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "simple-english",
+      "description": "An agent skill that forces LLMs to write docs in ASD-STE100 Simplified Technical English.",
+      "source": {
+        "source": "github",
+        "repo": "AminBlg/SimpleEnglish"
+      },
+      "strict": true,
+      "category": "documentation",
+      "tags": []
+    },
+    {
+      "name": "i-have-adhd",
+      "description": "Shape Claude Code output for an ADHD reader: lead with the next action, number steps, suppress tangents, restate state, make wins visible.",
+      "source": {
+        "source": "github",
+        "repo": "ayghri/i-have-adhd"
+      },
+      "strict": true,
+      "category": "productivity",
+      "tags": []
+    },
+    {
+      "name": "design-eng-skills",
+      "description": "State machine design, changeset writing, engineering writing, and component API design skills.",
+      "source": {
+        "source": "github",
+        "repo": "segunadebayo/design-eng-skills"
+      },
+      "strict": true,
+      "category": "engineering",
+      "tags": []
+    },
+    {
+      "name": "sbx-agent",
+      "description": "Docker Sandboxes (sbx) expertise: run and operate sandboxes, author kits and template images, wire MCP servers through the gateway, govern a fleet, and work out why a sandbox cannot reach, build, or keep something.",
+      "source": {
+        "source": "github",
+        "repo": "slurpyb/sbx-agent"
+      },
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "core",
+      "description": "Shared agent defaults for every project: conventions, tools, and always-on behavior.",
+      "source": "core",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "astro-agent",
+      "description": "Astro expertise for coding agents: current docs via MCP, project conventions, and a specialist subagent for .astro sites, Content Collections, islands, adapters, Starlight, actions, and i18n.",
+      "source": "astro-agent",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "research",
+      "description": "Research workflows and skills.",
+      "source": "research",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "shopify-plugin",
+      "description": "Search Shopify docs, generate and validate GraphQL, Liquid, and UI extension code.",
+      "source": {
+        "source": "github",
+        "repo": "Shopify/Shopify-AI-Toolkit"
+      },
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "mattpocock-skills",
+      "description": "Matt Pocock's agent skills for real engineering — grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding.",
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills"
+      },
+      "strict": true,
+      "category": "engineering",
+      "tags": []
+    },
+    {
+      "name": "fuse-prompt-engineer",
+      "description": "Expert Prompt Engineer with Context Engineering, Meta-Prompting, Chain-of-Thought, Few-Shot, Agent Design, 50+ Template Library, and A/B Testing",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/fusengine/agents.git",
+        "path": "plugins/prompt-engineer"
+      },
+      "strict": true,
+      "category": "engineering",
+      "tags": []
+    }
+  ]
+}

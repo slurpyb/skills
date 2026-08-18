@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "astro-agent",
+  "displayName": "Astro Agent",
+  "version": "0.1.0",
+  "description": "Astro expertise for coding agents: current docs via MCP, project conventions, and a specialist subagent for .astro sites, Content Collections, islands, adapters, Starlight, actions, and i18n.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "email": "slurpyb@fastmail.com",
+    "url": "https://github.com/slurpyb"
+  },
+  "license": "MIT",
+  "keywords": [
+    "astro",
+    "starlight",
+    "content-collections",
+    "islands",
+    "actions",
+    "i18n",
+    "csp",
+    "mcp"
+  ]
+}

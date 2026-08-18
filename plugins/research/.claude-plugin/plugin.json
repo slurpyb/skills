@@ -1,0 +1,16 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "research",
+  "displayName": "Research",
+  "version": "0.1.0",
+  "description": "Research workflows and skills.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "email": "slurpyb@fastmail.com",
+    "url": "https://github.com/slurpyb"
+  },
+  "license": "MIT",
+  "keywords": [
+    "research"
+  ]
+}
