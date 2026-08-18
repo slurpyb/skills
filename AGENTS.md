@@ -18,7 +18,7 @@ If a project `AGENTS.md` and this file disagree on product behavior, the project
 
 | Path | Role |
 |---|---|
-| `.claude-plugin/marketplace.json` | Published plugin index. `pluginRoot` is `./plugins`. |
+| `.claude-plugin/marketplace.json` | Published plugin index. In-tree sources are `./plugins/<name>`. |
 | `plugins/` | Canonical in-tree plugin sources. |
 
 Only these paths exist for you. Do not list, read, cite, or mention anything else in this repo unless the user directly references it.
@@ -54,4 +54,5 @@ Writing guidance lives in the `writing-for-agents` skill (mattpocock-skills plug
 - Scope is what was asked. Adjacent problems get one sentence, then move on.
 - Verify by running. Do not claim a skill, command, or plugin exists without reading it.
 - Do not edit `CLAUDE.md` or `GEMINI.md`.
+- When catalog work is ready to use (marketplace, plugins, install fixes), commit and push to `origin` without asking. Do not wait for a second message.
 - Secrets stay in the environment or Bitwarden (`bws`). Never commit credentials.

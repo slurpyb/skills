@@ -8,16 +8,13 @@
     "url": "https://github.com/slurpyb",
     "email": "slurpyb@fastmail.com"
   },
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "plugins": [
     {
       "name": "simple-english",
       "description": "An agent skill that forces LLMs to write docs in ASD-STE100 Simplified Technical English.",
       "source": {
-        "source": "github",
-        "repo": "AminBlg/SimpleEnglish"
+        "source": "url",
+        "url": "https://github.com/AminBlg/SimpleEnglish.git"
       },
       "strict": true,
       "category": "documentation",
@@ -27,8 +24,8 @@
       "name": "i-have-adhd",
       "description": "Shape Claude Code output for an ADHD reader: lead with the next action, number steps, suppress tangents, restate state, make wins visible.",
       "source": {
-        "source": "github",
-        "repo": "ayghri/i-have-adhd"
+        "source": "url",
+        "url": "https://github.com/ayghri/i-have-adhd.git"
       },
       "strict": true,
       "category": "productivity",
@@ -38,8 +35,8 @@
       "name": "design-eng-skills",
       "description": "State machine design, changeset writing, engineering writing, and component API design skills.",
       "source": {
-        "source": "github",
-        "repo": "segunadebayo/design-eng-skills"
+        "source": "url",
+        "url": "https://github.com/segunadebayo/design-eng-skills.git"
       },
       "strict": true,
       "category": "engineering",
@@ -49,8 +46,8 @@
       "name": "sbx-agent",
       "description": "Docker Sandboxes (sbx) expertise: run and operate sandboxes, author kits and template images, wire MCP servers through the gateway, govern a fleet, and work out why a sandbox cannot reach, build, or keep something.",
       "source": {
-        "source": "github",
-        "repo": "slurpyb/sbx-agent"
+        "source": "url",
+        "url": "https://github.com/slurpyb/sbx-agent.git"
       },
       "strict": true,
       "category": "development",
@@ -59,7 +56,7 @@
     {
       "name": "core",
       "description": "Shared agent defaults for every project: conventions, tools, and always-on behavior.",
-      "source": "core",
+      "source": "./plugins/core",
       "strict": true,
       "category": "development",
       "tags": []
@@ -67,7 +64,7 @@
     {
       "name": "astro-agent",
       "description": "Astro expertise for coding agents: current docs via MCP, project conventions, and a specialist subagent for .astro sites, Content Collections, islands, adapters, Starlight, actions, and i18n.",
-      "source": "astro-agent",
+      "source": "./plugins/astro-agent",
       "strict": true,
       "category": "development",
       "tags": []
@@ -75,7 +72,7 @@
     {
       "name": "research",
       "description": "Research workflows and skills.",
-      "source": "research",
+      "source": "./plugins/research",
       "strict": true,
       "category": "development",
       "tags": []
@@ -84,8 +81,8 @@
       "name": "shopify-plugin",
       "description": "Search Shopify docs, generate and validate GraphQL, Liquid, and UI extension code.",
       "source": {
-        "source": "github",
-        "repo": "Shopify/Shopify-AI-Toolkit"
+        "source": "url",
+        "url": "https://github.com/Shopify/Shopify-AI-Toolkit.git"
       },
       "strict": true,
       "category": "development",
@@ -95,8 +92,8 @@
       "name": "mattpocock-skills",
       "description": "Matt Pocock's agent skills for real engineering — grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding.",
       "source": {
-        "source": "github",
-        "repo": "mattpocock/skills"
+        "source": "url",
+        "url": "https://github.com/mattpocock/skills.git"
       },
       "strict": true,
       "category": "engineering",
