@@ -78,6 +78,54 @@
       "tags": []
     },
     {
+      "name": "autoresearch",
+      "description": "Autonomous research loop: infer artifact, evaluator, and bounds from a goal, then iterate sequential rounds and escalate to a GAN tournament on plateau.",
+      "source": "./plugins/autoresearch",
+      "strict": true,
+      "category": "research",
+      "tags": []
+    },
+    {
+      "name": "capture",
+      "description": "Brain-dump organizer: unstructured thoughts into projects, tasks, connections, and offers, with zero information loss.",
+      "source": "./plugins/capture",
+      "strict": true,
+      "category": "productivity",
+      "tags": []
+    },
+    {
+      "name": "code-context",
+      "description": "Retrieve code context via DeepWiki, Context7, Exa, git clone, or web search+fetch.",
+      "source": "./plugins/code-context",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "plugin-optimizer",
+      "description": "Validate and optimize a Claude Code plugin against official best practices and file patterns.",
+      "source": "./plugins/plugin-optimizer",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "refactor",
+      "description": "Code simplification agent and skills that improve quality while preserving behavior.",
+      "source": "./plugins/refactor",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
+      "name": "storm",
+      "description": "Wikipedia-style long-form articles via multi-perspective research and retrieval. Claude-native port of Stanford STORM.",
+      "source": "./plugins/storm",
+      "strict": true,
+      "category": "research",
+      "tags": []
+    },
+    {
       "name": "shopify-plugin",
       "description": "Search Shopify docs, generate and validate GraphQL, Liquid, and UI extension code.",
       "source": {

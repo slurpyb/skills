@@ -11,6 +11,19 @@ Operator notes for marketplace plugins. Env vars live on the plugin page.
 | [astro-agent](plugins/astro-agent/) | Astro skills and docs MCP | none |
 | [research](plugins/research/) | Research plugin stub | none |
 
+## Local
+
+In-tree copies, not authored here.
+
+| Plugin | What it is | Env |
+|---|---|---|
+| [autoresearch](plugins/autoresearch/) | Goal → score loop via Stop hook | `CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` |
+| [capture](plugins/capture/) | Brain-dump organizer | none |
+| [code-context](plugins/code-context/) | DeepWiki, Context7, Exa, clone, fetch | `EXA_API_KEY` |
+| [plugin-optimizer](plugins/plugin-optimizer/) | Plugin structure and practice checks | none |
+| [refactor](plugins/refactor/) | Simplifier agent and language practices | none |
+| [storm](plugins/storm/) | Multi-perspective cited articles | none |
+
 ## Upstream
 
 | Plugin | What it is | Env |

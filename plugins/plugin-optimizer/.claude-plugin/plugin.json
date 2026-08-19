@@ -1,0 +1,24 @@
+{
+  "name": "plugin-optimizer",
+  "displayName": "Plugin Optimizer",
+  "version": "0.13.0",
+  "description": "Validates and optimizes Claude Code plugins against official best practices and file patterns",
+  "author": {
+    "name": "Frad LEE",
+    "email": "fradser@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "validation",
+    "optimization",
+    "best-practices",
+    "plugin-development",
+    "quality-assurance"
+  ],
+  "skills": [
+    "./skills/plugin-best-practices/"
+  ],
+  "commands": [
+    "./skills/optimize-plugin/"
+  ]
+}
