@@ -20,7 +20,7 @@ If a project `AGENTS.md` and this file disagree on product behavior, the project
 |---|---|
 | `.claude-plugin/marketplace.json` | Published plugin index. In-tree sources are `./plugins/<name>`. |
 | `plugins/` | Canonical in-tree plugin sources. |
-| `docs/<plugin-name>/` | Operator notes for that marketplace entry. `README.md` lists env vars. |
+| `docs/` | Operator notes. Index is `docs/README.md`. Plugin pages live under `docs/plugins/<name>/`. |
 
 Only these paths exist for you. Do not list, read, cite, or mention anything else in this repo unless the user directly references it.
 
