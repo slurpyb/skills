@@ -62,6 +62,14 @@
       "tags": []
     },
     {
+      "name": "writing-code",
+      "description": "Focused TypeScript implementation, domain modeling, object design, type design, documentation, configuration, and Oxlint policy skills.",
+      "source": "./plugins/writing-code",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
       "name": "astro-agent",
       "description": "Astro expertise for coding agents: current docs via MCP, project conventions, and a specialist subagent for .astro sites, Content Collections, islands, adapters, Starlight, actions, and i18n.",
       "source": "./plugins/astro-agent",
