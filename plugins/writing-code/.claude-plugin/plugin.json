@@ -1,0 +1,28 @@
+{
+  "name": "writing-code",
+  "displayName": "Writing Code",
+  "version": "4.0.0",
+  "description": "Focused TypeScript implementation, domain modeling, object design, type design, documentation, configuration, and Oxlint policy skills.",
+  "keywords": [
+    "typescript",
+    "domain-modeling",
+    "object-oriented-design",
+    "generics",
+    "tsdoc",
+    "tsconfig",
+    "oxlint"
+  ],
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "skills": [
+    "./skills/writing-typescript/",
+    "./skills/modeling-typescript-domains/",
+    "./skills/designing-typescript-objects/",
+    "./skills/designing-typescript-types/",
+    "./skills/documenting-typescript/",
+    "./skills/configuring-typescript/",
+    "./skills/installing-typescript-anti-slop/"
+  ]
+}
