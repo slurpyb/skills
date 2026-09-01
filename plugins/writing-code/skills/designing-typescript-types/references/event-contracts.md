@@ -1,6 +1,6 @@
 # Correlated contracts
 
-Load when keys select different value contracts, such as events, commands, or endpoints. Why: generics should preserve the relationship without open dictionaries or assertions.
+A selecting key should preserve its relationship to the selected event, command, or endpoint value.
 
 ```ts
 type AccountEvents = {
@@ -34,6 +34,8 @@ class EventEmitter<Events> {
 }
 ```
 
-Use the same indexed-access pattern for endpoint request/response maps. Parse network responses before returning the selected domain contract; compile-time correlation cannot validate runtime data.
+The same indexed-access pattern applies to endpoint request and response maps. Network responses are parsed before entering the selected domain contract.
 
-Next: load `type-testing.md` to lock the key/value relationship with fixtures; otherwise this step ends here.
+## Completion
+
+Every key selects exactly one value contract, valid pairs infer correctly, mismatched pairs fail compile-time fixtures, and external responses are parsed.

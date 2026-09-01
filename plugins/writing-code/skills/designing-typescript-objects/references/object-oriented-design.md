@@ -1,6 +1,6 @@
 # Object-oriented design
 
-Load when choosing interfaces, abstract classes, inheritance, composition, or polymorphic hooks. Why: abstraction should own behavior and invariants rather than merely rename structure.
+An abstraction earns its place by owning behavior, state, or an invariant.
 
 Use:
 
@@ -30,10 +30,10 @@ abstract class ImportJob<Input, Output> {
 }
 ```
 
-Inheritance is appropriate when the base owns a stable lifecycle and subclasses vary through narrow protected hooks. Prefer composition when behaviors vary independently, runtime replacement matters, or subclasses would override unrelated methods.
+Inheritance fits a stable lifecycle whose subclasses vary through narrow protected hooks. Composition fits independently varying behavior, runtime replacement, or capabilities that cross lifecycle owners.
 
-Keep base contracts substitutable: do not strengthen preconditions, weaken results, expose mutable protected bags, or require subclasses to know storage details. Deep hierarchies are acceptable when each level adds a coherent invariant; depth without ownership is ceremony.
+Base contracts preserve preconditions, results, and invariants. Protected hooks expose the minimum variation point, and each hierarchy level adds one coherent invariant. Tests use concrete fakes or in-memory implementations through owned ports.
 
-Inject owned interfaces instead of mocking modules. Tests can use concrete fakes or in-memory implementations through the same port.
+## Completion
 
-Next: load `construction-patterns.md`, `persistence-patterns.md`, or `mixins-and-inheritance.md` for the relevant architecture; otherwise this step ends here.
+Every abstraction owns named behavior or an invariant, each variation point is narrow, subclasses remain substitutable, and lifecycle paths are tested through owned contracts.

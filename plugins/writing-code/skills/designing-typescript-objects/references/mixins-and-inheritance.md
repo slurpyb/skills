@@ -1,13 +1,13 @@
 # Mixins and inheritance
 
-Load when several classes share behavior or capabilities compose across hierarchies. Why: TypeScript mixins can preserve behavior, but conventional generic constructor recipes often rely on `any[]` and assertions forbidden here.
+Shared behavior should preserve constructor evidence, lifecycle ownership, and substitutability.
 
 Prefer, in order:
 
 1. an abstract behavioral base when one inheritance axis owns the lifecycle;
 2. capability delegates when behaviors vary independently;
 3. explicit finite composed bases when a small set of combinations is known;
-4. a generic class-expression mixin only when its constructor and instance relationships pass lint and type tests without escape hatches.
+4. a generic class-expression mixin when constructor and instance relationships pass lint and type fixtures directly.
 
 ```ts
 class AuditTrail {
@@ -23,9 +23,9 @@ abstract class AuditedEntity<Identifier> extends Entity<Identifier> {
 }
 ```
 
-Do not introduce `abstract new (...arguments_: any[])`, chained assertions, `Reflect.apply`, or property-copy helpers that fabricate an intersection type. If TypeScript cannot express a fully generic mixin soundly under repository policy, use an explicit abstract base or delegate rather than laundering the constructor.
+Use explicit bases or delegates when a generic mixin would need constructor assertions, reflective calls, or property copying that fabricates an intersection.
 
-For accepted inheritance, verify:
+Verify:
 
 - base invariants survive every override;
 - protected hooks are narrower than public operations;
@@ -33,4 +33,6 @@ For accepted inheritance, verify:
 - subclass instances remain substitutable;
 - type fixtures preserve inherited and added capabilities.
 
-Next: load `object-oriented-design.md` for ownership or use `designing-typescript-types` for constructor and capability fixtures; otherwise this step ends here.
+## Completion
+
+The selected sharing mechanism has one lifecycle owner, constructor evidence remains intact, every subclass is substitutable, and capability fixtures pass.

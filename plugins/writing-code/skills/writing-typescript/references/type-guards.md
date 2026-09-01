@@ -1,6 +1,6 @@
 # Narrowing and parsing
 
-Load when values cross an I/O boundary or a typed union needs narrowing. Why: parsing establishes a contract; ad hoc representation checks do not.
+Parsing establishes an owner contract at an I/O boundary; discriminants narrow values already inside a closed domain union.
 
 ## External values
 
@@ -20,11 +20,11 @@ export function readUser(requestBody: JsonValue): User {
 }
 ```
 
-Pass `User`, not an unparsed top type, into downstream functions. Give recursive transport values a concrete union such as `JsonValue`; do not use an open `Record<string, unknown>`.
+Pass `User` into application behavior. Represent recursive transport data with a concrete union such as `JsonValue`.
 
-## Typed unions
+## Closed unions
 
-Predicates are appropriate after a value already belongs to a closed domain union:
+Use predicates after a value belongs to a domain union:
 
 ```ts
 type RequestState =
@@ -39,6 +39,8 @@ function isSuccess(
 }
 ```
 
-Prefer exhaustive switches and a `never` check for state transitions. Avoid assertion functions that claim an external value is valid without schema parsing.
+Use exhaustive switches with a `never` check for state transitions. Schema parsing, rather than an assertion function, establishes an external value's contract.
 
-Next: load `patterns.md` when the parsed union drives a Result API or state machine; otherwise this step ends here.
+## Completion
+
+Every external value on the changed path is parsed once before application behavior, and every changed closed union narrows exhaustively.

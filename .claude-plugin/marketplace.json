@@ -63,7 +63,7 @@
     },
     {
       "name": "writing-code",
-      "description": "Focused TypeScript implementation, domain modeling, object design, type design, documentation, configuration, and Oxlint policy skills.",
+      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
       "source": "./plugins/writing-code",
       "strict": true,
       "category": "development",

@@ -1,12 +1,15 @@
 # Application patterns
 
-Load when designing results, lifecycle state, dependency boundaries, or asynchronous orchestration. Why: application patterns should make ownership visible and remain compatible with richer class architecture.
+Application patterns make ownership visible across outcomes, state, dependencies, and concurrency.
+
+## Outcomes
 
 Use discriminated results and exhaustive handling:
 
 ```ts
 type Result<Value, Failure = Error> =
-  { ok: true; value: Value } | { ok: false; error: Failure };
+  | { ok: true; value: Value }
+  | { ok: false; error: Failure };
 
 function resultMessage(result: Result<string>): string {
   switch (result.ok) {
@@ -18,13 +21,16 @@ function resultMessage(result: Result<string>): string {
 }
 ```
 
-Guidelines:
+## Ownership
 
-- Put invariant-preserving transitions on aggregates or domain services; use unions to describe finite state, not to force all behavior into functions.
+- Put invariant-preserving transitions on aggregates or domain services.
+- Use unions to enumerate finite state and owners to perform transitions.
 - Use `async`/`await` for sequential orchestration and explicit promise combinators for deliberate concurrency.
-- Choose loops, collection operators, or methods by clarity and ownership—not functional-versus-OOP ideology.
+- Choose loops, collection operators, or methods by clarity and ownership.
 - Inject clocks, repositories, factories, transports, and loggers through owned interfaces.
 - Parse transport responses before constructing domain objects.
-- Do not use module mocks, reflective dispatch, fabricated generic returns, or broad configuration bags.
+- Reserve reflective dispatch for an explicit platform contract; use direct calls for owned ports.
 
-Next: use `designing-typescript-objects` when the behavior requires object architecture, persistence ports, or construction patterns; otherwise this step ends here.
+## Completion
+
+Every changed outcome is exhaustive, each transition and dependency has one owner, concurrency is deliberate, and success, rejection, and side-effect paths are exercised.

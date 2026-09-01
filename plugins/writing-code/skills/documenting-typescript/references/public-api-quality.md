@@ -1,19 +1,20 @@
 # Public API quality
 
-Load when exporting a library surface, documenting contracts, or diagnosing complex inferred types. Why: consumers depend on inference, declarations, behavior, and compatibility—not only runtime output.
+Consumers depend on inference, declarations, behavior, and compatibility as one contract.
 
-- Export every owner type appearing in a public signature, including constraints and result variants.
-- Annotate public and ownership boundaries; infer private locals and helpers unless an annotation adds evidence.
-- Use TSDoc for behavior types cannot express: side effects, caching, ordering, failure modes, deprecation, and examples. Do not restate parameter types.
-- Test complex inference, rejected calls, modifiers, union distribution, and declaration output.
-- Keep behavioral tests: types prove admissible relationships, not algorithmic correctness.
-- Inspect inferred types through editor/LSP navigation rather than guessing.
-- Measure expensive type work with `tsc --extendedDiagnostics`; simplify deep recursion before raising compiler limits.
-- Generate large external contracts from schemas instead of hand-maintaining type-level replicas.
-- Emit and securely publish source maps when the runtime deployment needs debuggable production traces.
+- Export every owner type that appears in a public signature, including constraints and result variants.
+- Annotate public and ownership boundaries; infer private locals unless an annotation adds evidence.
+- Document behavior invisible to the type system: side effects, caching, ordering, failure, deprecation, and usage.
+- Test complex inference, rejected calls, modifiers, union distribution, declaration output, and runtime behavior.
+- Inspect inferred types through editor or LSP navigation.
+- Measure expensive public types with `tsc --extendedDiagnostics` and simplify deep recursion first.
+- Generate large external contracts from schemas.
+- Publish source maps when supported runtime deployments require production traces.
 
-For third-party integration, define an owned port when isolating dependency semantics. Import a stable exported type when the dependency truly owns the contract; do not copy a type merely to avoid an import and silently drift.
+For third-party integration, define an owned port when isolating dependency semantics. Import a stable exported type when the dependency owns the contract so one source controls its evolution.
 
-Treat `skipLibCheck` as a repository compatibility/performance decision. It is not a universal correctness rule.
+Treat `skipLibCheck` as a measured repository compatibility or performance decision.
 
-Next: load `documenting-typescript.md` for TSDoc and TypeDoc, use `designing-typescript-types` for compile-time fixtures, or use `configuring-typescript` for compiler and package settings; otherwise this step ends here.
+## Completion
+
+Every public signature exposes its owner types, declaration output matches intended inference, compatibility targets pass, behavioral tests pass, and measured type cost is acceptable.

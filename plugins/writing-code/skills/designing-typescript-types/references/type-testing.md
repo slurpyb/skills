@@ -1,6 +1,6 @@
 # Type testing
 
-Load when conditional, mapped, inferred, or template-literal types encode important behavior. Why: runtime tests cannot detect type-level regressions.
+Compile-time fixtures prove type relationships that runtime tests cannot observe.
 
 Use equality and expectation helpers in a file included by the repository typecheck:
 
@@ -21,17 +21,19 @@ type ElementOf<Value> = Value extends readonly (infer Element)[]
 type _ElementCheck = Expect<Equal<ElementOf<readonly string[]>, string>>;
 ```
 
-For invalid calls, use `@ts-expect-error` with a reason and place it directly above the failing expression. Prefer the repository's existing type-test runner; do not add a second framework without need.
+Place `@ts-expect-error` with a reason directly above each intentionally rejected expression. Use the repository's existing type-test runner.
 
-Test:
+Prove:
 
-- expected inference,
-- rejected inputs,
-- union distribution or intentional non-distribution,
-- readonly and optional modifiers,
-- recursion boundaries,
+- expected inference;
+- rejected inputs;
+- union distribution or intentional non-distribution;
+- readonly and optional modifiers;
+- recursion boundaries;
 - public declaration output for libraries.
 
-Keep fixtures small. If a type needs many pages of tests, simplify its contract before expanding the suite.
+Small fixtures keep failures local. A contract that requires pages of fixtures should be simplified before the suite expands.
 
-Next: return to the `SKILL.md` done gate and run the complete typecheck.
+## Completion
+
+Every important relationship has positive and negative evidence, expected errors include reasons, and the complete repository typecheck passes.

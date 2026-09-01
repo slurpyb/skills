@@ -1,6 +1,6 @@
 # Factories and builders
 
-Load when construction requires validation, dependency selection, staged inputs, or polymorphic products. Why: construction APIs must establish completeness without recovering it through assertions.
+Construction APIs establish complete valid products from explicit evidence.
 
 ```ts
 abstract class Factory<Input, Product> {
@@ -27,8 +27,8 @@ Choose:
 - a staged generic builder when call order is compile-time behavior;
 - schema validation at `build()` when inputs accumulate dynamically.
 
-Never use `Partial<Product>` followed by `as Product`. Never expose a function-level generic return that callers can choose without an input token, constructor, schema, or class-level generic establishing the relationship.
+A builder's returned stages or final schema encode its transitions. Product fields become complete through construction rather than `Partial<Product>` completion or a fabricated assertion. Generic products trace to an input token, constructor, schema, or class-level relationship.
 
-Builders may be stateful and fluent. Their state transitions must either be encoded in returned builder stages or validated before producing the product. Returning `this` through `any` is not a staged builder.
+## Completion
 
-Next: use `designing-typescript-types` for staged generic relationships or load `mixins-and-inheritance.md` for reusable construction behavior; otherwise this step ends here.
+Every public construction path yields a complete valid product, each generic output traces to evidence, and tests cover successful construction plus every rejection branch.

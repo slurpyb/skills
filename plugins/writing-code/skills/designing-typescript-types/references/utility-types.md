@@ -1,8 +1,6 @@
 # Utility types
 
-Load when deriving one owned contract from another. Why: derivation prevents duplicate field lists while retaining concrete value evidence.
-
-Prefer built-ins:
+Derive one owner contract from another when the derived semantics remain obvious.
 
 ```ts
 interface User {
@@ -16,20 +14,20 @@ type PublicUser = Omit<User, "email">;
 type UserById = Record<string, User>;
 ```
 
-Rules:
-
-- `Record` is appropriate when both the key space and value contract are meaningful. Avoid `Record<string, unknown>`.
-- Prefer a named interface for an owner-controlled object passed across modules.
-- Use `Pick`, `Omit`, `Partial`, and `Required` only when the derived semantics remain obvious.
-- Keep recursive utilities bounded and test them against representative contracts.
-- Do not annotate an object literal with an open dictionary merely to permit later mutation. Collect typed entries and use `Object.fromEntries`, or expose an owner method.
+- `Record` fits a meaningful key space and concrete value contract.
+- A named interface fits an owner-controlled object that crosses modules.
+- `Pick`, `Omit`, `Partial`, and `Required` fit derivations that preserve clear semantics.
+- Recursive utilities stay bounded and carry representative fixtures.
+- Typed entries plus `Object.fromEntries`, or an owner method, preserve evidence while building a dynamic object.
 
 ```ts
-type ValueOf<T> = T[keyof T];
+type ValueOf<Value> = Value[keyof Value];
 
-type PickByValue<T, Value> = {
-  [Key in keyof T as T[Key] extends Value ? Key : never]: T[Key];
+type PickByValue<Source, Value> = {
+  [Key in keyof Source as Source[Key] extends Value ? Key : never]: Source[Key];
 };
 ```
 
-Next: load `advanced-types.md` when a transformation needs conditional or mapped-type logic; otherwise this step ends here.
+## Completion
+
+Every utility has one source owner, its derived semantics are named, modifiers and representative values have fixtures, and recursion is bounded.
