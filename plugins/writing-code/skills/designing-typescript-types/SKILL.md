@@ -2,7 +2,7 @@
 name: designing-typescript-types
 description: Designs and tests TypeScript inference and generic relationships. Use when working with conditional or mapped types, correlated key/value APIs, variadic tuples, type recursion, or compile-time fixtures.
 metadata:
-  version: "4.1.0"
+  version: "4.2.0"
   domain: language
   role: specialist
   scope: type-system

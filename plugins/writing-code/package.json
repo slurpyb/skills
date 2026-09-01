@@ -1,0 +1,25 @@
+{
+  "name": "@slurpyb/writing-code",
+  "version": "4.2.0",
+  "description": "TypeScript implementation, modeling, type design, documentation, configuration, and lint-policy skills for Pi and Agent Skills-compatible harnesses.",
+  "keywords": [
+    "pi-package",
+    "agent-skills",
+    "codex",
+    "typescript",
+    "oxlint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slurpyb/skills.git",
+    "directory": "plugins/writing-code"
+  },
+  "scripts": {
+    "validate": "python3 scripts/validate-skills.py"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  }
+}

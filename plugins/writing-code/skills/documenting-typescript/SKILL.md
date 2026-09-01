@@ -2,7 +2,7 @@
 name: documenting-typescript
 description: Documents behavior and extension contracts in TypeScript source and generated API references. Use when writing TSDoc, configuring TypeDoc, or improving a published library surface.
 metadata:
-  version: "4.1.0"
+  version: "4.2.0"
   domain: documentation
   role: specialist
   scope: public-api

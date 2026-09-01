@@ -2,7 +2,7 @@
 name: installing-typescript-anti-slop
 description: Installs the bundled anti-slop Oxlint policy. Use when installing or migrating that policy, configuring its local plugin and Effect rule, or updating its rule bundle.
 metadata:
-  version: "4.1.0"
+  version: "4.2.0"
   domain: tooling
   role: specialist
   scope: lint-policy

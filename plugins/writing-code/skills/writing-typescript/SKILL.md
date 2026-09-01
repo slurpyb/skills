@@ -2,7 +2,7 @@
 name: writing-typescript
 description: Writes TypeScript services around parsed boundaries, owned dependencies, explicit outcomes, and tests. Use when implementing adapters, state or result handling, dependency orchestration, or async workflows.
 metadata:
-  version: "4.1.0"
+  version: "4.2.0"
   domain: language
   role: specialist
   scope: implementation

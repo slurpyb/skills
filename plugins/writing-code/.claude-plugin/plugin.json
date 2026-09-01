@@ -1,7 +1,7 @@
 {
   "name": "writing-code",
   "displayName": "Writing Code",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
   "keywords": [
     "typescript",

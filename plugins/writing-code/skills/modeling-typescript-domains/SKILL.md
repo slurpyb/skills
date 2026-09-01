@@ -2,7 +2,7 @@
 name: modeling-typescript-domains
 description: Models TypeScript business invariants as value objects, commands, outcomes, and lifecycle states. Use when designing domain concepts or separating domain models from transport and persistence records.
 metadata:
-  version: "4.1.0"
+  version: "4.2.0"
   domain: language
   role: specialist
   scope: architecture

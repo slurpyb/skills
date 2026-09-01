@@ -2,7 +2,7 @@
 name: configuring-typescript
 description: Configures TypeScript compiler and package boundaries. Use when editing tsconfig, module resolution, project references, declaration emit, target support, or compiler performance.
 metadata:
-  version: "4.1.0"
+  version: "4.2.0"
   domain: language
   role: specialist
   scope: configuration

@@ -2,7 +2,7 @@
 name: designing-typescript-objects
 description: Designs TypeScript object lifecycles with interfaces, abstract classes, factories, and repositories. Use when behavior needs polymorphism, validated construction, transaction ownership, or shared class capabilities.
 metadata:
-  version: "4.1.0"
+  version: "4.2.0"
   domain: language
   role: specialist
   scope: architecture

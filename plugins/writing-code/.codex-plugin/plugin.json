@@ -1,0 +1,36 @@
+{
+  "name": "writing-code",
+  "version": "4.2.0",
+  "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "repository": "https://github.com/slurpyb/skills",
+  "keywords": [
+    "typescript",
+    "domain-modeling",
+    "object-oriented-design",
+    "generics",
+    "tsdoc",
+    "tsconfig",
+    "oxlint"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Writing Code",
+    "shortDescription": "Focused TypeScript engineering skills",
+    "longDescription": "Implement, model, document, configure, and verify TypeScript through independently discoverable skills.",
+    "developerName": "Jordan Sweeting",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/slurpyb/skills",
+    "defaultPrompt": [
+      "Review and improve this TypeScript implementation.",
+      "Design the domain and type contracts for this TypeScript feature."
+    ]
+  }
+}
