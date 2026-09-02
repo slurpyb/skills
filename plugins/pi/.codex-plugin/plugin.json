@@ -1,0 +1,33 @@
+{
+  "name": "pi",
+  "version": "0.1.0",
+  "description": "Configure and build with the Pi coding harness through focused, testable workflows.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "repository": "https://github.com/slurpyb/skills",
+  "keywords": [
+    "pi",
+    "agent-harness",
+    "sdk",
+    "tools"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Pi Harness",
+    "shortDescription": "Build and validate Pi harnesses",
+    "longDescription": "Configure Pi, author resources and SDK-native tools, reconstruct focused MCP capabilities, and verify the resulting harness.",
+    "developerName": "Jordan Sweeting",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/slurpyb/skills",
+    "defaultPrompt": [
+      "Configure and validate this Pi harness.",
+      "Build a tested SDK-native Pi tool for this workflow."
+    ]
+  }
+}

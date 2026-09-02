@@ -70,6 +70,14 @@
       "tags": []
     },
     {
+      "name": "pi",
+      "description": "Configure and build with the Pi coding harness through focused skills, prompt templates, SDK-native tool workflows, MCP reconstruction, and deterministic validation.",
+      "source": "./plugins/pi",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
+    {
       "name": "astro-agent",
       "description": "Astro expertise for coding agents: current docs via MCP, project conventions, and a specialist subagent for .astro sites, Content Collections, islands, adapters, Starlight, actions, and i18n.",
       "source": "./plugins/astro-agent",

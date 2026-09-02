@@ -1,0 +1,25 @@
+{
+  "name": "pi",
+  "displayName": "Pi Harness",
+  "version": "0.1.0",
+  "description": "Configure and build with Pi through focused skills, SDK-native tool workflows, MCP reconstruction, and deterministic validation.",
+  "keywords": [
+    "pi",
+    "agent-harness",
+    "sdk",
+    "tools",
+    "prompt-engineering"
+  ],
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "skills": [
+    "./skills/configuring-pi/",
+    "./skills/building-pi-tools/",
+    "./skills/building-with-pi-sdk/",
+    "./skills/authoring-pi-resources/",
+    "./skills/reconstructing-mcp-tools/",
+    "./skills/validating-pi-harness/"
+  ]
+}
