@@ -1,0 +1,41 @@
+{
+    "name": "slurpyb-skills",
+    "version": "1.0.0",
+    "description": "Skills for Slurpyb",
+    "pi": {
+        "packages": [
+            {
+                "source": "extensions/better-auth"
+            },
+            {
+                "source": "extensions/writing-code"
+            },
+            {
+                "source": "extensions/shopify-plugin",
+                "skills": "skills"
+            },
+            {
+                "source": "extensions/emdash"
+            },
+            {
+                "source": "extensions/pi"
+            },
+            {
+                "source": "extensions/react"
+            },
+            {
+                "source": "extensions/ai-engineer"
+            },
+            {
+                "source": "extensions/firecrawl",
+                "skills": "skills"
+            },
+            {
+                "source": "extensions/design-eng-skills",
+                "skills": "skills"
+            }
+        ]
+    },
+    "author": "Slurpyb",
+    "license": "MIT"
+}
