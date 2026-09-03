@@ -1,0 +1,37 @@
+{
+  "name": "better-auth",
+  "version": "1.0.0",
+  "description": "Better Auth skills for scaffolding, configuring, and hardening authentication in TypeScript/JavaScript apps.",
+  "author": {
+    "name": "Better Auth",
+    "url": "https://www.better-auth.com"
+  },
+  "homepage": "https://www.better-auth.com/docs/ai-resources/skills",
+  "repository": "https://github.com/better-auth/skills",
+  "license": "MIT",
+  "keywords": [
+    "authentication",
+    "better-auth",
+    "oauth",
+    "sessions",
+    "2fa",
+    "organizations",
+    "security"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Better Auth",
+    "shortDescription": "Scaffold, configure, and harden Better Auth",
+    "longDescription": "Agent skills for Better Auth in TypeScript and JavaScript: scaffold login and sign-up, configure server/client, database adapters, sessions, and plugins, then apply email/password, security, two-factor, and organization RBAC practices.",
+    "developerName": "Better Auth",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.better-auth.com/docs",
+    "defaultPrompt": [
+      "Scaffold Better Auth for this TypeScript app",
+      "Harden this Better Auth setup for production",
+      "Add 2FA and organization RBAC with Better Auth"
+    ],
+    "brandColor": "#000000"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "opencode",
+  "description": "Use when extending, integrating with, or building on OpenCode. Covers writing custom tools and MCP servers, developing plugins, using the SDK and server API, configuring agent behavior through rules/skills/policies/permissions, and understanding the core agent architecture for deep customization.",
+  "version": "1.1.0",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://opencode.ai/docs/",
+      "start_urls": [
+        "https://opencode.ai/docs/",
+        "https://opencode.ai/docs/config/",
+        "https://opencode.ai/docs/agents/",
+        "https://opencode.ai/docs/tools/",
+        "https://opencode.ai/docs/custom-tools/",
+        "https://opencode.ai/docs/skills/",
+        "https://opencode.ai/docs/permissions/",
+        "https://opencode.ai/docs/policies/",
+        "https://opencode.ai/docs/mcp-servers/",
+        "https://opencode.ai/docs/sdk/",
+        "https://opencode.ai/docs/server/",
+        "https://opencode.ai/docs/plugins/",
+        "https://opencode.ai/docs/ecosystem/"
+      ],
+      "selectors": {
+        "main_content": "main, .sl-markdown-content, .content-panel",
+        "title": "h1",
+        "code_blocks": "pre code, pre, .expressive-code"
+      },
+      "url_patterns": {
+        "include": ["/"],
+        "exclude": ["/ar/", "/bs/", "/da/", "/de/", "/es/", "/fr/", "/gu/", "/he/", "/hi/", "/id/", "/it/", "/ja/", "/ko/", "/nb/", "/nl/", "/pl/", "/pt-br/", "/ro/", "/ru/", "/sr/", "/sv/", "/th/", "/tr/", "/uk/", "/vi/", "/zh-cn/", "/zh-tw/"]
+      },
+      "categories": {
+        "agent_configuration": ["agents", "skills", "permissions", "policies", "rules"],
+        "custom_tools": ["custom-tools", "tools", "tool-authoring"],
+        "mcp_integration": ["mcp-servers", "lsp", "acp"],
+        "sdk_and_server": ["sdk", "server", "api", "client"],
+        "plugin_development": ["plugins", "ecosystem", "extension"]
+      },
+      "rate_limit": 0.5
+    }
+  ],
+  "metadata": {
+    "author": "opencode",
+    "language": "typescript",
+    "framework_type": "extensibility",
+    "use_cases": ["agent customization", "plugin development", "sdk integration", "custom tools", "mcp servers"],
+    "related_skills": ["opencode", "claude-code", "github-copilot"]
+  }
+}

@@ -1,0 +1,285 @@
+---
+title: "Atomic Slot Recipe (or sva)"
+---
+
+The `sva` function is a shorthand for creating a slot recipe with atomic variants. It takes the same arguments as `cva`
+but returns a slot recipe instead.
+
+### Defining the Recipe
+
+```jsx filename="checkbox.recipe.ts"
+import { sva } from '../styled-system/css'
+
+const checkbox = sva({
+  slots: ['root', 'control', 'label'],
+  base: {
+    root: { display: 'flex', alignItems: 'center', gap: '2' },
+    control: { borderWidth: '1px', borderRadius: 'sm' },
+    label: { marginStart: '2' }
+  },
+  variants: {
+    size: {
+      sm: {
+        control: { width: '8', height: '8' },
+        label: { fontSize: 'sm' }
+      },
+      md: {
+        control: { width: '10', height: '10' },
+        label: { fontSize: 'md' }
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'sm'
+  }
+})
+```
+
+### Using the recipe
+
+The returned value from `sva` is a function that can be used to apply the recipe for each component part. Here's an
+example of how to use the `checkbox` recipe:
+
+```jsx filename="Checkbox.tsx"
+import { css } from '../styled-system/css'
+import { checkbox } from './checkbox.recipe'
+
+const Checkbox = () => {
+  const classes = checkbox({ size: 'sm' })
+  return (
+    <label className={classes.root}>
+      <input type="checkbox" className={css({ srOnly: true })} />
+      <div className={classes.control} />
+      <span className={classes.label}>Checkbox Label</span>
+    </label>
+  )
+}
+```
+
+When a slot recipe is created, Panda will pre-generate the css of all the possible combinations of variants and compound
+variants as atomic classes.
+
+```css
+@layer utilities {
+  .border_width_1px {
+    border-width: 1px;
+  }
+
+  .rounded_sm {
+    border-radius: var(--radii-sm);
+  }
+
+  .margin_start_2 {
+    margin-inline-start: var(--spacing-2);
+  }
+
+  .w_8 {
+    width: var(--sizing-8);
+  }
+
+  .h_8 {
+    height: var(--sizing-8);
+  }
+
+  .font_size_sm {
+    font-size: var(--fontSizes-sm);
+  }
+
+  .w_10 {
+    width: var(--sizing-10);
+  }
+
+  .h_10 {
+    height: var(--sizing-10);
+  }
+
+  .font_size_md {
+    font-size: var(--fontSizes-md);
+  }
+  /* ... */
+}
+```
+
+### Compound Variants
+
+Compound variants are a way to apply style overrides to a slot based on the combination of variants.
+
+Let's say you want to apply a different border color to the checkbox control based on its `size` and the `isChecked`
+variant, here's how to do it:
+
+```jsx filename="checkbox.recipe.ts" {14-22}
+import { sva } from '../styled-system/css'
+const checkbox = sva({
+  slots: ['root', 'control', 'label'],
+  base: {...},
+  variants: {
+    size: {
+      sm: {...},
+      md: {...}
+    },
+    isChecked: {
+      true: { control: {}, label: {} }
+    }
+  },
+  compoundVariants: [
+    {
+      size: 'sm',
+      isChecked: true,
+      css: {
+        control: { borderColor: 'green.500' }
+      }
+    }
+  ],
+  defaultVariants: {...}
+})
+```
+
+### Targeting slots
+
+You can set an optional `className` property in the `sva` config which can be used to target slots in the DOM.
+
+> Each slot will contain a `${className}__${slotName}` class in addition to the atomic styles.
+
+Let's say you want to apply a different border color to the button text directly from the `root` slot. Here's how you
+would do it:
+
+```tsx
+import { sva } from '../styled-system/css'
+
+const button = sva({
+  className: 'btn',
+  slots: ['root', 'text'],
+  base: {
+    root: {
+      bg: 'blue.500',
+      _hover: {
+        // v--- 🎯 this will target the `text` slot
+        '& .btn__text': {
+          color: 'white'
+        }
+      }
+    }
+  }
+})
+```
+
+> Note: This doesn't work when you have the `hash: true` option in your panda config. We recommend using `data-x`
+> selectors to target slots.
+
+### TypeScript Guide
+
+Panda provides a `RecipeVariantProps` type utility that can be used to infer the variant properties of a slot recipe.
+
+This is useful when you want to use the recipe in JSX and want to get type safety for the variants.
+
+```tsx
+import { sva, type RecipeVariantProps } from '../styled-system/css'
+
+const checkbox = sva({...})
+
+export type CheckboxVariants = RecipeVariantProps<typeof checkbox>
+//  => { size?: 'sm' | 'md', isChecked?: boolean }
+```
+
+### Usage in JSX
+
+Unlike the atomic recipe or `cva`, slot recipes are not meant to be used directly in the `styled` factory since it
+returns an object of classes instead of a single class.
+
+```jsx
+import { css } from '../styled-system/css'
+import { styled } from '../styled-system/jsx'
+import { checkbox, type CheckboxVariants } from './checkbox.recipe'
+
+// ❌ Won't work
+const Checkbox = styled('label', checkbox)
+
+// ✅ Works
+const Checkbox = (props: CheckboxVariants) => {
+  const classes = checkbox(props)
+  return (
+    <label className={classes.root}>
+      <input type="checkbox" className={css({ srOnly: true })} />
+      <div className={classes.control} />
+      <span className={classes.label}>Checkbox Label</span>
+    </label>
+  )
+}
+```
+
+### Styling JSX Compound Components
+
+Compound components are a great way to create reusable components for better composition. Slot recipes play nicely with
+this pattern and requires a context provider for the component.
+
+> **Note:** This is an advanced topic and you don't need to understand it to use slot recipes. If you use React, be
+> aware that context require adding 'use client' to the top of the file.
+
+Let's say you want to design a Checkbox component that can be used like this:
+
+```jsx
+<Checkbox size="sm|md" isChecked>
+  <Checkbox.Control />
+  <Checkbox.Label>Checkbox Label</Checkbox.Label>
+</Checkbox>
+```
+
+First, create a shared context for ths styles
+
+```jsx filename="style-context.tsx"
+'use client'
+import { createContext, forwardRef, useContext } from 'react'
+
+export const createStyleContext = recipe => {
+  const StyleContext = createContext(null)
+
+  const withProvider = (Component, part) => {
+    const Comp = forwardRef((props, ref) => {
+      const [variantProps, rest] = recipe.splitVariantProps(props)
+      const styles = recipe(variantProps)
+      return (
+        <StyleContext.Provider value={styles}>
+          <Component ref={ref} className={styles?.[part ?? '']} {...rest} />
+        </StyleContext.Provider>
+      )
+    })
+    Comp.displayName = Component.displayName || Component.name
+    return Comp
+  }
+
+  const withContext = (Component, part) => {
+    if (!part) return Component
+
+    const Comp = forwardRef((props, ref) => {
+      const styles = useContext(StyleContext)
+      return <Component ref={ref} className={styles?.[part ?? '']} {...props} />
+    })
+    Comp.displayName = Component.displayName || Component.name
+    return Comp
+  }
+
+  return { withProvider, withContext }
+}
+```
+
+> Note: For the TypeScript version of this file, refer to
+> [create-style-context.tsx](https://github.com/cschroeter/park-ui/blob/main/website/src/lib/create-style-context.tsx)
+> in Park UI
+
+Then, use the context to create compound components connected to the recipe
+
+```jsx filename="Checkbox.tsx"
+import { createStyleContext } from './style-context'
+import { checkbox } from './checkbox.recipe'
+
+const { withProvider, withContext } = createStyleContext(checkbox)
+
+//                                  👇🏻 points to the root slot
+const Root = withProvider('label', 'root')
+//                                    👇🏻 points to the control slot
+const Control = withContext('div', 'control')
+//                                  👇🏻 points to the label slot
+const Label = withContext('span', 'label')
+
+const Checkbox = { Root, Control, Label }
+```

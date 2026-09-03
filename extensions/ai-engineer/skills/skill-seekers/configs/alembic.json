@@ -1,0 +1,40 @@
+{
+  "name": "alembic",
+  "description": "Alembic — database migration tool for SQLAlchemy. Use when creating/running migrations, autogenerate, batch (SQLite) operations, branching, naming conventions, or offline SQL generation.",
+  "version": "1.0.0",
+  "base_url": "https://alembic.sqlalchemy.org/en/latest/",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://alembic.sqlalchemy.org/en/latest/",
+      "selectors": {
+        "main_content": "div.body[role='main'], div.body, div[role='main']",
+        "title": "h1",
+        "code_blocks": "pre, div.highlight pre"
+      },
+      "url_patterns": {
+        "include": [
+          "/en/latest/"
+        ],
+        "exclude": [
+          "/_static/",
+          "/_sources/",
+          "/changelog",
+          "/genindex",
+          "/search"
+        ]
+      },
+      "categories": {
+        "getting_started": ["front", "tutorial", "index"],
+        "autogenerate": ["autogenerate"],
+        "operations": ["ops", "api/ddl", "api/operations"],
+        "batch": ["batch"],
+        "branches": ["branches"],
+        "naming": ["naming"],
+        "offline": ["offline"],
+        "cookbook": ["cookbook"]
+      },
+      "rate_limit": 0.5
+    }
+  ]
+}

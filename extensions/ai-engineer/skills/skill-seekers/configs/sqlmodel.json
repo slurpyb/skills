@@ -1,0 +1,38 @@
+{
+  "name": "sqlmodel",
+  "description": "SQLModel — SQL databases in Python with type annotations, built on SQLAlchemy and Pydantic. Use when defining table models, relationships, queries (select/where/join), sessions, or FastAPI database integration.",
+  "version": "1.0.0",
+  "base_url": "https://sqlmodel.tiangolo.com/",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://sqlmodel.tiangolo.com/",
+      "selectors": {
+        "main_content": "article.md-content__inner, article",
+        "title": "h1",
+        "code_blocks": "pre code"
+      },
+      "url_patterns": {
+        "include": [
+          "/tutorial/",
+          "/advanced/"
+        ],
+        "exclude": [
+          "/img/",
+          "/release-notes/",
+          "/help/",
+          "/contributing/"
+        ]
+      },
+      "categories": {
+        "getting_started": ["tutorial", "create-db-and-table", "insert"],
+        "queries": ["select", "where", "indexes", "one", "limit-and-offset"],
+        "updates": ["update", "delete"],
+        "relationships": ["relationship", "connect", "many-to-many"],
+        "fastapi": ["fastapi"],
+        "advanced": ["advanced", "session", "uuid", "decimal"]
+      },
+      "rate_limit": 0.5
+    }
+  ]
+}

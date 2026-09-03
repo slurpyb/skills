@@ -1,0 +1,246 @@
+---
+title: "Setup"
+---
+
+We are assuming that you already have a project set up with a framework like React, Vue or Svelte.
+
+<Steps>
+
+### Install Storybook
+
+Storybook needs to be installed into a project that is already set up with a framework. It will not work on an empty
+project.
+
+<Tabs items={['pnpm', 'npm', 'yarn', 'bun']}>
+{/* <!-- prettier-ignore-start --> */}
+  <Tab>
+    ```bash
+    pnpm dlx storybook@latest init
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    npx storybook@latest init
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    yarn dlx storybook@latest init
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    bunx storybook@latest init
+    ```
+  </Tab>
+{/* <!-- prettier-ignore-end --> */}
+</Tabs>
+
+### Install Panda
+
+Install panda and create your `panda.config.ts` file.
+
+<Tabs items={['pnpm', 'npm', 'yarn', 'bun']}>
+  {/* <!-- prettier-ignore-start --> */}
+  <Tab>
+    ```bash
+    pnpm install -D @pandacss/dev
+    pnpm panda init --postcss
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    npm install -D @pandacss/dev
+    npx panda init --postcss
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    yarn add -D @pandacss/dev
+    yarn panda init --postcss
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    bun add -D @pandacss/dev
+    bun panda init --postcss
+    ```
+  </Tab>
+  {/* <!-- prettier-ignore-end --> */}
+</Tabs>
+
+If you are using Storybook with the Vite builder, you will have to update your PostCSS config file to use the array
+syntax for the plugins instead of the object syntax. Simply change `postcss.config.[c]js`:
+
+```diff filename="postcss.config.js"
+module.exports = {
+-  plugins: {
+-   '@pandacss/dev/postcss': {}
+-  }
++  plugins: [require('@pandacss/dev/postcss')()]
+}
+```
+
+### Update package.json scripts
+
+Open your `package.json` file and update the `scripts` section as follows:
+
+```diff {3} filename="web/package.json"
+{
+  "scripts": {
++    "prepare": "panda codegen"
+  }
+}
+```
+
+- `"prepare"` - script that will run Panda CSS CLI codegen before each build. Read more about
+  [codegen](/docs/references/cli#panda-codegen) in the CLI section.
+
+> This step ensures that the panda output directory is regenerated after each dependency installation. So you can add
+> the output directory to your `.gitignore` file and not worry about it.
+
+### Configure the content
+
+Make sure that all of the paths of your Storybook components are included in the `include` section of the
+`panda.config.ts` file.
+
+```ts {7} filename="panda.config.ts"
+import { defineConfig } from '@pandacss/dev'
+
+export default defineConfig({
+  // Whether to use css reset
+  preflight: true,
+  // Where to look for your css declarations
+  include: ['./src/**/*.{js,jsx,ts,tsx}', './pages/**/*.{js,jsx,ts,tsx}', './stories/**/*.{js,jsx,ts,tsx}'],
+  // Files to exclude
+  exclude: [],
+  // The output directory for your css system
+  outdir: 'styled-system'
+})
+```
+
+### Configure the entry CSS with layers
+
+Locate your main CSS file and add the following layers:
+
+```css filename="src/index.css"
+@layer reset, base, tokens, recipes, utilities;
+```
+
+### Import the CSS in your Storybook config
+
+Locate your `.storybook/preview.ts` file and import the CSS file.
+
+In this example CSS file is located in the `src` folder.
+
+```ts {1} filename=".storybook/preview.ts"
+import '../src/index.css'
+
+import type { Preview } from '@storybook/react'
+
+const preview: Preview = {
+  parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/
+      }
+    }
+  }
+}
+
+export default preview
+```
+
+### Start the Storybook server
+
+Run the following command to start your Storybook server.
+
+<Tabs items={['pnpm', 'npm', 'yarn', 'bun']}>
+  {/* <!-- prettier-ignore-start --> */}
+  <Tab>
+    ```bash
+    pnpm storybook
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    npm run storybook
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    yarn storybook
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    bun storybook
+    ```
+  </Tab>
+  {/* <!-- prettier-ignore-end --> */}
+</Tabs>
+
+### Start using Panda
+
+Now you can start using Panda CSS in Storybook.
+
+Here is the example of a Button component and its corresponding Storybook story:
+
+```tsx filename="src/stories/Button.tsx"
+import { ReactNode } from 'react'
+import { css } from '../../styled-system/css'
+
+export interface IButtonProps {
+  children: ReactNode
+}
+
+export const Button = ({ children }: IButtonProps) => {
+  return (
+    <button
+      className={css({
+        bg: 'red.300',
+        fontFamily: 'Inter',
+        px: '4',
+        py: '3',
+        borderRadius: 'md',
+        _hover: { bg: 'red.400' }
+      })}
+    >
+      {children}
+    </button>
+  )
+}
+```
+
+```tsx filename="src/stories/Button.stories.tsx"
+import type { Meta, StoryObj } from '@storybook/react'
+import { css } from '../../styled-system/css'
+
+import { Button } from './Button'
+
+const meta = {
+  title: 'Example/Button',
+  component: Button,
+  tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <div className={css({ m: 10 })}>
+        <Story />
+      </div>
+    )
+  ]
+} satisfies Meta<typeof Button>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  args: {
+    children: 'Hello 🐼!'
+  }
+}
+```
+
+</Steps>

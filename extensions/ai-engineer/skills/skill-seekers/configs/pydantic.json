@@ -1,0 +1,77 @@
+{
+  "name": "pydantic",
+  "description": "Pydantic v2 \u2014 data validation and settings management using Python type hints. Use when defining models, validators, serializers, field constraints, or pydantic-settings configuration.",
+  "version": "1.0.0",
+  "base_url": "https://docs.pydantic.dev/latest/",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://docs.pydantic.dev/latest/",
+      "selectors": {
+        "main_content": "article.md-content__inner, article",
+        "title": "h1",
+        "code_blocks": "pre code"
+      },
+      "url_patterns": {
+        "include": [
+          "/concepts/",
+          "/migration/",
+          "/why/",
+          "/errors/",
+          "/examples/"
+        ],
+        "exclude": [
+          "/img/",
+          "/changelog/",
+          "/contributing/",
+          "/version-policy/",
+          "/api/",
+          "llms-full",
+          "llms.txt",
+          "llms.md",
+          "llms-full.txt"
+        ]
+      },
+      "categories": {
+        "getting_started": [
+          "why",
+          "install",
+          "migration"
+        ],
+        "models": [
+          "models",
+          "fields",
+          "config",
+          "dataclasses",
+          "root_model"
+        ],
+        "validation": [
+          "validators",
+          "validation",
+          "strict",
+          "conversion"
+        ],
+        "serialization": [
+          "serialization",
+          "json",
+          "alias"
+        ],
+        "types": [
+          "types",
+          "json_schema",
+          "unions",
+          "enums"
+        ],
+        "settings": [
+          "pydantic_settings",
+          "settings"
+        ],
+        "api_reference": [
+          "api"
+        ]
+      },
+      "rate_limit": 0.5,
+      "skip_llms_txt": true
+    }
+  ]
+}

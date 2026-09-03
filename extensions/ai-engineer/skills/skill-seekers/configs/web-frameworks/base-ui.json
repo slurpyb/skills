@@ -1,0 +1,100 @@
+{
+  "name": "base-ui",
+  "description": "Use when building accessible UIs with Base UI \u2014 the unstyled/headless React component library (Dialog, Popover, Select, Combobox, Menu, etc.) from the Radix, MUI, and Floating UI team. Covers component anatomy and props, styling headless parts with any engine (Panda CSS, Tailwind, CSS Modules), composition and the render prop, forms, animation, and accessibility.",
+  "version": "1.0.0",
+  "merge_mode": "rule-based",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://base-ui.com/react",
+      "extract_api": true,
+      "start_urls": [
+        "https://base-ui.com/react/overview/quick-start",
+        "https://base-ui.com/react/handbook/styling",
+        "https://base-ui.com/react/components/dialog",
+        "https://base-ui.com/react/utils/use-render"
+      ],
+      "selectors": {
+        "main_content": "article, main, div[role='main']",
+        "title": "h1, title",
+        "code_blocks": "pre code, pre"
+      },
+      "url_patterns": {
+        "include": [
+          "/react/overview/",
+          "/react/handbook/",
+          "/react/components/",
+          "/react/utils/"
+        ],
+        "exclude": [
+          "/react/overview/releases/",
+          "/careers/",
+          "/production-error"
+        ]
+      },
+      "categories": {
+        "getting_started": [
+          "overview",
+          "quick-start",
+          "about",
+          "accessibility"
+        ],
+        "handbook": [
+          "handbook",
+          "styling",
+          "composition",
+          "customization",
+          "animation"
+        ],
+        "form_components": [
+          "checkbox",
+          "radio",
+          "select",
+          "slider",
+          "input",
+          "number-field"
+        ],
+        "overlay_components": [
+          "dialog",
+          "popover",
+          "tooltip",
+          "menu",
+          "drawer",
+          "context-menu"
+        ],
+        "disclosure_components": [
+          "accordion",
+          "collapsible",
+          "tabs",
+          "navigation-menu",
+          "menubar"
+        ],
+        "display_components": [
+          "avatar",
+          "progress",
+          "meter",
+          "separator",
+          "scroll-area",
+          "toast"
+        ],
+        "utils": [
+          "use-render",
+          "merge-props",
+          "direction-provider",
+          "csp-provider"
+        ]
+      },
+      "rate_limit": 0.5
+    }
+  ],
+  "metadata": {
+    "author": "mui/base-ui",
+    "language": "typescript",
+    "framework_type": "react-component-library",
+    "use_cases": [
+      "building accessible headless React components",
+      "styling unstyled Base UI parts with Panda CSS or Tailwind",
+      "composition, render props, forms, and animation with Base UI"
+    ]
+  }
+}

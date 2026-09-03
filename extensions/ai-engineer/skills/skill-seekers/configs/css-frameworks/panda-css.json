@@ -1,0 +1,128 @@
+{
+  "name": "panda-css",
+  "description": "Use when building, configuring, or migrating to Panda CSS \u2014 the build-time CSS-in-JS styling engine. Covers writing styles (css, cva, styled, style props), design tokens and theming, recipes/slot recipes and layout patterns, framework setup, customizing utilities/conditions/presets, and the panda.config.ts reference.",
+  "version": "1.0.0",
+  "merge_mode": "rule-based",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://panda-css.com/docs",
+      "extract_api": true,
+      "start_urls": [
+        "https://panda-css.com/docs/overview/getting-started",
+        "https://panda-css.com/docs/installation/postcss",
+        "https://panda-css.com/docs/concepts/writing-styles",
+        "https://panda-css.com/docs/concepts/recipes",
+        "https://panda-css.com/docs/theming/tokens",
+        "https://panda-css.com/docs/utilities/typography",
+        "https://panda-css.com/docs/customization/theme",
+        "https://panda-css.com/docs/references/config"
+      ],
+      "selectors": {
+        "main_content": "article, main, div[role='main']",
+        "title": "h1, title",
+        "code_blocks": "pre code, pre"
+      },
+      "url_patterns": {
+        "include": [
+          "/docs/"
+        ],
+        "exclude": [
+          "/blog/",
+          "/changelog/",
+          "/release-notes/",
+          "/search",
+          "/_next/"
+        ]
+      },
+      "categories": {
+        "getting_started": [
+          "overview",
+          "getting-started",
+          "why-panda",
+          "browser-support",
+          "faq"
+        ],
+        "installation": [
+          "installation",
+          "postcss",
+          "vite",
+          "nextjs",
+          "storybook"
+        ],
+        "writing_styles": [
+          "writing-styles",
+          "style-props",
+          "conditional-styles",
+          "merging-styles",
+          "template-literals"
+        ],
+        "recipes_patterns": [
+          "recipes",
+          "slot-recipes",
+          "patterns",
+          "cva"
+        ],
+        "theming_tokens": [
+          "theming",
+          "tokens",
+          "text-styles",
+          "layer-styles",
+          "animation-styles"
+        ],
+        "utilities": [
+          "utilities",
+          "spacing",
+          "typography",
+          "background",
+          "flex-and-grid"
+        ],
+        "customization": [
+          "customization",
+          "presets",
+          "conditions",
+          "config-functions",
+          "deprecations"
+        ],
+        "styled_system": [
+          "styled-system",
+          "cascade-layers",
+          "virtual-color",
+          "jsx-style-context",
+          "color-opacity-modifier"
+        ],
+        "migration": [
+          "migration",
+          "stitches",
+          "theme-ui",
+          "styled-components"
+        ],
+        "references": [
+          "references",
+          "config",
+          "cli",
+          "mcp-server"
+        ],
+        "guides": [
+          "guides",
+          "debugging",
+          "static",
+          "multiple-themes",
+          "dynamic-styling"
+        ]
+      },
+      "rate_limit": 0.5
+    }
+  ],
+  "metadata": {
+    "author": "chakra-ui",
+    "language": "typescript",
+    "framework_type": "css-in-js",
+    "use_cases": [
+      "type-safe atomic CSS for React, Vue, Solid, Svelte and more",
+      "design tokens, semantic tokens and multi-theme systems",
+      "recipes, slot recipes and layout patterns",
+      "customizing utilities, conditions and presets via panda.config.ts"
+    ]
+  }
+}

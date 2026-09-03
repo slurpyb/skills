@@ -1,0 +1,53 @@
+{
+  "name": "sbx",
+  "description": "Use when building Docker Sandbox templates and kits, configuring sbx network policy and credentials, or diagnosing a sandbox that cannot reach, build or keep something.",
+  "version": "1.0.0",
+  "merge_mode": "rule-based",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://docs.docker.com/ai/sandboxes/",
+      "extract_api": true,
+      "start_urls": [
+        "https://docs.docker.com/ai/sandboxes/",
+        "https://docs.docker.com/ai/sandboxes/customize/",
+        "https://docs.docker.com/ai/sandboxes/customize/kits/",
+        "https://docs.docker.com/ai/sandboxes/customize/kit-reference/",
+        "https://docs.docker.com/ai/sandboxes/customize/kit-examples/",
+        "https://docs.docker.com/ai/sandboxes/customize/templates/",
+        "https://docs.docker.com/ai/sandboxes/customize/build-an-agent/",
+        "https://docs.docker.com/ai/sandboxes/security/",
+        "https://docs.docker.com/ai/sandboxes/governance/",
+        "https://docs.docker.com/ai/sandboxes/usage/",
+        "https://docs.docker.com/ai/sandboxes/workflows/",
+        "https://docs.docker.com/ai/sandboxes/troubleshooting/"
+      ],
+      "selectors": {
+        "main_content": "article, main, div[role='main']",
+        "title": "h1, title",
+        "code_blocks": "pre code, pre"
+      },
+      "url_patterns": {
+        "include": ["/ai/sandboxes/"],
+        "exclude": ["/search", "/blog/", "/release-notes"]
+      },
+      "categories": {
+        "kits": ["kits", "kit-reference", "kit-examples", "spec", "mixin"],
+        "templates": ["templates", "images", "dockerfile", "variants"],
+        "agents": ["build-an-agent", "agent", "runtime", "entrypoint"],
+        "credentials": ["credentials", "secrets", "oauth", "injection"],
+        "network": ["network", "policy", "egress", "proxy", "allowlist"],
+        "governance": ["governance", "access-controls", "organization", "audit"],
+        "isolation": ["isolation", "security", "microvm", "boundary"],
+        "usage": ["usage", "workspaces", "ports", "persistence"],
+        "workflows": ["workflows", "mcp", "skills", "integrations"],
+        "troubleshooting": ["troubleshooting", "diagnose", "faq", "errors"]
+      },
+      "rate_limit": 0.5
+    }
+  ],
+  "metadata": {
+    "source": "Official Docker Sandboxes documentation",
+    "note": "Docker serves .md for every docs URL; append .md rather than scraping when reading by hand."
+  }
+}

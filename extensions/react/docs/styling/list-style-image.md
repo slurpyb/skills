@@ -1,0 +1,21 @@
+---
+title: "List Style Image"
+---
+
+Use a custom image as the list marker. It supports the `assets` token category.
+
+```js filename="panda.config.ts"
+const theme = {
+  tokens: {
+    assets: {
+      star: {
+        value: { type: 'svg', value: '<svg>...</svg>' }
+      }
+    }
+  }
+}
+```
+
+```jsx
+<div className={css({ listStyleImage: 'star' })} />
+```

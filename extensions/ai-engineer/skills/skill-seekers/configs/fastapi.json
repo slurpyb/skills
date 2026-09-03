@@ -1,0 +1,90 @@
+{
+  "name": "fastapi",
+  "description": "Complete FastAPI knowledge combining official documentation and FastAPI codebase. Use when building FastAPI applications, understanding async patterns, or working with Pydantic models.",
+  "version": "1.1.0",
+  "merge_mode": "rule-based",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://fastapi.tiangolo.com/",
+      "extract_api": true,
+      "selectors": {
+        "main_content": "article",
+        "title": "h1",
+        "code_blocks": "pre code"
+      },
+      "url_patterns": {
+        "include": [
+          "/tutorial/",
+          "/advanced/",
+          "/async",
+          "/deployment/",
+          "/how-to/",
+          "/reference/",
+          "/python-types",
+          "/features",
+          "/learn/"
+        ],
+        "exclude": [
+          "/img/",
+          "/js/",
+          "/az/",
+          "/bn/",
+          "/de/",
+          "/em/",
+          "/es/",
+          "/fa/",
+          "/fr/",
+          "/he/",
+          "/hu/",
+          "/id/",
+          "/it/",
+          "/ja/",
+          "/ko/",
+          "/nl/",
+          "/pl/",
+          "/pt/",
+          "/ru/",
+          "/tr/",
+          "/uk/",
+          "/ur/",
+          "/vi/",
+          "/yo/",
+          "/zh/",
+          "/zh-hant/"
+        ]
+      },
+      "categories": {
+        "getting_started": [
+          "tutorial",
+          "first-steps"
+        ],
+        "path_operations": [
+          "path-params",
+          "query-params",
+          "body"
+        ],
+        "dependencies": [
+          "dependencies"
+        ],
+        "security": [
+          "security",
+          "oauth2"
+        ],
+        "database": [
+          "sql-databases"
+        ],
+        "advanced": [
+          "advanced",
+          "async",
+          "middleware"
+        ],
+        "deployment": [
+          "deployment"
+        ]
+      },
+      "rate_limit": 0.5
+    }
+  ],
+  "base_url": "https://fastapi.tiangolo.com/"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "pydantic-gh",
+  "description": "Pydantic v2 \u2014 data validation and settings management using Python type hints.",
+  "version": "1.1.0",
+  "sources": [
+    {
+      "type": "github",
+      "repo": "pydantic/pydantic",
+      "enable_codebase_analysis": true,
+      "code_analysis_depth": "deep",
+      "fetch_issues": false,
+      "fetch_changelog": false,
+      "fetch_releases": false,
+      "file_patterns": [
+        "docs/**/*.md",
+        "pydantic/main.py",
+        "pydantic/fields.py",
+        "pydantic/functional_validators.py",
+        "pydantic/functional_serializers.py"
+      ]
+    }
+  ]
+}

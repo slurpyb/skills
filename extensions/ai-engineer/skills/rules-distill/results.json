@@ -1,0 +1,94 @@
+{
+  "distilled_at": "2026-08-31T23:26:20Z",
+  "skills_scanned": 5,
+  "rules_scanned": 0,
+  "scope": "Concrete JavaScript and TypeScript code-writing rules; engineering methodology excluded",
+  "candidates": {
+    "decode-external-values-once": {
+      "principle": "Accept external data as unknown or a concrete transport type, parse it once at the boundary, and pass only validated owner types into domain code.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Decode External Values Once",
+      "evidence": [
+        "typescript-advanced-types: implementation-playbook §Type Guards and §Assertion Functions",
+        "typescript-v6: §Quick Start Step 3 and references/type-patterns-reference.md §Assertion Functions",
+        "writing-typescript: §Workflow Decode and references/type-guards.md §External values"
+      ],
+      "status": "pending_review"
+    },
+    "preserve-type-evidence": {
+      "principle": "Keep `any`, broad top types, and unsupported assertions out of callable contracts; preserve evidence through inference, parsing, narrowing, constructors, or schema-derived types.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Preserve Type Evidence",
+      "evidence": [
+        "typescript-advanced-types: implementation-playbook §Best Practices",
+        "typescript-v6: references/type-patterns-reference.md §Assertion Functions",
+        "writing-typescript: §Evidence policy"
+      ],
+      "status": "pending_review"
+    },
+    "model-finite-states-exhaustively": {
+      "principle": "Represent finite states and outcomes with discriminated unions rather than dependent optional fields, and handle every variant exhaustively with a `never` check where control flow permits.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Model Finite States Exhaustively",
+      "evidence": [
+        "typescript-advanced-types: implementation-playbook §Discriminated Unions",
+        "typescript-v6: references/type-patterns-reference.md §Exhaustive Union Handling",
+        "writing-typescript: references/domain-modeling.md and references/patterns.md"
+      ],
+      "status": "pending_review"
+    },
+    "make-generics-prove-relationships": {
+      "principle": "Add a generic only when inputs, keys, constructors, schemas, tokens, or an owning class establish the relationship; simplify signatures that require fabricated generic returns or unsupported casts.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Make Generics Prove Relationships",
+      "evidence": [
+        "typescript-advanced-types: implementation-playbook §Generics and §Advanced Patterns",
+        "typescript-v6: references/type-patterns-reference.md",
+        "writing-typescript: references/advanced-types.md and references/event-contracts.md"
+      ],
+      "status": "pending_review"
+    },
+    "preserve-literal-inference": {
+      "principle": "Use inference by default, `as const` to preserve literal values, and `satisfies` to check compatibility without widening; avoid redundant annotations that discard useful precision.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Preserve Literal Inference",
+      "evidence": [
+        "typescript-advanced-types: implementation-playbook §Best Practices",
+        "typescript-v6: references/type-patterns-reference.md §satisfies",
+        "writing-typescript: §Workflow Relate and §Evidence policy"
+      ],
+      "status": "pending_review"
+    },
+    "make-async-concurrency-explicit": {
+      "principle": "Use `async`/`await` for sequential orchestration and an explicit promise combinator for independent concurrent work, selecting the combinator according to the intended failure and completion semantics.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Make Async Concurrency Explicit",
+      "evidence": [
+        "modern-javascript-patterns: implementation-playbook §Asynchronous Patterns",
+        "writing-typescript: references/patterns.md §Guidelines"
+      ],
+      "status": "pending_review"
+    },
+    "protect-invariants-during-state-updates": {
+      "principle": "Do not mutate caller-owned values; prefer readonly values and immutable updates, and place necessary mutation behind methods that preserve the owning object's invariants.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Protect Invariants During State Updates",
+      "evidence": [
+        "modern-javascript-patterns: implementation-playbook §Pure Functions and Immutability",
+        "writing-typescript: references/domain-modeling.md"
+      ],
+      "status": "pending_review"
+    },
+    "keep-code-units-coherent": {
+      "principle": "Keep functions, classes, and modules focused on one coherent responsibility, and do not introduce single-use abstractions or speculative configurability.",
+      "verdict": "New File",
+      "target": "~/.agents/rules/writing-code.md §Keep Code Units Coherent",
+      "evidence": [
+        "karpathy-coder: §Simplicity First",
+        "modern-javascript-patterns: implementation-playbook §Best Practices",
+        "writing-typescript: §Architectural stance and §Workflow Own"
+      ],
+      "status": "pending_review"
+    }
+  }
+}
