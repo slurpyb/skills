@@ -1,0 +1,23 @@
+{
+  "name": "pandacss",
+  "displayName": "Panda CSS",
+  "version": "1.0.0",
+  "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps.",
+  "author": {
+    "name": "Panda CSS",
+    "url": "https://panda-css.com"
+  },
+  "homepage": "https://panda-css.com/docs",
+  "repository": "https://github.com/chakra-ui/panda",
+  "license": "MIT",
+  "keywords": [
+    "pandacss",
+    "panda-css",
+    "css-in-js",
+    "styling",
+    "design-system",
+    "typescript",
+    "frontend"
+  ],
+  "skills": "./skills/"
+}

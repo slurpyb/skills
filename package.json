@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "description": "Skills for Slurpyb",
     "pi": {
-        "extensions": ["./extensions"],
-        "skills": ["./skills"]
+        "extensions": ["./packages"],
+        "skills": ["./packages/**/*"]
     },
     "author": "Slurpyb",
     "license": "MIT"

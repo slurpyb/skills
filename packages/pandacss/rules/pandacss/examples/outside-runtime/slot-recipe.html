@@ -1,0 +1,28 @@
+<!--
+  defineSlotRecipe consumed by hand.
+
+  Recipe: className "dialog", slots backdrop|window|header|title|main|footer,
+          variant tone (neutral|danger).
+  Generated classes (per slot):
+    base:    .dialog__backdrop  .dialog__window  .dialog__header
+             .dialog__title  .dialog__main  .dialog__footer
+    variant: .dialog__title--tone-danger
+  Emitted because staticCss declared:  dialog: ["*"]
+
+  Each element wears ITS slot's class set. State (open) is a data attribute on the
+  root; the recipe's own rules react to it. No runtime, no styled().
+-->
+<link rel="stylesheet" href="../../dist/styles.css">
+
+<div class="dialog__backdrop" data-state="open">
+  <div class="dialog__window" role="alertdialog" aria-modal="true" aria-labelledby="t">
+    <div class="dialog__header">
+      <h2 id="t" class="dialog__title dialog__title--tone-danger">Delete item?</h2>
+    </div>
+    <div class="dialog__main">This can't be undone.</div>
+    <div class="dialog__footer">
+      <button class="button button--variant-ghost" type="button">Cancel</button>
+      <button class="button button--variant-primary" type="button">Delete</button>
+    </div>
+  </div>
+</div>

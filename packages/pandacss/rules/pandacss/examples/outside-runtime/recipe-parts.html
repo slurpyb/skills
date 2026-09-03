@@ -1,0 +1,35 @@
+<!--
+  defineParts recipe consumed by hand.
+
+  Recipe: className "combobox", parts root|control|input|trigger|overlay|listbox|option.
+  Generated CSS:  a SINGLE class .combobox whose rules target parts via
+                  internal selectors like  .combobox [data-part='option']
+  So there is ONE class to apply (on the root); every part is marked with a
+  data-part attribute. No per-slot classes.
+
+  NOTE: data-part is just the convention used here. defineParts selectors are
+  arbitrary — a part can target any selector you choose (a class, an element, a
+  scoped attribute). Match whatever your markup already uses.
+  Emitted because staticCss declared:  combobox: ["*"]
+
+  State lives on the root as data-state; the recipe's root-scoped rules show/hide
+  the overlay. The dynamic ARIA (aria-expanded, aria-activedescendant, aria-selected)
+  is whatever your template/server sets — the CSS only styles.
+-->
+<link rel="stylesheet" href="../../dist/styles.css">
+
+<div class="combobox" data-part="root" data-state="expanded">
+  <div data-part="control">
+    <input data-part="input" type="text" role="combobox"
+           aria-expanded="true" aria-controls="lb" aria-activedescendant="opt-0" autocomplete="off">
+    <button data-part="trigger" type="button" tabindex="-1" aria-label="Toggle options">
+      <svg aria-hidden="true"><use href="#icon-chevron-down" /></svg>
+    </button>
+  </div>
+  <div data-part="overlay">
+    <ul data-part="listbox" id="lb" role="listbox">
+      <li data-part="option" id="opt-0" role="option" aria-selected="true">Watches</li>
+      <li data-part="option" id="opt-1" role="option" aria-selected="false">Wine</li>
+    </ul>
+  </div>
+</div>

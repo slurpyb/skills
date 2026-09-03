@@ -1,0 +1,54 @@
+---
+description: PandaCSS colorPalette virtual color — apply when authoring themeable components that need to switch their color scheme via a single prop or token reference
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Virtual Color (`colorPalette`)
+
+`colorPalette` activates a palette scope so descendants can reference shades generically via `colorPalette.<shade>`. Set once on a parent, swap palettes from a prop, never duplicate color-keyed variants.
+
+## Form
+
+```tsx
+// Pick the palette on the parent (or via variant prop)
+<div className={css({
+  colorPalette: "brand",
+  bg: "colorPalette.500",
+  color: "colorPalette.50",
+  borderColor: "colorPalette.700",
+})} />
+```
+
+In a recipe variant:
+
+```ts
+defineRecipe({
+  base: { bg: "colorPalette.500", color: "white" },
+  variants: {
+    tone: {
+      brand:   { colorPalette: "brand" },
+      neutral: { colorPalette: "neutral" },
+      danger:  { colorPalette: "red" },
+    },
+  },
+})
+```
+
+## Rules
+
+- Works only for token paths that resolve to a palette object (i.e. `colors.<palette>.<shade>`); a flat color (no shades) cannot be a `colorPalette`.
+- `colorPalette` sets a scope on the element it's declared on — children inherit until a new `colorPalette` is set.
+- Reach for semantic tokens (`bg.subtle`, `border.default`) for context-aware naming and `colorPalette` for palette-swap scenarios. They compose.
+- Custom shades within the palette (e.g. `colors.brand.text`) become `colorPalette.text`.
+
+## See also
+
+- [Tokens](../theming/tokens.md)
+- [Semantic tokenization](../refactoring/semantic-tokens.md)
+- [Writing styles](css.md)

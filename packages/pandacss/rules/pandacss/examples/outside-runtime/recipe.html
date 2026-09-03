@@ -1,0 +1,21 @@
+<!--
+  defineRecipe (single element) consumed by hand.
+
+  Recipe: className "icon-btn", variants tone (neutral|danger), size (sm|md).
+  Generated classes:  .icon-btn  .icon-btn--tone-danger  .icon-btn--size-md
+  Emitted because staticCss declared:  "icon-btn": [{ tone: ["*"], size: ["*"] }]
+
+  Equivalent runtime call:  iconButton({ tone: "danger", size: "md" })
+    → "icon-btn icon-btn--tone-danger icon-btn--size-md"
+-->
+<link rel="stylesheet" href="../../dist/styles.css">
+
+<!-- base + two variant classes on one element. Behavior is the native button's. -->
+<button class="icon-btn icon-btn--tone-danger icon-btn--size-md" type="button" aria-label="Delete">
+  <svg aria-hidden="true" focusable="false"><use href="#icon-trash" /></svg>
+</button>
+
+<!-- default variants: omit the variant classes, the base carries them -->
+<button class="icon-btn" type="button" aria-label="Menu">
+  <svg aria-hidden="true" focusable="false"><use href="#icon-menu" /></svg>
+</button>

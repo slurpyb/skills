@@ -1,0 +1,48 @@
+---
+description: PandaCSS JSX style props — apply when authoring JSX that uses styled.* elements or pattern components with shorthand props (bg, p, gap, columns, etc.)
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Style Props
+
+When `jsxFramework` is set in `panda.config.ts`, Panda emits a JSX runtime that accepts style shorthands as props on `styled.*` elements and pattern components. Props are extracted at build time — same atomic CSS as `css()`.
+
+## Form
+
+```tsx
+import { Grid, Box } from "styled-system/jsx"
+
+<Grid columns={{ base: 1, md: 3 }} gap="7" mt="10">
+  <Box bg="brand.wheat" p="6" rounded="md">…</Box>
+</Grid>
+```
+
+Or on a `styled.element`:
+
+```tsx
+import { styled } from "styled-system/jsx"
+
+<styled.button bg="accent.500" color="white" px="4" py="2" _hover={{ bg: "accent.600" }}>
+  Click
+</styled.button>
+```
+
+## Rules
+
+- Static prop values are extracted; **dynamic expressions** (`bg={someVar}`) won't be extracted — wrap in `css()` or restrict to a known token union.
+- Style props work on patterns (`Stack`, `Grid`, `Container`), styled elements (`styled.div`), and any component built with `styled(...)`.
+- Conditions (`_hover`, `_dark`) and responsive objects work identically to `css()`.
+- Don't mix style props with `className={css({...})}` for the same property — last one wins but it's ambiguous at the call site.
+- Requires `jsxFramework: 'react' | 'preact' | 'solid' | 'vue' | 'qwik'` in config.
+
+## See also
+
+- [Writing styles](css.md)
+- [Styled system](../configuring/styled-system.md)
+- [Patterns](../composing/patterns.md)

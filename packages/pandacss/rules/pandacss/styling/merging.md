@@ -1,0 +1,53 @@
+---
+description: PandaCSS style merging with cx() and css.raw() — apply when composing base + override styles, conditionally merging classNames, or sharing partial style objects across files
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Merging Styles
+
+Two distinct merge primitives — pick the right one:
+
+| Tool | Input | Output | Use for |
+|------|-------|--------|---------|
+| `cx(...)` | class strings (conditional) | merged className | combining already-extracted recipe/css outputs |
+| `css.raw(obj)` | style object | style object (deferred) | preserving an object so a downstream `css(...)` call can merge it |
+| `css(a, b, c)` | style objects | className | merging multiple style objects, later wins |
+
+## cx — conditional className merge
+
+```tsx
+className={cx(
+  sectionBase,
+  isRed ? sectionRed : sectionWheat,
+  fullBleed && "full-bleed"
+)}
+```
+
+## css.raw — defer for downstream merge
+
+```tsx
+const baseStyles = css.raw({ p: "4", rounded: "md" })
+
+function Card({ overrides }) {
+  return <div className={css(baseStyles, overrides)} />
+}
+```
+
+## Rules
+
+- `cx` merges **class strings**, not style objects. Don't pass `css({...})` results to `cx` if you wanted style-level merging — use `css(a, b)` instead.
+- `css.raw` returns an object, not a class. Always pass it through `css(...)` to extract.
+- Later argument wins in `css(a, b)`. Use this to layer overrides.
+- Never `cx(className, styleObject)` — type error or silent breakage.
+
+## See also
+
+- [Writing styles](css.md)
+- [Style props](style-props.md)
+- [Refactor: fragmented styles](../refactoring/fragmented-styles.md)

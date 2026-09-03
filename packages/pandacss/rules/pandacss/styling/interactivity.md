@@ -1,0 +1,59 @@
+---
+description: PandaCSS interactivity utilities — apply when setting cursor, pointer-events, user-select, accent color, scroll behavior, or scrollbar visibility
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Interactivity Utilities
+
+| Key | Long form | Notes |
+|-----|-----------|-------|
+| `cursor` | `cursor` | `pointer`, `not-allowed`, `text`, `grab`/`grabbing`, etc. |
+| `pointerEvents` | `pointer-events` | `none` disables clicks; `auto` re-enables |
+| `userSelect` | `user-select` | `none` / `text` / `all` |
+| `accentColor` | `accent-color` | Native form control accent — `colors` |
+| `scrollBehavior` | `scroll-behavior` | `smooth` / `auto` |
+| `scrollSnap*` | scroll snap suite | `scrollSnapType`, `scrollSnapAlign`, `scrollMargin*`, `scrollPadding*` |
+| `scrollbar` | shorthand — Panda preset utility | `hidden` / `default` |
+| `touchAction` | `touch-action` | gesture handling |
+| `caretColor` | `caret-color` | text input caret — `colors` |
+
+## Form
+
+```tsx
+css({
+  cursor: "pointer",
+  userSelect: "none",
+  accentColor: "brand.red",
+  _disabled: { cursor: "not-allowed", pointerEvents: "none" },
+})
+```
+
+Scroll container with snapping:
+
+```tsx
+css({
+  overflowX: "auto",
+  scrollSnapType: "x mandatory",
+  scrollBehavior: "smooth",
+  "& > *": { scrollSnapAlign: "start" },
+})
+```
+
+## Rules
+
+- Pair `cursor: "pointer"` with an actual interactive element (`<button>`, `<a>`) — don't fake interactivity on `<div>` by adding cursor alone.
+- `pointerEvents: "none"` on a parent disables clicks on **all** descendants — re-enable with `pointerEvents: "auto"` on specific children.
+- `accentColor` themes native checkboxes/radios/range inputs cheaply — prefer over custom-rendered controls when possible.
+- `userSelect: "none"` blocks copy-paste — only use where text shouldn't be selectable (UI chrome, button labels).
+
+## See also
+
+- [Focus ring](focus-ring.md)
+- [Outline](outline.md)
+- [Conditional styles](conditions.md)

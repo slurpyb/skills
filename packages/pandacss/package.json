@@ -1,0 +1,17 @@
+{
+  "name": "pandacss",
+  "version": "1.0.0",
+  "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  },
+  "homepage": "https://panda-css.com/docs",
+  "repository": "https://github.com/chakra-ui/panda"
+}

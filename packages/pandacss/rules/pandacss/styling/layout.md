@@ -1,0 +1,56 @@
+---
+description: PandaCSS layout utilities — apply when positioning elements (position/top/right/inset), setting z-index, aspect ratio, overflow, or container queries
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Layout Utilities
+
+| Shorthand | Long form | Token |
+|-----------|-----------|-------|
+| `pos` / `position` | `position` | — |
+| `top` / `right` / `bottom` / `left` | edge offsets | `spacing` (or raw `%`/`px`) |
+| `inset` | shorthand for all four | `spacing` |
+| `insetX` / `insetY` | per-axis | `spacing` |
+| `insetStart` / `insetEnd` | logical horizontal | `spacing` |
+| `zIndex` | `z-index` | `zIndex` |
+| `aspectRatio` | `aspect-ratio` | `aspectRatios` |
+| `overflow` / `overflowX` / `overflowY` | `overflow` | — |
+| `containerType` / `containerName` | container queries | — |
+
+## Form
+
+```tsx
+css({
+  pos: "relative",
+  aspectRatio: "16 / 10",
+  overflow: "hidden",
+  rounded: "lg",
+})
+
+css({
+  pos: "absolute",
+  inset: "0",
+  zIndex: "overlay",
+})
+```
+
+## Rules
+
+- Use `pos` shorthand; reach for `position` only when overriding a token-derived value.
+- `inset: 0` instead of `top: 0; right: 0; bottom: 0; left: 0` — same effect, one key.
+- Prefer logical `insetStart` / `insetEnd` for RTL-aware UIs.
+- Z-index belongs in `theme.tokens.zIndex` semantic scale (`dropdown`, `overlay`, `modal`, `toast`) — string tokens beat magic numbers.
+- `aspectRatio` keeps a box at a fixed ratio without a wrapper trick — works for images via `<img>` + `objectFit`.
+
+## See also
+
+- [Flex and grid](flex-and-grid.md)
+- [Display](display.md)
+- [Sizing](sizing.md)
+- [Spacing](spacing.md)

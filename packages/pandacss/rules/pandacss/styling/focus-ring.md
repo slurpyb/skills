@@ -1,0 +1,64 @@
+---
+description: PandaCSS focus ring utilities — apply when adding accessible keyboard focus indicators to interactive elements (buttons, links, inputs)
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Focus Ring Utilities
+
+Two utility groups for keyboard-accessible focus indicators:
+
+| Key | Effect | When it shows |
+|-----|--------|---------------|
+| `focusRing` | Applies always on `:focus` | Visible on click + keyboard (often undesirable) |
+| `focusVisibleRing` | Applies on `:focus-visible` | Visible **only** on keyboard / programmatic focus |
+
+| Value | Renders as |
+|-------|-----------|
+| `"outside"` | Outline outside the element |
+| `"inside"` | Inset box-shadow inside the element |
+| `"mixed"` | Outline + inset shadow (two-color ring) |
+| `"none"` | Removes the ring (do this only when replacing with custom) |
+
+Plus tuning props: `focusRingColor`, `focusRingWidth`, `focusRingOffset`, `focusRingStyle`.
+
+## Form
+
+```tsx
+css({
+  focusVisibleRing: "outside",
+  focusRingColor: "accent.500",
+  focusRingWidth: "2px",
+  focusRingOffset: "2px",
+})
+```
+
+Equivalent hand-rolled (when you can't use the shorthand):
+
+```tsx
+css({
+  _focusVisible: {
+    outline: "2px solid",
+    outlineColor: "brand.red",
+    outlineOffset: "2px",
+  },
+})
+```
+
+## Rules
+
+- Default to `focusVisibleRing`, not `focusRing` — keyboard users get the indicator, mouse users don't get the flash.
+- Never ship `focusRing: "none"` or `outline: "none"` without an explicit replacement; that's an a11y regression.
+- Ring color should pass 3:1 contrast against both element bg and page bg.
+- `focusRingOffset` of at least `2px` so the ring doesn't visually clip on rounded corners.
+
+## See also
+
+- [Outline](outline.md)
+- [Interactivity](interactivity.md)
+- [Conditional styles](conditions.md)

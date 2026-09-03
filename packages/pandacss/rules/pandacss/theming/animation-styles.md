@@ -1,0 +1,82 @@
+---
+description: PandaCSS animation styles — apply when defining reusable animationStyle entries in the theme or referencing animationStyle in a component
+paths:
+  - "**/panda.config.ts"
+  - "**/animation-styles.ts"
+  - "**/theme/**/*.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+---
+
+# PandaCSS — Animation Styles
+
+`defineAnimationStyles({ ... })` orchestrates `animationName` + duration + easing into a named token, applied via the `animationStyle` shorthand.
+
+## Define
+
+```ts
+// path/to/theme/preset/theme/animation-styles.ts
+import { defineAnimationStyles } from "@pandacss/dev"
+
+export const animationStyles = defineAnimationStyles({
+  "fade-in": {
+    value: {
+      animationName: "fade-in",
+      animationDuration: "normal",
+      animationTimingFunction: "ease-in",
+      animationFillMode: "both",
+    },
+  },
+  "fade-in-up": {
+    value: {
+      animationName: "fade-in-up",
+      animationDuration: "slow",
+      animationTimingFunction: "ease-out-expo",
+      animationFillMode: "both",
+    },
+  },
+})
+```
+
+Pair with `keyframes` in `theme.extend.keyframes`:
+
+```ts
+keyframes: {
+  "fade-in":    { from: { opacity: 0 }, to: { opacity: 1 } },
+  "fade-in-up": {
+    from: { opacity: 0, transform: "translateY(8px)" },
+    to:   { opacity: 1, transform: "translateY(0)" },
+  },
+},
+```
+
+Wire animation styles in `panda.config.ts`:
+
+```ts
+theme: { extend: { animationStyles, keyframes } }
+```
+
+## Consume
+
+```tsx
+css({ animationStyle: "fade-in-up" })
+```
+
+## Rules
+
+- Always pair `_motionReduce` for accessibility when the animation is non-decorative:
+  ```tsx
+  css({ animationStyle: "fade-in-up", _motionReduce: { animation: "none" } })
+  ```
+- `animationStyle` is a shorthand — properties inside it can be overridden by sibling `animation*` keys in the same style object.
+- Keep keyframe names in sync between `theme.keyframes` and the `animationName` referenced in the animation style.
+- Animation tokens (`fast`, `normal`, `slow`) live in `tokens.durations` — define them once and reuse here.
+
+## See also
+
+- [Layer styles](layer-styles.md)
+- [Text styles](text-styles.md)
+- [Tokens](tokens.md)
+- [Conditional styles](../styling/conditions.md)

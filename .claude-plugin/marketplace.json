@@ -8,6 +8,9 @@
     "url": "https://github.com/slurpyb",
     "email": "slurpyb@fastmail.com"
   },
+  "metadata": {
+    "pluginRoot": "./packages"
+  },
   "plugins": [
     {
       "name": "simple-english",
@@ -56,7 +59,7 @@
     {
       "name": "core",
       "description": "Shared agent defaults for every project: conventions, tools, and always-on behavior.",
-      "source": "./plugins/core",
+      "source": "./packages/core",
       "strict": true,
       "category": "development",
       "tags": []
@@ -64,7 +67,7 @@
     {
       "name": "writing-code",
       "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
-      "source": "./plugins/writing-code",
+      "source": "./packages/writing-code",
       "strict": true,
       "category": "development",
       "tags": []
@@ -72,75 +75,15 @@
     {
       "name": "pi",
       "description": "Configure and build with the Pi coding harness through focused skills, prompt templates, SDK-native tool workflows, MCP reconstruction, and deterministic validation.",
-      "source": "./plugins/pi",
+      "source": "./packages/pi",
       "strict": true,
       "category": "development",
       "tags": []
     },
-    {
-      "name": "astro-agent",
-      "description": "Astro expertise for coding agents: current docs via MCP, project conventions, and a specialist subagent for .astro sites, Content Collections, islands, adapters, Starlight, actions, and i18n.",
-      "source": "./plugins/astro-agent",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-    {
-      "name": "research",
-      "description": "Research workflows and skills.",
-      "source": "./plugins/research",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-    {
-      "name": "autoresearch",
-      "description": "Autonomous research loop: infer artifact, evaluator, and bounds from a goal, then iterate sequential rounds and escalate to a GAN tournament on plateau.",
-      "source": "./plugins/autoresearch",
-      "strict": true,
-      "category": "research",
-      "tags": []
-    },
-    {
-      "name": "capture",
-      "description": "Brain-dump organizer: unstructured thoughts into projects, tasks, connections, and offers, with zero information loss.",
-      "source": "./plugins/capture",
-      "strict": true,
-      "category": "productivity",
-      "tags": []
-    },
-    {
-      "name": "code-context",
-      "description": "Retrieve code context via DeepWiki, Context7, Exa, git clone, or web search+fetch.",
-      "source": "./plugins/code-context",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-    {
-      "name": "plugin-optimizer",
-      "description": "Validate and optimize a Claude Code plugin against official best practices and file patterns.",
-      "source": "./plugins/plugin-optimizer",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-    {
-      "name": "refactor",
-      "description": "Code simplification agent and skills that improve quality while preserving behavior.",
-      "source": "./plugins/refactor",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-    {
-      "name": "storm",
-      "description": "Wikipedia-style long-form articles via multi-perspective research and retrieval. Claude-native port of Stanford STORM.",
-      "source": "./plugins/storm",
-      "strict": true,
-      "category": "research",
-      "tags": []
-    },
+
+
+
+
     {
       "name": "shopify-plugin",
       "description": "Search Shopify docs, generate and validate GraphQL, Liquid, and UI extension code.",
@@ -179,72 +122,9 @@
         "url": "https://github.com/davidondrej/skills.git"
       },
       "strict": false,
-      "skills": [
-        "./skills/agent-orchestration/agent-self-scheduling",
-        "./skills/agent-orchestration/cmux",
-        "./skills/agent-orchestration/codex-subagent",
-        "./skills/agent-orchestration/corral-launch-agents",
-        "./skills/agent-orchestration/fable-review",
-        "./skills/agent-orchestration/fable-safe-prompt",
-        "./skills/agent-orchestration/git-worktree",
-        "./skills/agent-orchestration/goal-loop",
-        "./skills/agent-orchestration/gpt-review",
-        "./skills/agent-orchestration/handoff",
-        "./skills/agent-orchestration/launch-subagent",
-        "./skills/agent-orchestration/render-images-in-cursor",
-        "./skills/agent-orchestration/run-deep-swe",
-        "./skills/agent-orchestration/total-review",
-        "./skills/ops-and-setup/agentic-productivity-setup",
-        "./skills/ops-and-setup/anti-sleep",
-        "./skills/ops-and-setup/create-readonly-db-role",
-        "./skills/ops-and-setup/github-outside-sandbox",
-        "./skills/ops-and-setup/global-agent-guardrails",
-        "./skills/ops-and-setup/google-safe-browsing",
-        "./skills/ops-and-setup/macbook-metrics-setup",
-        "./skills/ops-and-setup/nuke-cursor-app",
-        "./skills/ops-and-setup/pi-custom-model",
-        "./skills/ops-and-setup/risky-changes",
-        "./skills/ops-and-setup/setup-help",
-        "./skills/research-and-web/browser-harness",
-        "./skills/research-and-web/deep-research",
-        "./skills/research-and-web/deepapi",
-        "./skills/research-and-web/fireflies-transcript",
-        "./skills/research-and-web/online-shopping",
-        "./skills/research-and-web/pi-web-search",
-        "./skills/research-and-web/research-prompt",
-        "./skills/research-and-web/youtube-transcript",
-        "./skills/skill-authoring/distribute-skill-to-all-agents",
-        "./skills/skill-authoring/effective-agent-skills",
-        "./skills/skill-authoring/folder-specific-claude-and-agents-md",
-        "./skills/skill-authoring/push-skill-to-github",
-        "./skills/thinking-and-docs/ask-then-build",
-        "./skills/thinking-and-docs/before-building",
-        "./skills/thinking-and-docs/brain-to-docs",
-        "./skills/thinking-and-docs/decisions",
-        "./skills/thinking-and-docs/level-up",
-        "./skills/thinking-and-docs/next-decision",
-        "./skills/thinking-and-docs/prompt-me",
-        "./skills/thinking-and-docs/read-all-adrs",
-        "./skills/thinking-and-docs/remind",
-        "./skills/thinking-and-docs/save-idea",
-        "./skills/thinking-and-docs/short",
-        "./skills/thinking-and-docs/stop-overthinking",
-        "./skills/thinking-and-docs/teach"
-      ],
       "category": "engineering",
       "tags": []
-    },
-    {
-      "name": "fuse-prompt-engineer",
-      "description": "Expert Prompt Engineer with Context Engineering, Meta-Prompting, Chain-of-Thought, Few-Shot, Agent Design, 50+ Template Library, and A/B Testing",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/fusengine/agents.git",
-        "path": "plugins/prompt-engineer"
-      },
-      "strict": true,
-      "category": "engineering",
-      "tags": []
+      
     }
   ]
 }

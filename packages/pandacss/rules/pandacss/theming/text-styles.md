@@ -1,0 +1,84 @@
+---
+description: PandaCSS text styles — apply when defining reusable typography presets (heading/body/caption scales) or using textStyle shorthand in components
+paths:
+  - "**/panda.config.ts"
+  - "**/text-styles.ts"
+  - "**/theme/**/*.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+---
+
+# PandaCSS — Text Styles
+
+`defineTextStyles({ ... })` bundles typography properties (family, size, weight, line-height, letter-spacing, decoration) into a named preset applied via the `textStyle` shorthand. Pick **textStyle** over per-property shorthand on every typographic element in your design system.
+
+## Define
+
+```ts
+// path/to/theme/preset/theme/text-styles.ts
+import { defineTextStyles } from "@pandacss/dev"
+
+export const textStyles = defineTextStyles({
+  "heading.h1": {
+    value: {
+      fontFamily: "heading",
+      fontWeight: "bold",
+      fontSize: { base: "2.5rem", lg: "3.5rem" },
+      lineHeight: "1.1",
+      letterSpacing: "-0.02em",
+    },
+  },
+  "heading.h2": {
+    value: {
+      fontFamily: "heading",
+      fontWeight: "semibold",
+      fontSize: { base: "2rem", lg: "2.5rem" },
+      lineHeight: "1.15",
+    },
+  },
+  "body.md": {
+    value: {
+      fontFamily: "body",
+      fontSize: "md",
+      lineHeight: "1.5",
+    },
+  },
+  "label.uppercase": {
+    value: {
+      fontFamily: "body",
+      fontSize: "xs",
+      fontWeight: "medium",
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
+    },
+  },
+})
+```
+
+Wire in `panda.config.ts`:
+
+```ts
+theme: { extend: { textStyles } }
+```
+
+## Consume
+
+```tsx
+<h1 className={css({ textStyle: "heading.h1" })}>Title</h1>
+```
+
+## Rules
+
+- One source of truth: typography lives in `textStyles`, not duplicated per-component.
+- Dot-keyed names group in IntelliSense — use `category.variant` (e.g. `body.md`, `heading.h2`).
+- Responsive sizes inside `value` — don't redeclare breakpoints at every call site.
+- Override inside `css()` by setting properties after `textStyle`.
+- Names align with semantic intent (`heading.h1`, `body.md`), not visual size (`2xl`, `3xl`) — easier to retheme.
+
+## See also
+
+- [Tokens](tokens.md)
+- [Layer styles](layer-styles.md)
+- [Typography utilities](../styling/typography.md)

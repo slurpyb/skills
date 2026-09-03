@@ -1,0 +1,186 @@
+{
+	"name": "panda-styling-engine routing cases",
+	"objective": "Select the project-owned Panda primitive before producing styling code.",
+	"cases": [
+		{
+			"id": "existing-button-tone",
+			"input": "Add a warning appearance to the shared button.",
+			"route": ["recipes", "semantic-tokens", "color"],
+			"expected": "Extend the existing config recipe and semantic color vocabulary."
+		},
+		{
+			"id": "responsive-card-grid",
+			"input": "Lay cards out responsively without page-specific CSS.",
+			"route": ["patterns"],
+			"expected": "Use or extend the generated Grid pattern."
+		},
+		{
+			"id": "vertical-story-layout",
+			"input": "Space Storybook examples vertically.",
+			"route": ["usage", "patterns"],
+			"expected": "Compose the story with the generated Stack pattern."
+		},
+		{
+			"id": "multipart-tabs",
+			"input": "Add a compact variant affecting tab root, trigger, indicator, and content.",
+			"route": ["slot-recipes"],
+			"expected": "Extend the existing slot recipe with one coordinated variant."
+		},
+		{
+			"id": "single-element-note",
+			"input": "Give one generated JSX note element semantic foreground and spacing.",
+			"route": ["style-props", "semantic-tokens"],
+			"expected": "Use a small set of generated JSX style props with existing semantic tokens."
+		},
+		{
+			"id": "heading-system",
+			"input": "Create a reusable editorial heading treatment.",
+			"route": ["theme-config", "tokens"],
+			"expected": "Define or extend a named text style backed by tokens."
+		},
+		{
+			"id": "disabled-surface",
+			"input": "Reuse the same disabled surface treatment across recipes.",
+			"route": ["theme-config", "semantic-tokens"],
+			"expected": "Define or extend a named layer style and reference it from recipes."
+		},
+		{
+			"id": "shared-motion",
+			"input": "Reuse the same entry transition across overlay recipes.",
+			"route": ["theme-config"],
+			"expected": "Define keyframes and an animation style with the project motion condition."
+		},
+		{
+			"id": "theme-aware-surface",
+			"input": "Make a surface color change by color mode.",
+			"route": ["semantic-tokens"],
+			"expected": "Add a condition-dependent semantic token and consume its intent name."
+		},
+		{
+			"id": "runtime-palette",
+			"input": "Allow a finite set of palettes to be selected at runtime.",
+			"route": ["color", "theme-config"],
+			"expected": "Use virtual color and pre-generate the finite palette set."
+		},
+		{
+			"id": "custom-layout-api",
+			"input": "A recurring layout needs typed min, gap, and collapse behavior.",
+			"route": ["patterns", "theme-config"],
+			"expected": "Create a custom pattern with typed properties and a transform."
+		},
+		{
+			"id": "custom-property-language",
+			"input": "A repeated logical-property transformation should become a typed prop.",
+			"route": ["utilities", "theme-config"],
+			"expected": "Extend utilities with a token-bound transform and regenerate types."
+		},
+		{
+			"id": "global-baseline",
+			"input": "Set shared document defaults and root variables.",
+			"route": ["theme-config"],
+			"expected": "Use global styles only for the cross-document baseline."
+		},
+		{
+			"id": "astro-layout",
+			"input": "Use the design system's layout vocabulary in an Astro page.",
+			"route": ["usage", "patterns"],
+			"expected": "Configure Astro extraction and consume generated pattern output."
+		},
+		{
+			"id": "generated-import-failure",
+			"input": "A generated recipe import is missing after a theme change.",
+			"route": ["styled-system", "usage"],
+			"expected": "Check config ownership and rerun codegen before changing application code."
+		},
+		{
+			"id": "ad-hoc-class-request",
+			"input": "Add a long utility class string for a reusable card treatment.",
+			"route": ["recipes", "tokens"],
+			"expected": "Model the reusable treatment as a recipe using project tokens."
+		},
+		{
+			"id": "inline-object-request",
+			"input": "Put dynamic presentation in a React inline style object.",
+			"route": ["style-props", "theme-config"],
+			"expected": "Model finite states through generated props, conditions, or variants."
+		},
+		{
+			"id": "local-class-generator",
+			"input": "Generate a local class for a component that already has a recipe.",
+			"route": ["recipes"],
+			"expected": "Use or extend the existing recipe instead of creating a parallel styling owner."
+		},
+		{
+			"id": "postcss-build",
+			"input": "Wire Panda into an existing PostCSS build.",
+			"route": ["usage", "styled-system"],
+			"expected": "Configure PostCSS, layers, content scanning, and codegen in build order."
+		},
+		{
+			"id": "override-existing-class",
+			"input": "Combine a recipe result with a consumer class name.",
+			"route": ["merging-styles", "recipes"],
+			"expected": "Keep the recipe as styling owner and merge only independently owned class strings."
+		},
+		{
+			"id": "shared-monorepo-output",
+			"input": "Normalize a workspace app so every package consumes one generated styled-system.",
+			"route": ["configuration-baseline", "styled-system"],
+			"expected": "Use the surveyed shared import map and owned output directory, then regenerate consumers."
+		},
+		{
+			"id": "static-distribution-contract",
+			"input": "Ensure published CSS includes every recipe and the primary accent theme.",
+			"route": ["configuration-baseline", "theme-config"],
+			"expected": "Declare full recipe and primary-theme static emission in the owning configuration."
+		},
+		{
+			"id": "brand-variable-fonts",
+			"input": "Register the brand variable fonts and apply semantic body and heading families.",
+			"route": ["typography-foundation", "semantic-tokens"],
+			"expected": "Define typed global font faces, resilient base font tokens, and semantic font roles."
+		},
+		{
+			"id": "heading-level-override",
+			"input": "Adjust one intrinsic heading level while retaining the shared heading treatment.",
+			"route": ["typography-foundation", "theme-config"],
+			"expected": "Deep-merge the named heading text-style entry and preserve the global cascade."
+		},
+		{
+			"id": "react-standard-button",
+			"input": "Create a typed React button around the generated one-part recipe.",
+			"route": ["react-component-api", "react-standard-recipe", "recipes"],
+			"expected": "Split recipe variants from native props, preserve button semantics, merge classes, and forward the ref."
+		},
+		{
+			"id": "react-fixed-card-slots",
+			"input": "Create a React card that owns its root, header, body, and footer structure.",
+			"route": ["react-component-api", "react-slot-component", "slot-recipes"],
+			"expected": "Resolve one slot recipe and apply each generated class to the matching owned part."
+		},
+		{
+			"id": "react-compound-tabs-context",
+			"input": "Create compound React tabs whose independently exported parts share recipe variants.",
+			"route": ["react-component-api", "react-style-context", "slot-recipes"],
+			"expected": "Provide one resolved slot-class map at Root and bind each qualified part through style context."
+		},
+		{
+			"id": "react-controlled-state",
+			"input": "Expose controlled and uncontrolled selection for a recipe-backed React component.",
+			"route": ["react-component-api"],
+			"expected": "Preserve the behavior primitive's value, default value, and change callback contract."
+		},
+		{
+			"id": "react-portaled-slot",
+			"input": "Keep a compound overlay's slot styles available when its content renders in a portal.",
+			"route": ["react-style-context", "react-component-api"],
+			"expected": "Use React style context for classes and make portal theme and custom-property boundaries explicit."
+		},
+		{
+			"id": "react-part-class-merge",
+			"input": "Allow a consumer class on one documented compound component part.",
+			"route": ["react-style-context", "merging-styles"],
+			"expected": "Merge the generated slot class first and the independently owned consumer class last."
+		}
+	]
+}

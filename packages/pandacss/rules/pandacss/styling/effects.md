@@ -1,0 +1,66 @@
+---
+description: PandaCSS effects utilities — apply when adding opacity, box-shadow, mix-blend-mode, filter, blur, or backdrop-filter to an element
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Effects Utilities
+
+| Key | Long form | Token category |
+|-----|-----------|----------------|
+| `opacity` | `opacity` | `opacity` |
+| `shadow` / `boxShadow` | `box-shadow` | `shadows` |
+| `shadowColor` | shadow color part | `colors` |
+| `mixBlendMode` | `mix-blend-mode` | — |
+| `filter` | `filter` | — |
+| `blur` | shorthand → `filter: blur(...)` | `blurs` |
+| `brightness` / `contrast` / `saturate` / `grayscale` / `sepia` / `hueRotate` / `invert` | filter shorthands | mostly — |
+| `backdropFilter` | `backdrop-filter` | — |
+| `backdropBlur` / `backdropBrightness` / ... | backdrop shorthands | matching tokens |
+
+## Form
+
+```tsx
+css({
+  shadow: "lg",
+  opacity: 0.85,
+  _hover: { shadow: "xl", opacity: 1 },
+})
+```
+
+Filters compose via shorthands:
+
+```tsx
+css({
+  blur: "sm",
+  brightness: 0.9,
+  // → filter: blur(token(blurs.sm)) brightness(0.9)
+})
+```
+
+Backdrop:
+
+```tsx
+css({
+  bg: "bg.surface/60",
+  backdropBlur: "md",
+})
+```
+
+## Rules
+
+- Prefer `shadow: "<token>"` over a hand-rolled `box-shadow` string — keeps it themable.
+- Shadow tokens (`sm`, `md`, `lg`, `xl`) live in `theme.tokens.shadows`. Add custom keys there, not inline.
+- `backdropFilter` requires the parent to have a translucent background to show the effect — combine with `bg: "color/opacity"`.
+- Filter shorthands compose into a single `filter` declaration. Mixing `filter: "..."` with `blur` in the same style object will conflict.
+
+## See also
+
+- [Background](background.md)
+- [Gradients](gradients.md)
+- [Transforms](transforms.md)

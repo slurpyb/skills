@@ -1,0 +1,58 @@
+---
+description: PandaCSS helper utilities — apply when visually hiding content for screen readers (srOnly) or temporarily outlining elements for layout audits (debug)
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — Helper Utilities
+
+| Key | Effect | When to use |
+|-----|--------|-------------|
+| `srOnly: true` | Visually hidden, **readable** to screen readers and search engines | A11y labels, skip links, off-screen narrations |
+| `debug: true` | Outlines every descendant element | Layout auditing during development only |
+
+## srOnly — accessible hidden label
+
+```tsx
+<span className={css({ srOnly: true })}>
+  Open navigation menu
+</span>
+```
+
+Equivalent CSS (what `srOnly: true` expands to):
+
+```css
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+white-space: nowrap;
+border-width: 0;
+```
+
+## debug — layout outline
+
+```tsx
+<section className={css({ debug: true })}>...</section>
+```
+
+## Rules
+
+- Use `srOnly` instead of `display: "none"` for content that should be **read** but not seen — `display: none` removes it from the a11y tree.
+- Apply `srOnly` to the *label*, not the *interactive control* itself, so the control remains focusable and clickable.
+- Strip `debug: true` before committing — there's no need to ship in production. Consider a project-specific dev-only convention or pre-commit hook.
+- For programmatically toggling visibility, prefer `_motionReduce` + opacity + `aria-hidden` over conditional `display`.
+
+## See also
+
+- [Display](display.md)
+- [Writing styles](css.md)
+- [Patterns](../composing/patterns.md)

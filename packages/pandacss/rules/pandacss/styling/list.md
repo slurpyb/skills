@@ -1,0 +1,48 @@
+---
+description: PandaCSS list utilities — apply when styling ul/ol marker type/position/image
+paths:
+  - "**/panda.config.ts"
+  - "**/*.recipe.ts"
+  - "**/recipes/**/*.ts"
+  - "**/slot-recipes/**/*.ts"
+  - "**/preset*/**/*.ts"
+  - "**/theme/**/*.ts"
+---
+
+# PandaCSS — List Utilities
+
+| Key | Long form | Notes |
+|-----|-----------|-------|
+| `listStyleType` | `list-style-type` | `disc` / `decimal` / `none` / custom |
+| `listStylePosition` | `list-style-position` | `inside` / `outside` |
+| `listStyleImage` | `list-style-image` | `url(...)` or `assets` token |
+
+## Form
+
+```tsx
+css({
+  listStyleType: "disc",
+  listStylePosition: "inside",
+  ml: "4",
+})
+
+// Reset to unstyled list (for nav menus, button groups built from <ul>)
+css({
+  listStyleType: "none",
+  p: 0,
+  m: 0,
+})
+```
+
+## Rules
+
+- For semantic lists styled like prose (article body), set type/position on the `<ul>` / `<ol>` once at the prose container.
+- For UI lists where the items are interactive (nav, button groups), reset with `listStyleType: "none"` + zero padding.
+- Custom bullets via `listStyleImage` belong in `theme.tokens.assets` so a single bullet asset is shared across the site.
+- `::marker` selector is the lowest-friction way to color/size bullets without bullet-image swapping.
+
+## See also
+
+- [Spacing](spacing.md)
+- [Typography](typography.md)
+- [Writing styles](css.md)
