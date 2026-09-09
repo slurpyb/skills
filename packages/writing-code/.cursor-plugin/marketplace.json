@@ -1,0 +1,17 @@
+{
+  "name": "writing-code",
+  "owner": {
+    "name": "Jordan Sweeting",
+    "email": "slurpyb@fastmail.com"
+  },
+  "metadata": {
+    "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy."
+  },
+  "plugins": [
+    {
+      "name": "writing-code",
+      "source": "./",
+      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy."
+    }
+  ]
+}

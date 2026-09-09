@@ -13,6 +13,11 @@
       "name": "pandacss",
       "source": "pandacss",
       "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps."
+    },
+    {
+      "name": "writing-code",
+      "source": "writing-code",
+      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy."
     }
   ]
 }
