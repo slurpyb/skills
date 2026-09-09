@@ -1,0 +1,17 @@
+{
+  "name": "pandacss",
+  "owner": {
+    "name": "Jordan Sweeting",
+    "email": "slurpyb@fastmail.com"
+  },
+  "metadata": {
+    "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps."
+  },
+  "plugins": [
+    {
+      "name": "pandacss",
+      "source": "./",
+      "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps."
+    }
+  ]
+}

@@ -80,6 +80,14 @@
       "category": "development",
       "tags": []
     },
+    {
+      "name": "pandacss",
+      "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps.",
+      "source": "./packages/pandacss",
+      "strict": true,
+      "category": "development",
+      "tags": []
+    },
 
 
 

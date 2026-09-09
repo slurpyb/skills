@@ -1,0 +1,18 @@
+{
+  "name": "slurpyb-agent-skills",
+  "owner": {
+    "name": "Jordan Sweeting",
+    "email": "slurpyb@fastmail.com"
+  },
+  "metadata": {
+    "description": "A curated collection of AI agent plugins and skills",
+    "pluginRoot": "./packages"
+  },
+  "plugins": [
+    {
+      "name": "pandacss",
+      "source": "pandacss",
+      "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps."
+    }
+  ]
+}
