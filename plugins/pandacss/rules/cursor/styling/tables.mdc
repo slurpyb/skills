@@ -1,0 +1,51 @@
+---
+description: PandaCSS table utilities — apply when styling HTML <table> layout/border-collapse/border-spacing
+globs: **/*.tsx,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Table Utilities
+
+| Key | Long form | Notes |
+|-----|-----------|-------|
+| `tableLayout` | `table-layout` | `auto` / `fixed` |
+| `borderCollapse` | `border-collapse` | `collapse` / `separate` |
+| `borderSpacing` | `border-spacing` | `spacing` tokens |
+| `borderSpacingX` / `borderSpacingY` | per-axis spacing | `spacing` tokens |
+
+## Form
+
+```tsx
+<table className={css({
+  tableLayout: "fixed",
+  borderCollapse: "collapse",
+  w: "full",
+})}>
+  ...
+</table>
+```
+
+With separated cells:
+
+```tsx
+<table className={css({
+  borderCollapse: "separate",
+  borderSpacingX: "2",
+  borderSpacingY: "1",
+})}>
+  ...
+</table>
+```
+
+## Rules
+
+- `tableLayout: "fixed"` is required for `text-overflow: ellipsis` to work inside `<td>`.
+- `borderCollapse: "collapse"` is the right default for data tables; cells share borders cleanly.
+- `borderSpacing` only takes effect with `borderCollapse: "separate"`.
+- Don't rebuild a `<table>` with flex/grid for tabular data — keep the semantic element and style it via these utilities.
+
+## See also
+
+- [Border](border.mdc)
+- [Layout](layout.mdc)
+- [Typography](typography.mdc)

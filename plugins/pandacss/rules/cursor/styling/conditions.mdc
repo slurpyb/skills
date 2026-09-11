@@ -1,0 +1,35 @@
+---
+description: PandaCSS conditional styles (_hover, _focus, _dark, _groupHover, etc.) — apply when adding state-dependent styling inside css/cva/sva calls or style props
+globs: **/*.ts,**/*.tsx,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Conditional Styles
+
+Underscore-prefixed conditions (`_hover`, `_focus`, `_active`, `_disabled`, `_dark`, `_osDark`, `_groupHover`, `_peerHover`, `_focusVisible`, `_motionReduce`, ...) gate a nested style object on a CSS state, media query, or data attribute.
+
+## Form
+
+```tsx
+css({
+  bg: "white",
+  color: "fg.default",
+  _hover: { bg: "neutral.50" },
+  _focusVisible: { outline: "2px solid", outlineColor: "accent.500" },
+  _dark: { bg: "neutral.900", color: "fg.inverse" },
+})
+```
+
+## Rules
+
+- Use `_focusVisible` (keyboard) instead of `_focus` for outline rings — avoids mouse-click flashes.
+- Nest conditions for compound states: `_hover: { _dark: { ... } }`.
+- For sibling/parent state, use `_groupHover` / `_peerHover` and add `group` / `peer` class on the controller element.
+- Always pair `_motionReduce` with any non-decorative animation.
+- Conditions valid inside `css()`, `cva` variants, `sva` slot styles, and JSX style props.
+
+## See also
+
+- [Responsive design](responsive.mdc)
+- [Writing styles](css.mdc)
+- [Style props](style-props.mdc)

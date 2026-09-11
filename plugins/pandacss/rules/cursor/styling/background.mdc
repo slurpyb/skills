@@ -1,0 +1,49 @@
+---
+description: PandaCSS background utilities — apply when setting bg color/image/gradient/position/size/repeat in a component style
+globs: **/*.ts,**/*.tsx,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Background Utilities
+
+| Shorthand | Long form | Token category |
+|-----------|-----------|----------------|
+| `bg` / `bgColor` | `background-color` | `colors` |
+| `bgImage` | `background-image` | `assets` or raw `url(...)` / `linear-gradient(...)` |
+| `bgGradient` | `background-image` (gradient) | `gradients` |
+| `bgPosition` | `background-position` | — |
+| `bgSize` | `background-size` | `sizes` |
+| `bgRepeat` | `background-repeat` | — |
+| `bgAttachment` | `background-attachment` | — |
+| `bgClip` | `background-clip` | — |
+
+## Form
+
+```tsx
+css({
+  bg: "bg.surface",
+  bgImage: "url('/hero.jpg')",
+  bgPosition: "center",
+  bgSize: "cover",
+  bgRepeat: "no-repeat",
+})
+```
+
+With a gradient token:
+
+```tsx
+css({ bgGradient: "brand-fade" })
+```
+
+## Rules
+
+- Prefer `bg` shorthand over `background` longhand in component code.
+- Use `bg: "color.shade/opacity"` for transparent backgrounds — don't write `rgba()`.
+- `bgGradient` references a token defined in `theme.tokens.gradients`. Use that over hand-rolled `linear-gradient()` strings for reusable brand gradients.
+- For SVG background images, prefer storing in `theme.tokens.assets` and referencing as `bgImage: "asset.foo"`.
+
+## See also
+
+- [Gradients](gradients.mdc)
+- [Color opacity modifier](color-opacity.mdc)
+- [Effects](effects.mdc)

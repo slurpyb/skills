@@ -1,0 +1,70 @@
+---
+description: PandaCSS patterns — apply when authoring layout primitives (stack, flex, grid, container) or defining custom patterns via definePattern
+globs: **/*.ts,**/*.tsx,**/*.astro,**/patterns/**/*.ts
+alwaysApply: false
+---
+
+# PandaCSS — Patterns
+
+Patterns are layout primitives that compile to flat CSS — no runtime cost. Built-ins: `stack`, `vstack`, `hstack`, `flex`, `grid`, `gridItem`, `box`, `container`, `wrap`, `aspectRatio`, `divider`, `spacer`, `square`, `circle`, `center`, `linkOverlay`, `float`, `bleed`, `visuallyHidden`, `cq`.
+
+## Usage at call site
+
+```tsx
+import { stack, container } from "styled-system/patterns"
+
+<div className={stack({ gap: "4", align: "stretch" })}>
+  <Header />
+  <Body />
+</div>
+
+<section className={container({ maxW: "5xl", py: "12" })}>
+  ...
+</section>
+```
+
+Or as JSX (with `jsxFramework` enabled):
+
+```tsx
+<Stack gap="4">...</Stack>
+```
+
+## Custom pattern
+
+```ts
+// src/theme/preset/patterns/container-grid.ts
+import { definePattern } from "@pandacss/dev"
+
+export const containerGrid = definePattern({
+  description: "Centered container with responsive padding",
+  properties: {
+    columns: { type: "number" },
+    gap: { type: "token", value: "spacing" },
+  },
+  transform(props) {
+    return {
+      display: "grid",
+      maxWidth: "88rem",
+      mx: "auto",
+      px: { base: "4", md: "8" },
+      gridTemplateColumns: `repeat(${props.columns ?? 12}, 1fr)`,
+      gap: props.gap,
+    }
+  },
+})
+```
+
+Register in `panda.config.ts` via `theme.extend.patterns` or a preset.
+
+## Rules
+
+- Prefer patterns over hand-rolled flex/grid `css()` calls — patterns are intent-named and reusable.
+- Custom patterns belong in `theme/preset/patterns/` and wire through `presets`, not inline in `panda.config.ts`.
+- `properties` types: `boolean`, `number`, `string`, `enum`, `token` (with `value` pointing at a token category).
+- `transform` returns a Panda style object — full token + condition support.
+
+## See also
+
+- [Flex and grid utilities](flex-and-grid.mdc)
+- [Writing styles](css.mdc)
+- [Styled system](../configuring/styled-system.mdc)

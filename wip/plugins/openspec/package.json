@@ -1,0 +1,20 @@
+{
+  "name": "openspec",
+  "version": "1.0.0",
+  "description": "OpenSpec skills for proposing, applying, verifying, and archiving spec-driven changes.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./skills/*"
+    ],
+    "prompts": [
+      "./prompts/*"
+    ]
+  },
+  "homepage": "https://openspec.dev",
+  "repository": "https://github.com/Fission-AI/OpenSpec"
+}

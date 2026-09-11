@@ -1,0 +1,16 @@
+{
+  "name": "claude-skill-csstree",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Helper library + CLI for the csstree Claude Code skill — parse, validate, extract, and transform CSS via the css-tree AST.",
+  "bin": {
+    "csstree-skill": "./scripts/cli.mjs"
+  },
+  "dependencies": {
+    "css-tree": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/css-tree": "^2.3.11"
+  }
+}

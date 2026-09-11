@@ -1,0 +1,160 @@
+---
+name: storybook
+description: Use when working with storybook
+---
+
+# Storybook Skill
+
+Use when working with storybook
+
+## When to Use This Skill
+
+Use this skill when you need to:
+- understand storybook features, APIs, and workflows
+- find concrete code examples before implementing or debugging
+- navigate the official documentation quickly through categorized references
+
+## Quick Reference
+
+### High-Signal Examples
+
+**Example 1** (python):
+```python
+// Instead of the barrel import:
+import { Button } from '@myorg/ui';
+ 
+// Import directly from the component's source:
+import { Button } from '@myorg/ui/Button';
+```
+
+**Example 2** (json):
+```json
+{ 
+  "scripts": {
+    "test-storybook": "vitest --project=storybook"
+  }
+}
+```
+
+**Example 3** (json):
+```json
+{
+  storySort?: StorySortConfig | StorySortFn;
+}
+```
+
+**Example 4** (json):
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@myorg/*": ["./packages/@myorg/*/src"]
+    }
+  }
+}
+```
+
+**Example 5** (json):
+```json
+npx mcp-add --type http --url "http://localhost:6006/mcp" --scope project
+```
+
+### Key Usage Notes
+
+**Pattern 1:** When specifying a custom sorting function, the function behaves like a typical JavaScript sorting function.
+
+```
+(a, b) => (a.id === b.id ? 0 : a.id.localeCompare(b.id, undefined, { numeric: true }));
+```
+
+**Pattern 2:** Storybook integrates with design tools to speed up your development workflow.
+
+```
+npx storybook@latest add @storybook/addon-designs
+```
+
+**Pattern 3:** Storybook for SvelteKit is a framework that makes it easy to develop and test UI components in isolation for SvelteKit applications.
+
+```
+npm create storybook@latest
+```
+
+**Pattern 4:** A major strength of Storybook are addons that extend Storybook’s UI and behavior.
+
+```
+npm install @storybook/addon-essentials --save-dev
+```
+
+**Pattern 5:** If you need to reconfigure any of the individual Essentials addons, install them manually by following the installation instructions, and depending...
+
+```
+npm install @storybook/addon-actions --save-dev
+```
+
+**Pattern 6:** Watch a video tutorial Teams publish Storybook online to review and collaborate on works in progress.
+
+```
+npm run build-storybook
+```
+
+**Pattern 7:** Chromatic
+
+```
+<meta name="description" content="Components for my awesome project" key="desc" />
+```
+
+**Pattern 8:** In Storybook, your stories render in a particular “preview” iframe (also called the Canvas) inside the larger Storybook web application.
+
+```
+// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, vue3-vite, etc.
+import type { Preview } from '@storybook/your-framework';
+ 
+import { initialize } from '../lib/your-library';
+ 
+initialize();
+ 
+const preview: Preview = {
+  // ...
+};
+ 
+export default preview;
+```
+
+## Reference Files
+
+This skill includes comprehensive documentation in `references/`:
+
+- **8.md** - 8 documentation
+- **9.md** - 9 documentation
+- **api.md** - Api documentation
+- **configure.md** - Configure documentation
+- **doc-blocks.md** - Doc-Blocks documentation
+- **get-started.md** - Get-Started documentation
+- **other.md** - Other documentation
+- **writing-stories.md** - Writing-Stories documentation
+
+Use `view` to read specific reference files when detailed information is needed.
+
+## Working with This Skill
+
+### Start Here
+Start with the getting_started or tutorials reference files for foundational concepts.
+
+### For Specific Features
+Use the appropriate category reference file (api, guides, etc.) for detailed information.
+
+### For Code Examples
+Use the high-signal examples above first, then open the matching reference file for full context.
+
+## Notes
+
+- This skill was automatically generated from official documentation
+- Reference files preserve the structure and examples from source docs
+- Code examples include language detection for better syntax highlighting
+- Quick reference entries are filtered to avoid low-signal placeholders and inline tokens
+
+## Updating
+
+To refresh this skill with updated documentation:
+1. Re-run the scraper with the same configuration
+2. The skill will be rebuilt with the latest information

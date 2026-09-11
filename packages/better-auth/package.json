@@ -1,6 +1,0 @@
-{
-    "name": "better-auth",
-    "pi": {
-        "skills": ["../skills/*"]
-    }
-}

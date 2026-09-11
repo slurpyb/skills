@@ -1,0 +1,41 @@
+---
+description: PandaCSS display utilities — apply when setting display, visibility, or hiding elements responsively (hideFrom/hideBelow)
+globs: **/*.ts,**/*.tsx,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Display Utilities
+
+| Key | Long form | Notes |
+|-----|-----------|-------|
+| `display` | `display` | `block`/`flex`/`grid`/`inline-flex`/`none`/... |
+| `visibility` | `visibility` | `visible`/`hidden`/`collapse` |
+| `hideFrom` | hides at this breakpoint and **above** | takes a breakpoint key |
+| `hideBelow` | hides **below** this breakpoint | takes a breakpoint key |
+
+## Form
+
+```tsx
+// Responsive display switch
+css({ display: { base: "none", lg: "flex" } })
+
+// Same intent, more readable
+css({ hideBelow: "lg" })
+
+// Hide on mobile only
+css({ hideFrom: "md" })
+```
+
+## Rules
+
+- Prefer `hideFrom` / `hideBelow` over `display: { base: "none", md: "..." }` for binary visibility — intent reads at a glance.
+- `display: "none"` removes from the layout *and* the a11y tree. For visual-only hiding (still readable to AT), use `visuallyHidden` pattern or `srOnly` if defined in your preset.
+- Don't toggle between `block` and `grid`/`flex` at runtime if you can avoid it — layout context shifts trigger reflow.
+- `visibility: "hidden"` keeps layout space but removes paint; use when toggling without layout shift.
+
+## See also
+
+- [Layout](layout.mdc)
+- [Flex and grid](flex-and-grid.mdc)
+- [Patterns](patterns.mdc)
+- [Responsive design](responsive.mdc)

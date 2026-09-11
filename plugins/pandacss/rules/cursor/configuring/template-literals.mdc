@@ -1,0 +1,57 @@
+---
+description: PandaCSS template-literal syntax — apply only when the project sets syntax='template-literal' in panda.config.ts and authors styles as tagged template strings
+globs: **/panda.config.ts
+alwaysApply: false
+---
+
+# PandaCSS — Template Literals
+
+Opt-in alternative to object syntax. Lets you write styles as tagged template strings, similar to styled-components / emotion, while keeping Panda's build-time atomic CSS extraction.
+
+> Most projects use the **object** syntax. Only adopt template literals when migrating from a styled-components codebase or when team preference strongly favors string CSS.
+
+## Enabling
+
+```ts
+// panda.config.ts
+import { defineConfig } from "@pandacss/dev"
+
+export default defineConfig({
+  syntax: "template-literal",
+})
+```
+
+## Usage
+
+```tsx
+import { css, styled } from "styled-system/css"
+
+const titleCls = css`
+  font-size: var(--font-size-2xl);
+  color: token(colors.fg.default);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-3xl);
+  }
+`
+
+const Button = styled.button`
+  background: token(colors.brand.red);
+  color: white;
+  &:hover {
+    background: token(colors.brand.red.700);
+  }
+`
+```
+
+## Rules
+
+- Pick **one** syntax per project. Mixing object and template-literal modes is unsupported.
+- Token references use the `token(path)` function call inside the literal, **not** the dotted string form.
+- Nested selectors (`&:hover`) and `@media` are valid inside the template; conditions like `_hover` are **not** — those are object-syntax-only.
+- Switching `syntax` requires `panda codegen` and source migration.
+
+## See also
+
+- [Writing styles](../styling/css.mdc)
+- [Styled system](styled-system.mdc)

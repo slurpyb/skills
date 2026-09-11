@@ -2,10 +2,6 @@
     "name": "slurpyb-skills",
     "version": "1.0.0",
     "description": "Skills for Slurpyb",
-    "pi": {
-        "extensions": ["./packages"],
-        "skills": ["./packages/**/*"]
-    },
     "author": "Slurpyb",
     "license": "MIT"
 }

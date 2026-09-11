@@ -1,0 +1,41 @@
+---
+name: modern-css-layout
+description: Modern CSS layout: CUBE CSS methodology (Composition, Utility, Block, Exception) + Every Layout primitives (Stack, Cluster, Sidebar, Switcher, Cover, Grid, Frame, Reel, Imposter, etc.). Cascade-first, algorithmic, context-aware. Use for any CSS architecture or responsive layout task.
+license: MIT
+---
+
+# Modern Css Layout
+
+## When to use
+
+Editing CSS / writing modern layout primitives / migrating away from utility-only systems (Tailwind) or BEM-only methodologies.
+
+## References
+
+- [Blocks](references/cube-blocks.md)
+- [Cascade First](references/cube-cascade-first.md)
+- [Composition](references/cube-composition.md)
+- [Exceptions](references/cube-exceptions.md)
+- [Grouping](references/cube-grouping.md)
+- [Overview](references/cube-overview.md)
+- [Principles](references/cube-principles.md)
+- [Utilities](references/cube-utilities.md)
+- [Skill](references/el-SKILL.md)
+- [Algorithmic Design](references/el-algorithmic-design.md)
+- [Axioms](references/el-axioms.md)
+- [Box](references/el-box.md)
+- [Boxes](references/el-boxes.md)
+- [Cluster](references/el-cluster.md)
+- [Composition](references/el-composition.md)
+- [Container](references/el-container.md)
+- [Cover](references/el-cover.md)
+- [Frame](references/el-frame.md)
+- [Global Local Styling](references/el-global-local-styling.md)
+- [Grid](references/el-grid.md)
+- [Icon](references/el-icon.md)
+- [Imposter](references/el-imposter.md)
+- [Modular Scale](references/el-modular-scale.md)
+- [Reel](references/el-reel.md)
+- [Sidebar](references/el-sidebar.md)
+- [Stack](references/el-stack.md)
+- [Units](references/el-units.md)

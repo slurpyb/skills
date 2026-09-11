@@ -1,0 +1,3 @@
+interface:
+  display_name: "State Machine Design"
+  short_description: "Design and visualize framework-agnostic state machines"

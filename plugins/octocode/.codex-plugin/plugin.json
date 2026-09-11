@@ -1,0 +1,40 @@
+{
+  "name": "octocode",
+  "version": "1.0.0",
+  "description": "Octocode skills for evidence-first code research, idea validation, live Chrome DevTools, documentation, prompt optimization, skill authoring, and worker delegation.",
+  "author": {
+    "name": "Octocode",
+    "url": "https://octocode.ai"
+  },
+  "homepage": "https://octocode.ai",
+  "repository": "https://github.com/bgauryy/octocode",
+  "license": "MIT",
+  "keywords": [
+    "octocode",
+    "research",
+    "evidence",
+    "github",
+    "mcp",
+    "documentation",
+    "brainstorming",
+    "chrome-devtools"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Octocode",
+    "shortDescription": "Evidence-first research, critique, and agent workflows",
+    "longDescription": "Agent skills for Octocode: research local and GitHub code with exact citations; validate ideas against prior art; collect live Chrome DevTools/CDP evidence; write and copyedit docs; roast code with a repair path; author and sync Agent Skills; optimize prompts; and spawn or synthesize workers.",
+    "developerName": "Octocode",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://octocode.ai",
+    "defaultPrompt": [
+      "Research this question across local code, GitHub, and packages with exact evidence",
+      "Validate this idea with prior art and a Build / Prototype / Narrow / Park verdict",
+      "Collect live Chrome DevTools evidence for this page (DOM, network, HAR)"
+    ],
+    "brandColor": "#E75D2A"
+  }
+}

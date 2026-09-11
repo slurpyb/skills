@@ -1,0 +1,15 @@
+{
+  "name": "review-and-refactor",
+  "version": "1.5.5",
+  "description": "Review and refactor skills for code simplification, deduplication, best-practice audits, frontend refactor planning, and adversarial review.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./skills/*"
+    ]
+  }
+}

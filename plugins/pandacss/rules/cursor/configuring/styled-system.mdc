@@ -1,0 +1,46 @@
+---
+description: PandaCSS styled-system codegen folder — apply when importing from styled-system/*, adding it to .gitignore, or wiring panda codegen into the build
+globs: **/styled-system/**,**/panda.config.ts,**/.gitignore,**/package.json,**/tsconfig.json
+alwaysApply: false
+---
+
+# PandaCSS — styled-system (generated)
+
+`styled-system/` is **generated output** from `panda codegen`. It contains the runtime, types, recipe class maps, and token references tailored to your config.
+
+## Import surface
+
+| Import path | Contents |
+|-------------|----------|
+| `styled-system/css` | `css`, `cva`, `sva`, `cx`, `css.raw` |
+| `styled-system/jsx` | `styled.*` elements + pattern components (when `jsxFramework` set) |
+| `styled-system/patterns` | `stack`, `flex`, `grid`, `container`, custom patterns |
+| `styled-system/recipes` | All config recipes + slot recipes |
+| `styled-system/tokens` | Token resolver: `token('colors.red.500')` |
+| `styled-system/styles.css` | Aggregated stylesheet (or use `panda --watch` artifacts) |
+
+## Rules
+
+- Add `styled-system/` to `.gitignore`. It must be regenerated, not committed.
+- Wire `panda codegen` (or `panda --watch`) **before** typechecking and the framework dev server start in `package.json` scripts.
+- Run `panda codegen` after any change to `panda.config.ts`, recipes, tokens, or breakpoints — types go stale otherwise.
+- Set `tsconfig.json` `paths` if you want shorter imports (e.g. `@/styled-system/*`).
+- Never edit files inside `styled-system/` — they will be overwritten.
+
+## Typical script setup
+
+```json
+{
+  "scripts": {
+    "prepare": "panda codegen",
+    "dev": "panda --watch & next dev",
+    "build": "panda codegen && next build"
+  }
+}
+```
+
+## See also
+
+- [Writing styles](../styling/css.mdc)
+- [Tokens](../theming/tokens.mdc)
+- [Architecture flow](../debugging/architecture.mdc)

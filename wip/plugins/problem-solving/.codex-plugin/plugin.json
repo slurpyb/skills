@@ -1,0 +1,33 @@
+{
+  "name": "problem-solving",
+  "version": "1.0.0",
+  "description": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "license": "MIT",
+  "keywords": [
+    "problem-solving",
+    "brainstorming",
+    "strategy",
+    "reasoning",
+    "planning",
+    "ideation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Problem Solving",
+    "shortDescription": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, e",
+    "longDescription": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+    "developerName": "Jordan Sweeting",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "defaultPrompt": [
+      "Use Problem Solving for this task."
+    ],
+    "brandColor": "#000000"
+  }
+}

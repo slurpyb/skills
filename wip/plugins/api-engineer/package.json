@@ -1,0 +1,22 @@
+{
+  "name": "api-engineer",
+  "version": "1.0.0",
+  "description": "API engineering skills for FastAPI, SQLModel, Alembic, PostgreSQL, Supabase, and HTTPX.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./alembic",
+      "./fastapi",
+      "./httpx",
+      "./postgresql",
+      "./pydantic",
+      "./sqlmodel",
+      "./sqlmodel-crud",
+      "./supabase-postgres-best-practices"
+    ]
+  }
+}

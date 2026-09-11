@@ -1,0 +1,20 @@
+{
+  "name": "api-engineer",
+  "displayName": "API Engineer",
+  "version": "1.0.0",
+  "description": "API engineering skills for FastAPI, SQLModel, Alembic, PostgreSQL, Supabase, and HTTPX.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "fastapi",
+    "sqlmodel",
+    "alembic",
+    "postgresql",
+    "supabase",
+    "httpx"
+  ]
+}

@@ -1,0 +1,167 @@
+---
+name: postgresql
+description: Complete PostgreSQL knowledge combining official documentation and source code. Use when designing databases, writing queries, optimizing performance, or managing PostgreSQL instances. Covers SQL, administration, extensions, and advanced features.
+version: 1.1.0
+---
+
+# Postgresql Skill
+
+Complete PostgreSQL knowledge combining official documentation and source code. Use when designing databases, writing queries, optimizing performance, or managing PostgreSQL instances. Covers SQL, administration, extensions, and advanced features.
+
+## When to Use This Skill
+
+Use this skill when you need to:
+- understand postgresql features, APIs, and workflows
+- find concrete code examples before implementing or debugging
+- navigate the official documentation quickly through categorized references
+
+## Quick Reference
+
+### High-Signal Examples
+
+**Example 1** (json):
+```json
+SELECT '{"reading": 1.230e-5}'::json, '{"reading": 1.230e-5}'::jsonb;
+         json          |          jsonb
+-----------------------+-------------------------
+ {"reading": 1.230e-5} | {"reading": 0.00001230}
+(1 row)
+```
+
+**Example 2** (json):
+```json
+'[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json -> 2
+```
+
+**Example 3** (json):
+```json
+{"c":"baz"}
+```
+
+**Example 4** (sql):
+```sql
+SELECT 'a fat cat sat on a mat and ate a fat rat'::tsvector;
+                      tsvector
+----------------------------------------------------
+ 'a' 'and' 'ate' 'cat' 'fat' 'mat' 'on' 'rat' 'sat'
+```
+
+**Example 5** (sql):
+```sql
+SELECT $$the lexeme '    ' contains spaces$$::tsvector;
+                 tsvector
+-------------------------------------------
+ '    ' 'contains' 'lexeme' 'spaces' 'the'
+```
+
+### Key Usage Notes
+
+**Pattern 1:** 12. Table Partitioning # 5.12.1. Overview 5.12.2. Declarative Partitioning 5.12.3. Partitioning Using Inheritance 5.12.4. Partition Pruning 5.12.5....
+
+```
+CREATE TABLE measurement (
+    city_id         int not null,
+    logdate         date not null,
+    peaktemp        int,
+    unitsales       int
+);
+```
+
+**Pattern 2:** Create the measurement table as a partitioned table by specifying the PARTITION BY clause, which includes the partitioning method (RANGE in this ca...
+
+```
+CREATE TABLE measurement (
+    city_id         int not null,
+    logdate         date not null,
+    peaktemp        int,
+    unitsales       int
+) PARTITION BY RANGE (logdate);
+```
+
+**Pattern 3:** If you wish to implement sub-partitioning, again specify the PARTITION BY clause in the commands used to create individual partitions, for example
+
+```
+CREATE TABLE measurement_y2006m02 PARTITION OF measurement
+    FOR VALUES FROM ('2006-02-01') TO ('2006-03-01')
+    PARTITION BY RANGE (peaktemp);
+```
+
+**Pattern 4:** 10. Schemas # 5.10.1. Creating a Schema 5.10.2. The Public Schema 5.10.3. The Schema Search Path 5.10.4. Schemas and Privileges 5.10.5. The System...
+
+```
+CREATE SCHEMA myschema;
+```
+
+**Pattern 5:** One semantically-insignificant detail worth noting is that in jsonb, numbers will be printed according to the behavior of the underlying numeric type.
+
+```
+SELECT '{"reading": 1.230e-5}'::json, '{"reading": 1.230e-5}'::jsonb;
+         json          |          jsonb
+-----------------------+-------------------------
+ {"reading": 1.230e-5} | {"reading": 0.00001230}
+(1 row)
+```
+
+**Pattern 6:** 14.4. jsonb Indexing # GIN indexes can be used to efficiently search for keys or key/value pairs occurring within a large number of jsonb documents...
+
+```
+CREATE INDEX idxgin ON api USING GIN (jdoc);
+```
+
+**Pattern 7:** Another approach to querying is to exploit containment, for example
+
+```
+-- Find documents in which the key "tags" contains array element "qui"
+SELECT jdoc->'guid', jdoc->'name' FROM api WHERE jdoc @> '{"tags": ["qui"]}';
+```
+
+**Pattern 8:** 11. Text Search Types # 8.11.1. tsvector 8.11.2. tsquery PostgreSQL provides two data types that are designed to support full text search, which is...
+
+```
+SELECT 'a fat cat sat on a mat and ate a fat rat'::tsvector;
+                      tsvector
+----------------------------------------------------
+ 'a' 'and' 'ate' 'cat' 'fat' 'mat' 'on' 'rat' 'sat'
+```
+
+## Reference Files
+
+This skill includes comprehensive documentation in `references/`:
+
+- **administration.md** - Administration documentation
+- **data_types.md** - Data Types documentation
+- **functions.md** - Functions documentation
+- **getting_started.md** - Getting Started documentation
+- **indexes.md** - Indexes documentation
+- **other.md** - Other documentation
+- **performance.md** - Performance documentation
+- **queries.md** - Queries documentation
+- **replication.md** - Replication documentation
+- **security.md** - Security documentation
+- **sql_commands.md** - Sql Commands documentation
+
+Use `view` to read specific reference files when detailed information is needed.
+
+## Working with This Skill
+
+### Start Here
+Start with the getting_started or tutorials reference files for foundational concepts.
+
+### For Specific Features
+Use the appropriate category reference file (api, guides, etc.) for detailed information.
+
+### For Code Examples
+Use the high-signal examples above first, then open the matching reference file for full context.
+
+## Notes
+
+- This skill was automatically generated from official documentation
+- Reference files preserve the structure and examples from source docs
+- Code examples include language detection for better syntax highlighting
+- Quick reference entries are filtered to avoid low-signal placeholders and inline tokens
+
+## Updating
+
+To refresh this skill with updated documentation:
+1. Re-run the scraper with the same configuration
+2. The skill will be rebuilt with the latest information

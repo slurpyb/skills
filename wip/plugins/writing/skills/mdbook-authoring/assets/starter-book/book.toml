@@ -1,0 +1,31 @@
+[book]
+title = "My Book"
+authors = ["Your Name"]
+description = "A book built with mdBook."
+language = "en"
+src = "src"
+
+[rust]
+edition = "2021"
+
+[build]
+build-dir = "book"
+create-missing = true
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+smart-punctuation = true
+# Uncomment and set when hosting your repo:
+# git-repository-url = "https://github.com/you/your-book"
+# edit-url-template = "https://github.com/you/your-book/edit/main/{path}"
+# Required when NOT hosted at the domain root (e.g. GitHub Pages project site):
+# site-url = "/your-book/"
+
+[output.html.search]
+enable = true
+limit-results = 30
+
+[output.html.playground]
+runnable = true
+copyable = true

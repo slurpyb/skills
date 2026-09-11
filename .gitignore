@@ -1,7 +1,2 @@
-scratch/
-workbench/
 .DS_Store
-workspace/
-plugins/
-.octocode*
 node_modules/

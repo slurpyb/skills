@@ -1,0 +1,36 @@
+{
+  "name": "design-system",
+  "version": "1.0.0",
+  "description": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, and modern web guidance.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "license": "MIT",
+  "keywords": [
+    "design-system",
+    "web-components",
+    "storybook",
+    "css",
+    "frontend",
+    "ui"
+  ],
+  "skills": "./skills/",
+  "agents": [
+    "./agents/"
+  ],
+  "interface": {
+    "displayName": "Design System",
+    "shortDescription": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, an",
+    "longDescription": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, and modern web guidance.",
+    "developerName": "Jordan Sweeting",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "defaultPrompt": [
+      "Use Design System for this task."
+    ],
+    "brandColor": "#000000"
+  }
+}

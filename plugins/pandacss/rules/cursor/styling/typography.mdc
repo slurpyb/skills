@@ -1,0 +1,63 @@
+---
+description: PandaCSS typography utilities — apply when setting font/size/weight/line-height/letter-spacing/text-decoration/textStyle on text-bearing elements
+globs: **/*.ts,**/*.tsx,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Typography Utilities
+
+| Key | Long form | Token |
+|-----|-----------|-------|
+| `fontFamily` | `font-family` | `fonts` |
+| `fontSize` | `font-size` | `fontSizes` |
+| `fontWeight` | `font-weight` | `fontWeights` |
+| `lineHeight` | `line-height` | `lineHeights` |
+| `letterSpacing` | `letter-spacing` | `letterSpacings` |
+| `textAlign` | `text-align` | — |
+| `textTransform` | `text-transform` | — |
+| `textDecoration` | `text-decoration` | — (composite) |
+| `textDecorationColor` | sub-prop | `colors` |
+| `textOverflow` | `text-overflow` | — |
+| `whiteSpace` | `white-space` | — |
+| `wordBreak` | `word-break` | — |
+| `textStyle` | shorthand → preset | `textStyles` |
+
+## Prefer `textStyle` for typographic primitives
+
+```tsx
+<h1 className={css({ textStyle: "heading.h1" })}>Title</h1>
+<p  className={css({ textStyle: "body.md" })}>Paragraph copy…</p>
+```
+
+Drop to per-property utilities only for **one-off** typographic adjustments:
+
+```tsx
+css({
+  textStyle: "body.md",
+  fontWeight: "medium",
+  letterSpacing: "wide",
+})
+```
+
+## Truncation pattern
+
+```tsx
+css({
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+})
+```
+
+## Rules
+
+- Establish typography via `textStyles` once; consume by name. Hand-set fontSize/lineHeight/weight at the call site only when overriding intentionally.
+- `lineHeight` accepts unitless tokens (`1.1`, `1.5`) — those scale correctly with `fontSize` changes.
+- `letterSpacing` tokens (`tight`, `normal`, `wide`) keep visual rhythm; don't sprinkle `em` values.
+- For truncation in flex children, also set `minW: 0` on the child — otherwise `ellipsis` won't trigger.
+
+## See also
+
+- [Text styles](../theming/text-styles.mdc)
+- [Tokens](../theming/tokens.mdc)
+- [Writing styles](css.mdc)

@@ -1,0 +1,45 @@
+---
+description: PandaCSS primitive selection — apply when starting a new styled component or feature and choosing between css(), patterns, recipes, or slot recipes
+alwaysApply: false
+---
+
+# PandaCSS — Choosing the Right Primitive
+
+Three roles, three primitives. Pick by **role**, not by code size.
+
+## Decision tree
+
+```
+Is the work primarily layout? (display, flex, grid, gap, alignment)
+├── YES → Pattern (stack/grid/container or custom definePattern)
+└── NO
+    │
+    └── Is this a named visual primitive with variants? (Button, Card, Badge, Input)
+        ├── YES → Recipe
+        │   ├── Single element → cva (local) or defineRecipe (global)
+        │   └── Multi-element  → sva (local) or defineSlotRecipe (global)
+        └── NO → css({}) at the call site
+```
+
+## When to elevate
+
+| Pattern detected | Action |
+|------------------|--------|
+| Same layout idiom in 3+ places | Promote to a custom `definePattern` |
+| Same recipe used across 2+ components | Promote `cva` → `defineRecipe` in theme |
+| Variants are only swapping color shades | Use `colorPalette` instead of multiplying variants |
+| Multi-part component sharing variant state | Promote to slot recipe + `createStyleContext` |
+
+## Anti-patterns
+
+- Using `css()` everywhere → results in fragmented styles; refactor toward patterns/recipes once duplication emerges.
+- Wrapping `css()` in a custom helper that re-implements `cva` → use `cva` directly.
+- Defining a `defineRecipe` for a single-use component → use local `cva` until a second call site appears.
+
+## See also
+
+- [Recipes](../composing/recipes.mdc)
+- [Slot recipes](../composing/slot-recipes.mdc)
+- [Patterns](../styling/patterns.mdc)
+- [Writing styles](../styling/css.mdc)
+- [Refactor fragmented styles](fragmented-styles.mdc)

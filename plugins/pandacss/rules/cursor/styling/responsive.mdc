@@ -1,0 +1,47 @@
+---
+description: PandaCSS responsive value syntax — apply when assigning a style property that varies across breakpoints (mobile-first)
+globs: **/*.ts,**/*.tsx,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Responsive Design
+
+Panda is mobile-first. Two equivalent syntaxes for breakpoint-keyed values:
+
+```tsx
+// Object syntax (preferred — explicit keys)
+columns: { base: 1, sm: 2, md: 3, lg: 4 }
+
+// Array syntax (positional: base, sm, md, lg, xl, 2xl)
+columns: [1, 2, 3, 4]
+```
+
+Both compile to the same CSS. `base` applies at all breakpoints unless a larger key overrides it.
+
+## Breakpoint keys
+
+Default keys: `base`, `sm`, `md`, `lg`, `xl`, `2xl`. Defined in `theme.breakpoints` — extend or replace in `panda.config.ts` if needed.
+
+## Combining with conditions
+
+```tsx
+css({
+  fontSize: { base: "sm", md: "md", lg: "lg" },
+  _hover: {
+    color: { base: "accent.500", md: "accent.600" },
+  },
+})
+```
+
+## Rules
+
+- Always start with `base` — omit it only when the property does not apply at the smallest breakpoint.
+- Object syntax beats array syntax once there are 3+ breakpoints — it survives reordering and partial coverage.
+- Do not write multiple `@media` queries inline; use the breakpoint object instead.
+- Breakpoint changes require `panda codegen` to refresh types.
+
+## See also
+
+- [Conditional styles](conditions.mdc)
+- [Writing styles](css.mdc)
+- [Tokens](../theming/tokens.mdc)

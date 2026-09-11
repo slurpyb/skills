@@ -1,0 +1,54 @@
+---
+description: PandaCSS slot recipes (defineSlotRecipe + sva) — apply when styling multi-part components (Accordion, Tabs, Card, Menu) where variants must coordinate across slots
+globs: **/*.ts,**/*.tsx,**/slot-recipes/**/*.ts,**/recipes/**/*.ts,**/panda.config.ts
+alwaysApply: false
+---
+
+# PandaCSS — Slot Recipes
+
+Slot recipes describe a multi-part component as a single recipe. Variants apply across all slots, keeping the parts in sync.
+
+| API | Where it lives | Notes |
+|-----|----------------|-------|
+| `defineSlotRecipe` | `theme/preset/slot-recipes/*.ts` + config | JIT, used via `import { foo } from "styled-system/recipes"` |
+| `sva` | colocated with the component | Eager, for one-off compound components |
+
+## Form
+
+```tsx
+import { sva } from "styled-system/css"
+
+const accordion = sva({
+  slots: ["root", "item", "header", "trigger", "content"],
+  base: {
+    root:    { width: "full" },
+    item:    { borderBottomWidth: "1px", borderBottomColor: "border.default" },
+    trigger: { display: "flex", justifyContent: "space-between", py: "3" },
+    content: { px: "4", pb: "4" },
+  },
+  variants: {
+    size: {
+      sm: { trigger: { py: "2", fontSize: "sm" }, content: { px: "3", pb: "3" } },
+      md: { trigger: { py: "3", fontSize: "md" }, content: { px: "4", pb: "4" } },
+    },
+  },
+  defaultVariants: { size: "md" },
+})
+
+const classes = accordion({ size: "sm" })
+// → { root: "...", item: "...", header: "...", trigger: "...", content: "..." }
+```
+
+## Rules
+
+- Declare every slot in the `slots` array; missing slots are runtime-undefined.
+- A variant value is a **map of slot → styles**, never a flat style object.
+- Compound variants and `defaultVariants` work just like single-slot recipes.
+- For React compound components, pair with `createStyleContext` so child components pick up their slot class automatically.
+- Don't mix `sva` and `defineSlotRecipe` for the same component — pick one.
+
+## See also
+
+- [Recipes](recipes.mdc)
+- [JSX style context](style-context.mdc)
+- [Polymorphic components](polymorphic-pattern.mdc)

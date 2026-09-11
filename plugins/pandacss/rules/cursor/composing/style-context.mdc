@@ -1,0 +1,49 @@
+---
+description: PandaCSS createStyleContext — apply when building compound components (Accordion, Tabs, Menu) that share a slot recipe across multiple subcomponents
+globs: **/*.tsx,**/createStyleContext.tsx,**/createStyleContext.ts
+alwaysApply: false
+---
+
+# PandaCSS — JSX Style Context
+
+`createStyleContext(recipe)` distributes a slot recipe's classes across compound subcomponents via React context. Use it instead of threading recipe results manually through props.
+
+## Setup helper (one-time)
+
+```tsx
+// src/lib/createStyleContext.tsx
+import { createContext, useContext } from "react"
+// see Panda docs for the canonical implementation
+```
+
+## Wiring a compound component
+
+```tsx
+import { sva } from "styled-system/css"
+import { createStyleContext } from "@/lib/createStyleContext"
+
+const accordionRecipe = sva({
+  slots: ["root", "item", "trigger", "content"],
+  base: { /* ... */ },
+})
+
+const { withProvider, withContext } = createStyleContext(accordionRecipe)
+
+export const ProductAccordion = withProvider(Root, "root")
+export const ProductAccordionItem = withContext(Item, "item")
+export const ProductAccordionTrigger = withContext(Trigger, "trigger")
+export const ProductAccordionContent = withContext(Content, "content")
+```
+
+## Rules
+
+- Use only with **slot** recipes (`sva` / `defineSlotRecipe`). For single-slot recipes use the recipe function directly.
+- `withProvider` wraps the root and injects the slot-class map into context; `withContext` reads from it.
+- Recipe variants apply to all slots — pass variant props on the provider.
+- One context per compound component family — don't share contexts across recipes.
+
+## See also
+
+- [Slot recipes](slot-recipes.mdc)
+- [Recipes](recipes.mdc)
+- [Polymorphic components](polymorphic-pattern.mdc)

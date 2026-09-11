@@ -1,0 +1,51 @@
+---
+description: PandaCSS refactor decision tree — apply when a component file has many ad-hoc css() calls or duplicated styles, and you need to pick between cva/sva and local/global scope
+globs: **/*.tsx,**/*.ts,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Refactor Fragmented Styles
+
+A two-step decision tree when collapsing a wall of `css(...)` calls into a recipe.
+
+## Step 1 — Structural choice
+
+Is this one element or several coordinated parts?
+
+| Component shape | Pick |
+|-----------------|------|
+| One root element (Button, Badge, Tag, Pill) | **Single-part** — `cva` (local) or `defineRecipe` (global) |
+| Root + named subcomponents (Card with header/body/actions, Accordion) | **Multi-part** — `sva` (local) or `defineSlotRecipe` (global) |
+
+## Step 2 — Scope choice
+
+Where does the recipe live?
+
+| Reuse profile | Scope | API |
+|---------------|-------|-----|
+| One file only, unlikely to be reused | **Local** | `cva` or `sva`, colocated with the component |
+| Two or more call sites, or part of the design system | **Global** | `defineRecipe` / `defineSlotRecipe` in `src/theme/preset/recipes/` |
+
+## Then — Variant logic
+
+- If the only difference between variants is **which color palette** the component renders, encode the palette with `colorPalette: "brand"` on the variant instead of repeating `bg`/`color`/`borderColor` per variant.
+- Hoist shared layout into `base`; let variants only carry what changes.
+- `compoundVariants` for `variantA & variantB → extra styles` cases.
+
+## Refactor checklist
+
+1. List slots (or just `root` for single-part).
+2. Hoist shared styles to `base`.
+3. Identify the axes of variation → variant keys.
+4. Move palette-only differences to `colorPalette`.
+5. Add `defaultVariants` so consumers can omit props.
+6. Replace every `css({...})` call site with `recipe({...})`.
+7. Delete the old style constants.
+
+## See also
+
+- [Recipes](../composing/recipes.mdc)
+- [Slot recipes](../composing/slot-recipes.mdc)
+- [Virtual color](../styling/color-palette.mdc)
+- [Choosing primitives](choosing-primitives.mdc)
+- [Writing styles](../styling/css.mdc)

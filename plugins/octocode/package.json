@@ -1,0 +1,17 @@
+{
+  "name": "octocode",
+  "version": "1.0.0",
+  "description": "Octocode is a tool for creating and managing your codebase.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./skills/*"
+    ]
+  },
+  "homepage": "https://octocode.ai",
+  "repository": "https://github.com/bgauryy/octocode"
+}

@@ -1,0 +1,53 @@
+---
+description: PandaCSS outline utilities — apply when adding accessibility focus outlines or non-layout-affecting borders to elements
+globs: **/*.ts,**/*.tsx,**/*.astro
+alwaysApply: false
+---
+
+# PandaCSS — Outline Utilities
+
+| Key | Long form | Token |
+|-----|-----------|-------|
+| `outline` | `outline` | composite |
+| `outlineWidth` | `outline-width` | `borderWidths` |
+| `outlineColor` | `outline-color` | `colors` |
+| `outlineStyle` | `outline-style` | — (`solid`, `dashed`, `dotted`) |
+| `outlineOffset` | `outline-offset` | `spacing` (or raw length) |
+| `ring` | shorthand → outline-style focus ring | preset (varies) |
+
+Outline differs from border: it doesn't take up layout space and doesn't affect element size.
+
+## Form — focus indicator
+
+```tsx
+css({
+  _focusVisible: {
+    outline: "2px solid",
+    outlineColor: "brand.red",
+    outlineOffset: "2px",
+  },
+})
+```
+
+Or via the `focusVisibleRing` utility shorthand (see [focus-ring](focus-ring.mdc)):
+
+```tsx
+css({
+  focusVisibleRing: "outside",
+  focusRingColor: "brand.red",
+  focusRingOffset: "2px",
+})
+```
+
+## Rules
+
+- Outline is the right primitive for **focus indicators** — it doesn't shift layout when toggling.
+- Don't `outline: "none"` without an explicit replacement; it's an a11y regression.
+- `outlineOffset` should be ≥ `2px` on rounded elements to avoid the ring clipping into the corner.
+- Reach for `focusVisibleRing` over hand-rolled `_focusVisible: { outline: ... }` for consistency — it standardizes width/offset across the design system.
+
+## See also
+
+- [Focus ring](focus-ring.mdc)
+- [Interactivity](interactivity.mdc)
+- [Border](border.mdc)

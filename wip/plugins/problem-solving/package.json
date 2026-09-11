@@ -1,0 +1,15 @@
+{
+  "name": "problem-solving",
+  "version": "1.0.0",
+  "description": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./skills/*"
+    ]
+  }
+}

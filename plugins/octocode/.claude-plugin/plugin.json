@@ -1,0 +1,24 @@
+{
+  "name": "octocode",
+  "displayName": "Octocode",
+  "version": "1.0.0",
+  "description": "Octocode skills for evidence-first code research, idea validation, live Chrome DevTools, documentation, prompt optimization, skill authoring, and worker delegation.",
+  "author": {
+    "name": "Octocode",
+    "url": "https://octocode.ai"
+  },
+  "homepage": "https://octocode.ai",
+  "repository": "https://github.com/bgauryy/octocode",
+  "license": "MIT",
+  "keywords": [
+    "octocode",
+    "research",
+    "evidence",
+    "github",
+    "mcp",
+    "documentation",
+    "brainstorming",
+    "chrome-devtools"
+  ],
+  "skills": "./skills/"
+}
