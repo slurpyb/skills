@@ -5,6 +5,12 @@
     "author": "Slurpyb",
     "license": "MIT",
     "pi": {
-       "skills": ["plugins/*/skills", "skills"]         
+        "skills": ["plugins/*/skills", "skills", ".agents/skills"]
+    },
+    "scripts": {
+        "postinstall": "skills experimental_install"
+    },
+    "dependencies": {
+        "skills": "^1.5.25"
     }
 }

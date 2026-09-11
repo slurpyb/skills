@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "changeset-writing": {
+      "source": "segunadebayo/design-eng-skills",
+      "sourceType": "github",
+      "skillPath": "skills/changeset-writing/SKILL.md",
+      "computedHash": "a02447079421a4596d71e8e6d41cbbd1dee85841eb8baea1e4f006d9c181d845"
+    },
+    "codebase-design": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/codebase-design/SKILL.md",
+      "computedHash": "5a17552cc1482f1a40124bf4e6c9dbd90ac0dbb47e71c07d47369f9e5f2ae3b5"
+    },
+    "component-api-design": {
+      "source": "segunadebayo/design-eng-skills",
+      "sourceType": "github",
+      "skillPath": "skills/component-api-design/SKILL.md",
+      "computedHash": "335bf95ef883ef3f272b72fb906cd0cb8378fcc02f13d7db97f3ca8d4edfb8f5"
+    },
+    "domain-modeling": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/domain-modeling/SKILL.md",
+      "computedHash": "a11713c0ff7870efa3c331b2e273f09116158485246edc89ae5088eefd1b0b48"
+    },
+    "engineering-writing": {
+      "source": "segunadebayo/design-eng-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering-writing/SKILL.md",
+      "computedHash": "4c01d2f07d4216a2f3991164b9b84e8923eff668970ccaa8ea97d0819adc4888"
+    },
+    "simple-english": {
+      "source": "AminBlg/SimpleEnglish",
+      "sourceType": "github",
+      "skillPath": "skills/simple-english/SKILL.md",
+      "computedHash": "883df9184a5113fe180d3850f18d43cafbfb841da47c2a152ead82f4c77d27b6"
+    },
+    "state-machine-design": {
+      "source": "segunadebayo/design-eng-skills",
+      "sourceType": "github",
+      "skillPath": "skills/state-machine-design/SKILL.md",
+      "computedHash": "527c83762e4ddc98430305e9c61f93602b6ad96724eb7ecdf310c4a873c7b3e1"
+    },
+    "writing-for-agents": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/writing-for-agents/SKILL.md",
+      "computedHash": "95da47fc97af998e85b7d7e6d57b3ac76727c1e290cfe9ea09005aacb826959f"
+    }
+  }
+}
