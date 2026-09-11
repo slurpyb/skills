@@ -5,6 +5,6 @@
     "author": "Slurpyb",
     "license": "MIT",
     "pi": {
-        "extensions": ["plugins/writing-typescript"]
+       "skills": ["plugins/*/skills", "skills"]         
     }
 }
