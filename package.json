@@ -3,5 +3,8 @@
     "version": "1.0.0",
     "description": "Skills for Slurpyb",
     "author": "Slurpyb",
-    "license": "MIT"
+    "license": "MIT",
+    "pi": {
+        "extensions": ["plugins/writing-typescript"]
+    }
 }
