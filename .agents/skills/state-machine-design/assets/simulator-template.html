@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- FILL: replace title and the emoji in the favicon href -->
+<title>State machine simulator</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%80%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #fbfaf7; --panel: #ffffff; --field: #fbfaf7; --border: #e5e4e7; --border-soft: #efeeec;
+    --text: #16171d; --muted: #6b6474; --accent-weak: #f2f1ee;
+    --live: #00873a; --live-weak: #eaf6ee; --log-blocked: #a15c00;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #121016; --panel: #18161d; --field: #1c1a22; --border: #2a2732; --border-soft: #211f27;
+      --text: #ededed; --muted: #9b93a3; --accent-weak: #201e26;
+      --live: #34d399; --live-weak: #132a20; --log-blocked: #f0b429; }
+  }
+  :root[data-theme="dark"] { --bg: #121016; --panel: #18161d; --field: #1c1a22; --border: #2a2732; --border-soft: #211f27;
+    --text: #ededed; --muted: #9b93a3; --accent-weak: #201e26;
+    --live: #34d399; --live-weak: #132a20; --log-blocked: #f0b429; }
+  :root[data-theme="light"] { --bg: #fbfaf7; --panel: #ffffff; --field: #fbfaf7; --border: #e5e4e7; --border-soft: #efeeec;
+    --text: #16171d; --muted: #6b6474; --accent-weak: #f2f1ee;
+    --live: #00873a; --live-weak: #eaf6ee; --log-blocked: #a15c00; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    button.reset:active, .event-btn:active:not(.blocked) { transform: none !important; }
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+  header .brand { display: flex; align-items: center; gap: 9px; }
+  header .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+  header h1 { font-size: 14px; margin: 0; font-weight: 600; letter-spacing: -.02em; }
+  header .sub { color: var(--muted); font-size: 12px; margin-top: 1px; }
+  button.reset {
+    background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 12px;
+    cursor: pointer; font-size: 12px; font-weight: 500;
+    transition: background 120ms var(--ease-out), border-color 120ms var(--ease-out), transform 120ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    button.reset:hover { background: var(--accent-weak); border-color: var(--muted); }
+  }
+  button.reset:active { transform: scale(.96); }
+
+  main { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: start; gap: 16px; padding: 20px 24px; max-width: 1160px; margin: 0 auto; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+  .sidebar { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; }
+  .panel h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+
+  .region { border: 1px solid var(--border-soft); border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+  .region:last-child { margin-bottom: 0; }
+  .region-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; font-weight: 600; }
+  .state-box {
+    border: 1px solid var(--border-soft); border-radius: 6px; padding: 8px 12px; margin: 4px 0; font-size: 13px;
+    background: var(--field); transition: border-color 160ms var(--ease-out), background-color 160ms var(--ease-out);
+  }
+  .state-box.compound { background: transparent; }
+  .state-box .children { margin-top: 8px; padding-left: 12px; border-left: 1px solid var(--border-soft); }
+  .state-box.active-leaf { border-color: var(--live); background: var(--live-weak); font-weight: 600; }
+  .state-box.active-leaf::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--live); margin-right: 8px; }
+  .state-box.active-ancestor { border-color: var(--muted); }
+
+  .events { display: flex; flex-direction: column; gap: 6px; }
+  .event-btn {
+    position: relative; display: block; text-align: left; background: var(--field); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 10px 12px; cursor: pointer; font-size: 13px; font-family: inherit;
+    transition: background-color 120ms var(--ease-out), border-color 120ms var(--ease-out), transform 100ms var(--ease-out);
+  }
+  .event-btn .label { display: flex; flex-direction: column; min-width: 0; }
+  @media (hover: hover) and (pointer: fine) {
+    .event-btn:hover:not(.blocked) { background: var(--accent-weak); border-color: var(--muted); }
+  }
+  .event-btn:active:not(.blocked) { transform: scale(.98); }
+  .event-btn.blocked { opacity: .5; cursor: not-allowed; }
+  .event-btn .name { font-weight: 600; letter-spacing: -.005em; }
+  .event-btn .why { display: block; font-size: 11px; color: var(--log-blocked); margin-top: 2px; font-weight: 500; }
+
+  table.context { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.context td { padding: 7px 6px; border-bottom: 1px solid var(--border-soft); }
+  table.context td.k { color: var(--muted); width: 40%; font-weight: 500; }
+  table.context td:not(.k) { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  table.context tr:last-child td { border-bottom: none; }
+
+  .log { max-height: 240px; overflow-y: auto; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; }
+  .log-row { padding: 7px 2px; border-bottom: 1px solid var(--border-soft); }
+  .log-row:last-child { border-bottom: none; }
+  .log-row.blocked { color: var(--log-blocked); }
+  .log-row .ts { color: var(--muted); margin-right: 8px; font-weight: 500; }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="dot"></span>
+    <div>
+      <h1 id="machine-title">State machine simulator</h1>
+      <div class="sub" id="machine-sub">Click an event to dispatch it.</div>
+    </div>
+  </div>
+  <button class="reset" id="reset-btn">Reset</button>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>State</h2>
+    <div id="diagram"></div>
+  </section>
+
+  <aside class="sidebar">
+    <section class="panel">
+      <h2>Events</h2>
+      <div class="events" id="events"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Context</h2>
+      <table class="context" id="context-table"></table>
+    </section>
+
+    <section class="panel">
+      <h2>Transition log</h2>
+      <div class="log" id="log"></div>
+    </section>
+  </aside>
+</main>
+
+<script>
+/* ============================================================
+   FILL START: machine definition
+   Author the machine object first; everything else (Mermaid
+   diagram, this simulator) is derived FROM it, never re-derived
+   from memory of the design.
+
+   Node shape: { type: "atomic"|"compound"|"parallel"|"final",
+                 initial, states, on, entry, exit }
+   - `on`: { EVENT: [{ target, guard, actions, history }, ...] } (or a
+     single object instead of an array, for one transition per event)
+   - `history: "shallow"` on a transition targeting a compound state:
+     resume that state's last-active child instead of its default
+     `initial` (deep history isn't supported - see the not-supported
+     list in VISUALIZATION-FORMAT.md)
+   - `entry`/`exit`: arrays of action names, run on entering/leaving
+     this exact state
+   - State ids must be unique across the WHOLE machine (not just
+     within one compound/region) - this simulator looks targets up
+     in a flat registry, not a relative path.
+   - A transition's `target` must be a state in the SAME region as
+     its source. Cross-region targets aren't supported by this
+     toy interpreter - see VISUALIZATION-FORMAT.md's not-supported list.
+   ============================================================ */
+const machine = {
+  id: "__root__",
+  type: "compound",
+  initial: "stopped",
+  states: {
+    stopped: {
+      type: "atomic",
+      on: { PLAY: [{ target: "playing" }] },
+    },
+    playing: {
+      type: "compound",
+      initial: "running",
+      on: { STOP: [{ target: "stopped" }] },
+      states: {
+        running: { type: "atomic", on: { PAUSE: [{ target: "paused" }] } },
+        paused: { type: "atomic", on: { PLAY: [{ target: "running" }] } },
+      },
+    },
+  },
+};
+const guards = {
+  // name: (context) => boolean
+};
+const actions = {
+  // name: (context) => void  -- may mutate context directly
+};
+/* FILL END */
+</script>
+
+<script>
+(function () {
+  // ---------- registry: flatten the tree once, recording parent links ----------
+  const registry = {}; // id -> { node, parentId }
+  function walk(id, node, parentId) {
+    registry[id] = { node, parentId };
+    if (node.states) {
+      for (const childId in node.states) walk(childId, node.states[childId], id);
+    }
+  }
+  walk("__root__", machine, null);
+
+  function ancestorChain(id) {
+    // root-first order, inclusive of id
+    const chain = [];
+    let cur = id;
+    while (cur !== null && cur !== undefined) {
+      chain.unshift(cur);
+      cur = registry[cur].parentId;
+    }
+    return chain;
+  }
+
+  function lca(idA, idB) {
+    const a = ancestorChain(idA), b = ancestorChain(idB);
+    let last = a[0];
+    for (let i = 0; i < Math.min(a.length, b.length); i++) {
+      if (a[i] !== b[i]) break;
+      last = a[i];
+    }
+    return last;
+  }
+
+  // ---------- default configuration (descend into initial / all regions) ----------
+  // historyMemory: parentId -> last active immediate child id (SHALLOW only - one
+  // level of memory, per VISUALIZATION-FORMAT.md's not-supported list).
+  const historyMemory = {};
+  function defaultConfig(id, into, useHistoryAtTop) {
+    const set = into || new Set();
+    set.add(id);
+    const node = registry[id].node;
+    if (node.type === "parallel") {
+      // propagate the history request into every region - each region
+      // independently resumes its own remembered child (one level, per region).
+      for (const childId in node.states) defaultConfig(childId, set, useHistoryAtTop);
+    } else if (node.states && node.initial) {
+      const next = (useHistoryAtTop && historyMemory[id]) ? historyMemory[id] : node.initial;
+      defaultConfig(next, set, false);
+    }
+    return set;
+  }
+
+  let configuration = defaultConfig("__root__");
+  let context = JSON.parse(JSON.stringify(machine.context || {}));
+  const log = [];
+
+  // ---------- find the leaves (atomic/final states with no active children) ----------
+  function activeLeaves() {
+    const leaves = [];
+    for (const id of configuration) {
+      const node = registry[id].node;
+      if (node.type === "atomic" || node.type === "final" || !node.states) leaves.push(id);
+    }
+    return leaves;
+  }
+
+  // walk from a leaf up through active ancestors, find the first transition
+  // whose guard passes; also report every candidate examined (for the blocked UI).
+  function resolve(leafId, eventName, dryRun) {
+    let cur = leafId;
+    const examined = [];
+    while (cur !== null && cur !== undefined) {
+      const node = registry[cur].node;
+      const handlers = node.on && node.on[eventName];
+      if (handlers) {
+        const list = Array.isArray(handlers) ? handlers : [handlers];
+        for (const t of list) {
+          const guardName = t.guard;
+          const passes = !guardName || (guards[guardName] && guards[guardName](context));
+          examined.push({ source: cur, guard: guardName, passes });
+          if (passes) return { source: cur, transition: t, examined };
+        }
+      }
+      cur = registry[cur].parentId;
+    }
+    return { source: null, transition: null, examined };
+  }
+
+  function applyTransition(sourceId, transition, eventName) {
+    const targetId = transition.target;
+    const pivot = lca(sourceId, targetId);
+
+    // exit: every currently-active id that is a proper descendant of pivot, deepest first
+    const toExit = [...configuration]
+      .filter((id) => id !== pivot && ancestorChain(id).includes(pivot))
+      .sort((a, b) => ancestorChain(b).length - ancestorChain(a).length);
+    // record shallow history BEFORE removing anything: for every compound (non-parallel)
+    // ancestor being exited, remember which of its children was active.
+    for (const id of toExit) {
+      const node = registry[id].node;
+      if (node.states && node.type !== "parallel" && node.initial) {
+        for (const childId in node.states) {
+          if (configuration.has(childId)) { historyMemory[id] = childId; break; }
+        }
+      }
+    }
+    for (const id of toExit) {
+      configuration.delete(id);
+      const node = registry[id].node;
+      (node.exit || []).forEach((name) => actions[name] && actions[name](context));
+    }
+
+    // transition actions
+    (transition.actions || []).forEach((name) => actions[name] && actions[name](context));
+
+    // enter: from pivot's child down to target, shallow first, then default-descend into target
+    const pathToTarget = ancestorChain(targetId).slice(ancestorChain(pivot).length);
+    for (const id of pathToTarget) {
+      configuration.add(id);
+      const node = registry[id].node;
+      (node.entry || []).forEach((name) => actions[name] && actions[name](context));
+    }
+    const newlyEntered = defaultConfig(targetId, undefined, transition.history === "shallow");
+    for (const id of newlyEntered) {
+      if (!configuration.has(id)) {
+        configuration.add(id);
+        const node = registry[id].node;
+        (node.entry || []).forEach((name) => actions[name] && actions[name](context));
+      }
+    }
+
+    log.unshift({ blocked: false, text: `${sourceId} --${eventName}${transition.guard ? "[" + transition.guard + "]" : ""}--> ${targetId}` });
+  }
+
+  function dispatch(eventName) {
+    let firedAny = false;
+    for (const leafId of activeLeaves()) {
+      if (!configuration.has(leafId)) continue; // may have been exited by an earlier region's transition this round
+      const { source, transition, examined } = resolve(leafId, eventName);
+      if (transition) {
+        applyTransition(source, transition, eventName);
+        firedAny = true;
+      } else {
+        examined.filter((e) => !e.passes).forEach((e) => {
+          log.unshift({ blocked: true, text: `${eventName} from ${e.source} blocked by guard '${e.guard}'` });
+        });
+      }
+    }
+    if (!firedAny && log.length === 0) {
+      log.unshift({ blocked: true, text: `${eventName}: no matching transition in current configuration` });
+    }
+    render();
+  }
+
+  // dry-run: would this event fire anywhere right now, and if not, name the blocking guard
+  function canFire(eventName) {
+    for (const leafId of activeLeaves()) {
+      const { transition, examined } = resolve(leafId, eventName);
+      if (transition) return { enabled: true };
+      const blocking = examined.find((e) => !e.passes);
+      if (blocking) return { enabled: false, guard: blocking.guard };
+    }
+    return null; // event doesn't apply anywhere in the current configuration
+  }
+
+  function allEventNames() {
+    const names = new Set();
+    for (const id of configuration) {
+      const node = registry[id].node;
+      if (node.on) Object.keys(node.on).forEach((e) => names.add(e));
+    }
+    return [...names];
+  }
+
+  // ---------- rendering ----------
+  function renderNode(id) {
+    const node = registry[id].node;
+    const isActive = configuration.has(id);
+    const isLeaf = node.type === "atomic" || node.type === "final" || !node.states;
+    const cls = ["state-box"];
+    if (node.states) cls.push("compound");
+    if (isActive && isLeaf) cls.push("active-leaf");
+    else if (isActive) cls.push("active-ancestor");
+
+    let inner = `<div class="${cls.join(" ")}"><strong>${id}</strong>`;
+    if (node.states) {
+      inner += `<div class="children">`;
+      if (node.type === "parallel") {
+        const regionIds = Object.keys(node.states);
+        regionIds.forEach((rid, i) => {
+          inner += `<div class="region"><div class="region-label">region: ${rid}</div>${renderNode(rid)}</div>`;
+        });
+      } else {
+        for (const childId in node.states) inner += renderNode(childId);
+      }
+      inner += `</div>`;
+    }
+    inner += `</div>`;
+    return inner;
+  }
+
+  function render() {
+    document.getElementById("diagram").innerHTML = renderNode("__root__");
+
+    const eventsEl = document.getElementById("events");
+    eventsEl.innerHTML = "";
+    allEventNames().forEach((name) => {
+      const result = canFire(name);
+      const btn = document.createElement("button");
+      btn.className = "event-btn" + (result && !result.enabled ? " blocked" : "");
+      const enabled = !result || result.enabled;
+      btn.innerHTML = `<span class="label"><span class="name">${name}</span>` +
+        (result && !result.enabled ? `<span class="why">blocked by guard '${result.guard}'</span>` : "") +
+        `</span>`;
+      btn.disabled = !enabled && result !== null && result.enabled === false;
+      btn.title = result && !result.enabled ? `Guard '${result.guard}' currently returns false` : "";
+      btn.onclick = () => dispatch(name);
+      eventsEl.appendChild(btn);
+    });
+
+    const ctxEl = document.getElementById("context-table");
+    ctxEl.innerHTML = Object.keys(context).length
+      ? Object.entries(context).map(([k, v]) => `<tr><td class="k">${k}</td><td>${JSON.stringify(v)}</td></tr>`).join("")
+      : `<tr><td class="k" colspan="2">(empty)</td></tr>`;
+
+    const logEl = document.getElementById("log");
+    logEl.innerHTML = log.slice(0, 100).map((row, i) =>
+      `<div class="log-row${row.blocked ? " blocked" : ""}"><span class="ts">#${log.length - i}</span>${row.text}</div>`
+    ).join("") || `<div class="log-row">(no transitions yet)</div>`;
+  }
+
+  document.getElementById("reset-btn").onclick = () => {
+    configuration = defaultConfig("__root__");
+    context = JSON.parse(JSON.stringify(machine.context || {}));
+    log.length = 0;
+    render();
+  };
+
+  render();
+})();
+</script>
+</body>
+</html>
