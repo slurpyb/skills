@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "plugin-optimizer",
+  "version": "0.13.0",
+  "description": "Validates and optimizes Claude Code plugins against official best practices and file patterns",
+  "author": {
+    "name": "Frad LEE",
+    "email": "fradser@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "validation",
+    "optimization",
+    "best-practices",
+    "plugin-development",
+    "quality-assurance"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "core",
+  "version": "0.1.0",
+  "description": "Shared agent defaults for every project: conventions, tools, and always-on MCP.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "email": "slurpyb@fastmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "core",
+    "conventions",
+    "defaults",
+    "mcp",
+    "sequential-thinking",
+    "context7",
+    "exa",
+    "jina",
+    "perplexity",
+    "octocode",
+    "tavily",
+    "firecrawl"
+  ],
+  "skills": "./skills/",
+  "agents": [
+    "./agents/"
+  ],
+  "mcpServers": "./mcp.json"
+}

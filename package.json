@@ -1,16 +1,27 @@
 {
-    "name": "slurpyb-skills",
-    "version": "1.0.0",
-    "description": "Skills for Slurpyb",
-    "author": "Slurpyb",
-    "license": "MIT",
-    "pi": {
-        "skills": ["plugins/*/skills", "skills", ".agents/skills"]
-    },
-    "scripts": {
-        "postinstall": "skills experimental_install"
-    },
-    "dependencies": {
-        "skills": "^1.5.25"
-    }
+  "name": "slurpyb-skills",
+  "version": "1.0.0",
+  "description": "Skills for Slurpyb",
+  "author": "Slurpyb",
+  "license": "MIT",
+  "pi": {
+    "skills": [
+      "plugins/*/skills"
+    ]
+  },
+  "scripts": {
+    "postinstall": "skills experimental_install",
+    "marketplace:generate": "bun scripts/marketplace/cli.mjs generate",
+    "marketplace:check": "bun scripts/marketplace/cli.mjs check",
+    "marketplace:audit": "bun scripts/marketplace/cli.mjs audit",
+    "marketplace:release": "bun scripts/marketplace/cli.mjs release",
+    "test:marketplace": "bun test tests/marketplace.test.mjs tests/codex-marketplace.test.mjs"
+  },
+  "dependencies": {
+    "skills": "^1.5.25"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "yaml": "^2.8.1"
+  }
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "problem-solving",
+  "version": "1.0.0",
+  "description": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "license": "MIT",
+  "keywords": [
+    "problem-solving",
+    "brainstorming",
+    "strategy",
+    "reasoning",
+    "planning",
+    "ideation"
+  ]
+}

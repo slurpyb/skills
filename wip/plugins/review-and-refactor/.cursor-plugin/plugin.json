@@ -1,0 +1,22 @@
+{
+  "name": "review-and-refactor",
+  "version": "1.5.5",
+  "description": "Review and refactor skills for code simplification, deduplication, best-practice audits, frontend refactor planning, and adversarial review.",
+  "author": {
+    "name": "Frad LEE",
+    "email": "fradser@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "refactor",
+    "code-review",
+    "code-quality",
+    "deduplication",
+    "best-practices",
+    "maintainability"
+  ],
+  "skills": "./skills/",
+  "agents": [
+    "./agents/"
+  ]
+}

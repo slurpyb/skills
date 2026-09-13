@@ -1,0 +1,257 @@
+{
+  "portable": false,
+  "issues": [
+    {
+      "plugin": "ai-engineer",
+      "channel": "stable",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "ai-engineer",
+      "channel": "stable",
+      "code": "native-commands",
+      "detail": "instructions needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "ai-engineer",
+      "channel": "stable",
+      "code": "mcp-credentials",
+      "detail": "exa: portable HTTP configuration cannot interpolate environment variables."
+    },
+    {
+      "plugin": "pandacss",
+      "channel": "stable",
+      "code": "native-rules",
+      "detail": "rules needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "pi",
+      "channel": "stable",
+      "code": "native-commands",
+      "detail": "prompts needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "react",
+      "channel": "stable",
+      "code": "skill-frontmatter",
+      "detail": "composition-patterns: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "react",
+      "channel": "stable",
+      "code": "skill-frontmatter",
+      "detail": "react-best-practices: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "capture",
+      "channel": "wip",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "capture",
+      "channel": "wip",
+      "code": "native-commands",
+      "detail": "commands needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "core",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "research-based-solutions: Nested mappings are not allowed in compact mappings at line 2, column 14:\n\ndescription: Runs an approval-gated research-to-execution process: offers paral\u2026\n             ^\n"
+    },
+    {
+      "plugin": "core",
+      "channel": "wip",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "core",
+      "channel": "wip",
+      "code": "mcp-environment",
+      "detail": "context7: nonportable environment interpolation."
+    },
+    {
+      "plugin": "core",
+      "channel": "wip",
+      "code": "mcp-credentials",
+      "detail": "exa: portable HTTP configuration cannot interpolate environment variables."
+    },
+    {
+      "plugin": "core",
+      "channel": "wip",
+      "code": "mcp-credentials",
+      "detail": "jina: portable HTTP configuration cannot interpolate environment variables."
+    },
+    {
+      "plugin": "core",
+      "channel": "wip",
+      "code": "mcp-environment",
+      "detail": "perplexity: nonportable environment interpolation."
+    },
+    {
+      "plugin": "core",
+      "channel": "wip",
+      "code": "mcp-credentials",
+      "detail": "firecrawl: portable HTTP configuration cannot interpolate environment variables."
+    },
+    {
+      "plugin": "design-system",
+      "channel": "wip",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "i-have-adhd",
+      "channel": "wip",
+      "code": "native-hooks",
+      "detail": "Hook event, input, output, and lifecycle behavior need a tested Cursor adapter."
+    },
+    {
+      "plugin": "openspec",
+      "channel": "wip",
+      "code": "native-commands",
+      "detail": "prompts needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "refactor",
+      "channel": "wip",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "review-and-refactor",
+      "channel": "wip",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "storm",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "engine: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "storm",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "generate: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "storm",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "outline: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "storm",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "polish: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "storm",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "research: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "storm",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "write: Name must match directory and description must be nonempty"
+    },
+    {
+      "plugin": "storm",
+      "channel": "wip",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "unocss",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "unocss-astro: Nested mappings are not allowed in compact mappings at line 2, column 14:\n\ndescription: Exhaustive UnoCSS (v66) reference for building with the instant at\u2026\n             ^\n"
+    },
+    {
+      "plugin": "unocss",
+      "channel": "wip",
+      "code": "skill-frontmatter",
+      "detail": "unocss-astro-configuration: Nested mappings are not allowed in compact mappings at line 2, column 14:\n\ndescription: Wires UnoCSS (v66) into Astro (v6) \u2014 setup reference. Covers @unoc\u2026\n             ^\n"
+    },
+    {
+      "plugin": "autoresearch",
+      "channel": "deprecated",
+      "code": "no-portable-skills",
+      "detail": "No discoverable skills; verify this plugin has a tested portable runtime capability."
+    },
+    {
+      "plugin": "autoresearch",
+      "channel": "deprecated",
+      "code": "native-commands",
+      "detail": "commands needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "autoresearch",
+      "channel": "deprecated",
+      "code": "native-hooks",
+      "detail": "Hook event, input, output, and lifecycle behavior need a tested Cursor adapter."
+    },
+    {
+      "plugin": "code-context",
+      "channel": "deprecated",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "code-context",
+      "channel": "deprecated",
+      "code": "mcp-credentials",
+      "detail": "exa-code-context: portable HTTP configuration cannot interpolate environment variables."
+    },
+    {
+      "plugin": "fuse-prompt-engineer",
+      "channel": "deprecated",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "fuse-prompt-engineer",
+      "channel": "deprecated",
+      "code": "native-commands",
+      "detail": "commands needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "plugin-optimizer",
+      "channel": "deprecated",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "research",
+      "channel": "deprecated",
+      "code": "no-portable-skills",
+      "detail": "No discoverable skills; verify this plugin has a tested portable runtime capability."
+    },
+    {
+      "plugin": "sbx-agent",
+      "channel": "deprecated",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "slurpyb-skills",
+      "channel": "stable",
+      "code": "native-agents",
+      "detail": "agents needs a Codex/Cursor behavior adapter and contract test."
+    },
+    {
+      "plugin": "slurpyb-skills",
+      "channel": "stable",
+      "code": "native-commands",
+      "detail": "instructions needs a Codex/Cursor behavior adapter and contract test."
+    }
+  ]
+}

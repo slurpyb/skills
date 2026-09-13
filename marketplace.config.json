@@ -1,0 +1,1076 @@
+{
+  "schemaVersion": 1,
+  "channels": {
+    "stable": {
+      "root": ".",
+      "name": "slurpyb-agent-skills",
+      "description": "Stable Slurpyb plugins and skills"
+    },
+    "wip": {
+      "root": "wip",
+      "name": "slurpyb-agent-skills-wip",
+      "description": "Opt-in work-in-progress plugins and skills"
+    },
+    "deprecated": {
+      "root": "deprecated",
+      "name": "slurpyb-agent-skills-deprecated",
+      "description": "Opt-in deprecated plugins"
+    }
+  },
+  "plugins": [
+    {
+      "path": "plugins/ai-engineer",
+      "channel": "stable",
+      "name": "ai-engineer",
+      "version": "1.0.0",
+      "description": "AI Engineer skill: create new agent skills with proper structure, progressive disclosure, and bundled resources. Enhanced from Matt Pocock's MIT-licensed write-a-skill (https://github.com/mattpocock/skills) with: (1) stdlib Python validation tools (description validator, structure validator, review-checklist runner), (2) 3 reference docs citing 5+ authoritative sources each (progressive disclosure principles, description design patterns, quality gates), (3) cs-skill-author persona agent + /cs:write-a-skill slash command. Matt's voice and 3-phase workflow (Gather \u2192 Draft \u2192 Review) preserved verbatim per his MIT license. Use when user wants to create, write, build, or author a new agent skill.",
+      "author": {
+        "name": "Jordan Adams",
+        "url": "https://jordanadams.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ],
+        "commands": [
+          "instructions"
+        ]
+      },
+      "homepage": "https://github.com/jordanadams/ai-engineer",
+      "repository": "https://github.com/jordanadams/ai-engineer",
+      "license": "MIT",
+      "keywords": [
+        "ai-engineer",
+        "skills",
+        "agents"
+      ],
+      "codexInterface": {
+        "displayName": "Ai Engineer",
+        "shortDescription": "AI Engineer skill: create new agent skills with proper structure, progressive disclosure, and bu",
+        "longDescription": "AI Engineer skill: create new agent skills with proper structure, progressive disclosure, and bundled resources. Enhanced from Matt Pocock's MIT-licensed write-a-skill (https://github.com/mattpocock/skills) with: (1) stdlib Python validation tools (description validator, structure validator, review-checklist runner), (2) 3 reference docs citing 5+ authoritative sources each (progressive disclosure principles, description design patterns, quality gates), (3) cs-skill-author persona agent + /cs:write-a-skill slash command. Matt's voice and 3-phase workflow (Gather \u2192 Draft \u2192 Review) preserved verbatim per his MIT license. Use when user wants to create, write, build, or author a new agent skill.",
+        "developerName": "Jordan Adams",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "websiteURL": "https://github.com/jordanadams/ai-engineer",
+        "defaultPrompt": [
+          "Use Ai Engineer for this task."
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "plugins/better-auth",
+      "channel": "stable",
+      "name": "better-auth",
+      "version": "1.0.0",
+      "description": "Better Auth skills for scaffolding, configuring, and hardening authentication in TypeScript/JavaScript apps.",
+      "author": {
+        "name": "Better Auth",
+        "url": "https://www.better-auth.com"
+      },
+      "components": {},
+      "homepage": "https://www.better-auth.com/docs/ai-resources/skills",
+      "repository": "https://github.com/better-auth/skills",
+      "license": "MIT",
+      "keywords": [
+        "authentication",
+        "better-auth",
+        "oauth",
+        "sessions",
+        "2fa",
+        "organizations",
+        "security"
+      ],
+      "codexInterface": {
+        "displayName": "Better Auth",
+        "shortDescription": "Scaffold, configure, and harden Better Auth",
+        "longDescription": "Agent skills for Better Auth in TypeScript and JavaScript: scaffold login and sign-up, configure server/client, database adapters, sessions, and plugins, then apply email/password, security, two-factor, and organization RBAC practices.",
+        "developerName": "Better Auth",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://www.better-auth.com/docs",
+        "defaultPrompt": [
+          "Scaffold Better Auth for this TypeScript app",
+          "Harden this Better Auth setup for production",
+          "Add 2FA and organization RBAC with Better Auth"
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "plugins/design-eng-skills",
+      "channel": "stable",
+      "name": "design-eng-skills",
+      "version": "0.1.0",
+      "description": "design-eng-skills skills and workflows.",
+      "components": {},
+      "skillCopies": [
+        {
+          "source": ".agents/skills/changeset-writing",
+          "name": "changeset-writing"
+        },
+        {
+          "source": ".agents/skills/component-api-design",
+          "name": "component-api-design"
+        },
+        {
+          "source": ".agents/skills/engineering-writing",
+          "name": "engineering-writing"
+        },
+        {
+          "source": ".agents/skills/state-machine-design",
+          "name": "state-machine-design"
+        }
+      ]
+    },
+    {
+      "path": "plugins/emdash",
+      "channel": "stable",
+      "name": "emdash",
+      "version": "1.0.0",
+      "description": "EmDash skills and workflows for building sites, plugins, MCP servers, i18n, deployment, WordPress migration, and GitHub Actions.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {},
+      "license": "MIT",
+      "keywords": [
+        "emdash",
+        "astro",
+        "wordpress",
+        "plugins",
+        "cms",
+        "deployment"
+      ]
+    },
+    {
+      "path": "plugins/octocode",
+      "channel": "stable",
+      "name": "octocode",
+      "version": "1.0.0",
+      "description": "Octocode skills for evidence-first code research, idea validation, live Chrome DevTools, documentation, prompt optimization, skill authoring, and worker delegation.",
+      "author": {
+        "name": "Octocode",
+        "url": "https://octocode.ai"
+      },
+      "components": {},
+      "homepage": "https://octocode.ai",
+      "repository": "https://github.com/bgauryy/octocode",
+      "license": "MIT",
+      "keywords": [
+        "octocode",
+        "research",
+        "evidence",
+        "github",
+        "mcp",
+        "documentation",
+        "brainstorming",
+        "chrome-devtools"
+      ],
+      "codexInterface": {
+        "displayName": "Octocode",
+        "shortDescription": "Evidence-first research, critique, and agent workflows",
+        "longDescription": "Agent skills for Octocode: research local and GitHub code with exact citations; validate ideas against prior art; collect live Chrome DevTools/CDP evidence; write and copyedit docs; roast code with a repair path; author and sync Agent Skills; optimize prompts; and spawn or synthesize workers.",
+        "developerName": "Octocode",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "websiteURL": "https://octocode.ai",
+        "defaultPrompt": [
+          "Research this question across local code, GitHub, and packages with exact evidence",
+          "Validate this idea with prior art and a Build / Prototype / Narrow / Park verdict",
+          "Collect live Chrome DevTools evidence for this page (DOM, network, HAR)"
+        ],
+        "brandColor": "#E75D2A"
+      }
+    },
+    {
+      "path": "plugins/pandacss",
+      "channel": "stable",
+      "name": "pandacss",
+      "version": "1.0.0",
+      "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps.",
+      "author": {
+        "name": "Panda CSS",
+        "url": "https://panda-css.com"
+      },
+      "components": {
+        "rules": [
+          "rules"
+        ]
+      },
+      "homepage": "https://panda-css.com/docs",
+      "repository": "https://github.com/chakra-ui/panda",
+      "license": "MIT",
+      "keywords": [
+        "pandacss",
+        "panda-css",
+        "css-in-js",
+        "styling",
+        "design-system",
+        "typescript",
+        "frontend"
+      ],
+      "codexInterface": {
+        "displayName": "Panda CSS",
+        "shortDescription": "Scaffold, configure, and harden Panda CSS",
+        "longDescription": "Agent skills for Panda CSS in TypeScript and JavaScript apps: configure Panda, use styled-system patterns, debug PostCSS and build issues, apply theming, recipes, tokens, and component-library guidance.",
+        "developerName": "Panda CSS",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "websiteURL": "https://panda-css.com/docs",
+        "defaultPrompt": [
+          "Scaffold Panda CSS for this TypeScript app",
+          "Debug this Panda CSS styled-system issue",
+          "Apply Panda CSS theming, recipes, and token best practices"
+        ],
+        "brandColor": "#F5C542"
+      }
+    },
+    {
+      "path": "plugins/pi",
+      "channel": "stable",
+      "name": "pi",
+      "version": "0.1.0",
+      "description": "Configure and build with the Pi coding harness through focused, testable workflows.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {
+        "commands": [
+          "prompts"
+        ]
+      },
+      "repository": "https://github.com/slurpyb/skills",
+      "keywords": [
+        "pi",
+        "agent-harness",
+        "sdk",
+        "tools"
+      ],
+      "codexInterface": {
+        "displayName": "Pi Harness",
+        "shortDescription": "Build and validate Pi harnesses",
+        "longDescription": "Configure Pi, author resources and SDK-native tools, reconstruct focused MCP capabilities, and verify the resulting harness.",
+        "developerName": "Jordan Sweeting",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://github.com/slurpyb/skills",
+        "defaultPrompt": [
+          "Configure and validate this Pi harness.",
+          "Build a tested SDK-native Pi tool for this workflow."
+        ]
+      }
+    },
+    {
+      "path": "plugins/react",
+      "channel": "stable",
+      "name": "react",
+      "version": "1.0.0",
+      "description": "React skills for scaffolding, configuring, and hardening React and React Native apps in TypeScript and JavaScript.",
+      "author": {
+        "name": "React",
+        "url": "https://react.dev"
+      },
+      "components": {},
+      "homepage": "https://react.dev",
+      "repository": "https://github.com/facebook/react",
+      "license": "MIT",
+      "keywords": [
+        "react",
+        "react-native",
+        "typescript",
+        "javascript",
+        "frontend",
+        "hooks",
+        "components"
+      ],
+      "codexInterface": {
+        "displayName": "React",
+        "shortDescription": "Scaffold, configure, and harden React",
+        "longDescription": "Agent skills for React and React Native in TypeScript and JavaScript: scaffold components, hooks, and utilities, then apply best practices for performance, accessibility, state, server components, and testing.",
+        "developerName": "React",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "websiteURL": "https://react.dev",
+        "defaultPrompt": [
+          "Scaffold React for this TypeScript app",
+          "Review this React component for performance and accessibility",
+          "Apply React best practices for hooks, state, and testing"
+        ],
+        "brandColor": "#61DAFB"
+      }
+    },
+    {
+      "path": "plugins/simple-english",
+      "channel": "stable",
+      "name": "simple-english",
+      "version": "0.1.0",
+      "description": "Write or rewrite technical text with ASD-STE100 Simplified Technical English: short sentences, one word one meaning, active voice, condition before command.",
+      "components": {},
+      "skillCopies": [
+        {
+          "source": ".agents/skills/simple-english",
+          "name": "simple-english"
+        }
+      ]
+    },
+    {
+      "path": "plugins/writing-typescript",
+      "channel": "stable",
+      "name": "writing-code",
+      "version": "4.2.0",
+      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {},
+      "repository": "https://github.com/slurpyb/skills",
+      "keywords": [
+        "typescript",
+        "domain-modeling",
+        "object-oriented-design",
+        "generics",
+        "tsdoc",
+        "tsconfig",
+        "oxlint"
+      ],
+      "codexInterface": {
+        "displayName": "Writing Code",
+        "shortDescription": "Focused TypeScript engineering skills",
+        "longDescription": "Implement, model, document, configure, and verify TypeScript through independently discoverable skills.",
+        "developerName": "Jordan Sweeting",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://github.com/slurpyb/skills",
+        "defaultPrompt": [
+          "Review and improve this TypeScript implementation.",
+          "Design the domain and type contracts for this TypeScript feature."
+        ]
+      }
+    },
+    {
+      "path": "wip/plugins/api-engineer",
+      "channel": "wip",
+      "name": "api-engineer",
+      "version": "1.0.0",
+      "description": "API engineering skills for FastAPI, SQLModel, Alembic, PostgreSQL, Supabase, and HTTPX.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {},
+      "skillCopies": [
+        {
+          "source": "wip/plugins/api-engineer/alembic",
+          "name": "alembic"
+        },
+        {
+          "source": "wip/plugins/api-engineer/fastapi",
+          "name": "fastapi"
+        },
+        {
+          "source": "wip/plugins/api-engineer/httpx",
+          "name": "httpx"
+        },
+        {
+          "source": "wip/plugins/api-engineer/postgresql",
+          "name": "postgresql"
+        },
+        {
+          "source": "wip/plugins/api-engineer/pydantic",
+          "name": "pydantic"
+        },
+        {
+          "source": "wip/plugins/api-engineer/sqlmodel",
+          "name": "sqlmodel"
+        },
+        {
+          "source": "wip/plugins/api-engineer/sqlmodel-crud",
+          "name": "sqlmodel-crud"
+        },
+        {
+          "source": "wip/plugins/api-engineer/supabase-postgres-best-practices",
+          "name": "supabase-postgres-best-practices"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "api",
+        "fastapi",
+        "sqlmodel",
+        "alembic",
+        "postgresql",
+        "supabase",
+        "httpx"
+      ],
+      "codexInterface": {
+        "displayName": "API Engineer",
+        "shortDescription": "API engineering skills for FastAPI, SQLModel, Alembic, PostgreSQL, Supabase, and HTTPX.",
+        "longDescription": "API engineering skills for FastAPI, SQLModel, Alembic, PostgreSQL, Supabase, and HTTPX.",
+        "developerName": "Jordan Sweeting",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "defaultPrompt": [
+          "Use API Engineer for this task."
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "wip/plugins/capture",
+      "channel": "wip",
+      "name": "capture",
+      "version": "2.9.0",
+      "description": "Brain-dump organizer. Ingests an unstructured stream of mixed thoughts, tasks, ideas and transforms it into a clean four-section actionable system (Projects/Ideas, Tasks, Connections, How I Can Help) with zero information loss. Fast-to-action by design \u2014 no upfront intake. Asks at most one mid-organization clarifying question when a single item is genuinely ambiguous between task and project. Workspace detection is real (Glob/Grep) \u2014 never fabricates connections. Source spec: megaprompts/05-capture-megaprompt.md (PR #657).",
+      "author": {
+        "name": "Alireza Rezvani",
+        "url": "https://alirezarezvani.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ],
+        "commands": [
+          "commands"
+        ]
+      },
+      "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/productivity/capture",
+      "repository": "https://github.com/alirezarezvani/claude-skills",
+      "license": "MIT"
+    },
+    {
+      "path": "wip/plugins/core",
+      "channel": "wip",
+      "name": "core",
+      "version": "0.1.0",
+      "description": "Shared agent defaults for every project: conventions, tools, and always-on MCP.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "email": "slurpyb@fastmail.com",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "core",
+        "conventions",
+        "defaults",
+        "mcp",
+        "sequential-thinking",
+        "context7",
+        "exa",
+        "jina",
+        "perplexity",
+        "octocode",
+        "tavily",
+        "firecrawl"
+      ]
+    },
+    {
+      "path": "wip/plugins/design-system",
+      "channel": "wip",
+      "name": "design-system",
+      "version": "1.0.0",
+      "description": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, and modern web guidance.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "design-system",
+        "web-components",
+        "storybook",
+        "css",
+        "frontend",
+        "ui"
+      ],
+      "codexInterface": {
+        "displayName": "Design System",
+        "shortDescription": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, an",
+        "longDescription": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, and modern web guidance.",
+        "developerName": "Jordan Sweeting",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "defaultPrompt": [
+          "Use Design System for this task."
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "wip/plugins/firecrawl",
+      "channel": "wip",
+      "name": "firecrawl",
+      "version": "1.0.0",
+      "description": "FireCrawl skills.",
+      "components": {}
+    },
+    {
+      "path": "wip/plugins/i-have-adhd",
+      "channel": "wip",
+      "name": "i-have-adhd",
+      "version": "0.2.0",
+      "description": "Shape Claude Code output for an ADHD reader: lead with the next action, number steps, suppress tangents, restate state, make wins visible.",
+      "author": {
+        "name": "Ayoub G.",
+        "url": "https://github.com/ayghri"
+      },
+      "components": {},
+      "license": "MIT",
+      "keywords": [
+        "i-have-adhd",
+        "skills",
+        "agents"
+      ]
+    },
+    {
+      "path": "wip/plugins/openspec",
+      "channel": "wip",
+      "name": "openspec",
+      "version": "1.0.0",
+      "description": "OpenSpec skills for proposing, applying, verifying, and archiving spec-driven changes.",
+      "author": {
+        "name": "OpenSpec",
+        "url": "https://openspec.dev"
+      },
+      "components": {
+        "commands": [
+          "prompts"
+        ]
+      },
+      "homepage": "https://openspec.dev",
+      "repository": "https://github.com/Fission-AI/OpenSpec",
+      "license": "MIT",
+      "keywords": [
+        "openspec",
+        "specs",
+        "sdd",
+        "planning",
+        "propose",
+        "apply",
+        "archive",
+        "artifacts"
+      ],
+      "codexInterface": {
+        "displayName": "Openspec",
+        "shortDescription": "OpenSpec skills for proposing, applying, verifying, and archiving spec-driven changes.",
+        "longDescription": "OpenSpec skills for proposing, applying, verifying, and archiving spec-driven changes.",
+        "developerName": "OpenSpec",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "websiteURL": "https://openspec.dev",
+        "defaultPrompt": [
+          "Use Openspec for this task."
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "wip/plugins/problem-solving",
+      "channel": "wip",
+      "name": "problem-solving",
+      "version": "1.0.0",
+      "description": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {},
+      "license": "MIT",
+      "keywords": [
+        "problem-solving",
+        "brainstorming",
+        "strategy",
+        "reasoning",
+        "planning",
+        "ideation"
+      ],
+      "codexInterface": {
+        "displayName": "Problem Solving",
+        "shortDescription": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, e",
+        "longDescription": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+        "developerName": "Jordan Sweeting",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "defaultPrompt": [
+          "Use Problem Solving for this task."
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "wip/plugins/refactor",
+      "channel": "wip",
+      "name": "refactor",
+      "version": "1.5.5",
+      "description": "Agent and skills for code simplification and refactoring to improve code quality while preserving functionality",
+      "author": {
+        "name": "Frad LEE",
+        "email": "fradser@gmail.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "refactor",
+        "code-quality",
+        "best-practices",
+        "simplification",
+        "maintainability"
+      ]
+    },
+    {
+      "path": "wip/plugins/review-and-refactor",
+      "channel": "wip",
+      "name": "review-and-refactor",
+      "version": "1.5.5",
+      "description": "Review and refactor skills for code simplification, deduplication, best-practice audits, frontend refactor planning, and adversarial review.",
+      "author": {
+        "name": "Frad LEE",
+        "email": "fradser@gmail.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "refactor",
+        "code-review",
+        "code-quality",
+        "deduplication",
+        "best-practices",
+        "maintainability"
+      ],
+      "codexInterface": {
+        "displayName": "Review and Refactor",
+        "shortDescription": "Review and refactor skills for code simplification, deduplication, best-practice audits, fronten",
+        "longDescription": "Review and refactor skills for code simplification, deduplication, best-practice audits, frontend refactor planning, and adversarial review.",
+        "developerName": "Frad LEE",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "defaultPrompt": [
+          "Use Review and Refactor for this task."
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "wip/plugins/storm",
+      "channel": "wip",
+      "name": "storm",
+      "version": "0.1.0",
+      "description": "Wikipedia-style long-form article generation via multi-perspective question asking and retrieval \u2014 a Claude-native port of Stanford STORM's two-stage research-to-article pipeline",
+      "author": {
+        "name": "Frad LEE",
+        "email": "fradser@gmail.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "storm",
+        "research",
+        "long-form",
+        "wikipedia",
+        "article-generation",
+        "knowledge-curation",
+        "retrieval"
+      ]
+    },
+    {
+      "path": "wip/plugins/unocss",
+      "channel": "wip",
+      "name": "unocss",
+      "version": "0.1.0",
+      "description": "unocss skills and workflows.",
+      "components": {},
+      "skillCopies": [
+        {
+          "source": "wip/plugins/unocss/unocss",
+          "name": "unocss"
+        },
+        {
+          "source": "wip/plugins/unocss/unocss-astro",
+          "name": "unocss-astro"
+        },
+        {
+          "source": "wip/plugins/unocss/unocss-astro-configuration",
+          "name": "unocss-astro-configuration"
+        },
+        {
+          "source": "wip/plugins/unocss/unocss-astro-extending",
+          "name": "unocss-astro-extending"
+        }
+      ]
+    },
+    {
+      "path": "wip/plugins/writing",
+      "channel": "wip",
+      "name": "writing",
+      "version": "1.0.0",
+      "description": "Writing and content-craft toolkit: draft long-form articles and guides in a distinctive voice (article-writing), develop personal/analytical essays (developing-essays), write and audit persuasive marketing copy (persuasive-copywriting), learn and reproduce a writer's voice from exemplars (style-learner), shape raw material into articles conversationally or beat-by-beat (writing-shape, writing-beats), mine and collect raw fragments before structuring (writing-fragments), apply Strunk's rules for clear concise prose (writing-clearly-and-concisely), strip AI tells from text (writing-humanizer), extract the functional DNA and trope maps from source works for adaptation (dna-extraction), and build a DDD-style ubiquitous-language glossary (ubiquitous-language).",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {},
+      "license": "MIT",
+      "keywords": [
+        "writing",
+        "skills",
+        "agents"
+      ],
+      "codexInterface": {
+        "displayName": "Writing",
+        "shortDescription": "Writing and content-craft toolkit: draft long-form articles and guides in a distinctive voice (a",
+        "longDescription": "Writing and content-craft toolkit: draft long-form articles and guides in a distinctive voice (article-writing), develop personal/analytical essays (developing-essays), write and audit persuasive marketing copy (persuasive-copywriting), learn and reproduce a writer's voice from exemplars (style-learner), shape raw material into articles conversationally or beat-by-beat (writing-shape, writing-beats), mine and collect raw fragments before structuring (writing-fragments), apply Strunk's rules for clear concise prose (writing-clearly-and-concisely), strip AI tells from text (writing-humanizer), extract the functional DNA and trope maps from source works for adaptation (dna-extraction), and build a DDD-style ubiquitous-language glossary (ubiquitous-language).",
+        "developerName": "Jordan Sweeting",
+        "category": "Productivity",
+        "capabilities": [
+          "Instructions"
+        ],
+        "defaultPrompt": [
+          "Use Writing for this task."
+        ],
+        "brandColor": "#000000"
+      }
+    },
+    {
+      "path": "deprecated/plugins/autoresearch",
+      "channel": "deprecated",
+      "name": "autoresearch",
+      "version": "0.8.0",
+      "description": "Autonomous research loop inspired by karpathy/autoresearch \u2014 give it a plain-language goal and it infers the artifact, evaluator (numeric scorer / objective gate / LLM rubric), and bounds, then iterates: cheap sequential rounds that escalate to a parallel GAN tournament when they plateau",
+      "author": {
+        "name": "Frad LEE",
+        "email": "fradser@gmail.com"
+      },
+      "components": {
+        "commands": [
+          "commands"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "research",
+        "autonomous",
+        "loop",
+        "experiment",
+        "optimization",
+        "scorer",
+        "evaluator",
+        "gan",
+        "tournament",
+        "workflow",
+        "rubric"
+      ]
+    },
+    {
+      "path": "deprecated/plugins/code-context",
+      "channel": "deprecated",
+      "name": "code-context",
+      "version": "0.2.2",
+      "description": "5 methods to retrieve code context: DeepWiki, Context7, Exa, git clone, and web search+fetch",
+      "author": {
+        "name": "Frad LEE",
+        "email": "fradser@gmail.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "code-context",
+        "deepwiki",
+        "context7",
+        "exa",
+        "mcp",
+        "research"
+      ]
+    },
+    {
+      "path": "deprecated/plugins/fuse-prompt-engineer",
+      "channel": "deprecated",
+      "name": "fuse-prompt-engineer",
+      "version": "1.1.10",
+      "description": "Expert Prompt Engineer with Context Engineering, Meta-Prompting, Chain-of-Thought, Few-Shot, Agent Design, 50+ Template Library, and A/B Testing",
+      "author": {
+        "name": "Fusengine",
+        "email": "hello@fusengine.ch",
+        "url": "https://github.com/fusengine"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ],
+        "commands": [
+          "commands"
+        ]
+      },
+      "homepage": "https://github.com/fusengine/agents",
+      "repository": "https://github.com/fusengine/agents",
+      "license": "MIT",
+      "keywords": [
+        "prompt-engineering",
+        "context-engineering",
+        "meta-prompting",
+        "chain-of-thought",
+        "few-shot",
+        "agent-design",
+        "guardrails",
+        "prompt-library",
+        "ab-testing",
+        "llm"
+      ]
+    },
+    {
+      "path": "deprecated/plugins/plugin-optimizer",
+      "channel": "deprecated",
+      "name": "plugin-optimizer",
+      "version": "0.13.0",
+      "description": "Validates and optimizes Claude Code plugins against official best practices and file patterns",
+      "author": {
+        "name": "Frad LEE",
+        "email": "fradser@gmail.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "license": "MIT",
+      "keywords": [
+        "validation",
+        "optimization",
+        "best-practices",
+        "plugin-development",
+        "quality-assurance"
+      ]
+    },
+    {
+      "path": "deprecated/plugins/research",
+      "channel": "deprecated",
+      "name": "research",
+      "version": "0.1.0",
+      "description": "Research workflows and skills.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "email": "slurpyb@fastmail.com",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {},
+      "license": "MIT",
+      "keywords": [
+        "research"
+      ]
+    },
+    {
+      "path": "deprecated/plugins/sbx-agent",
+      "channel": "deprecated",
+      "name": "sbx-agent",
+      "version": "0.1.0",
+      "description": "Docker Sandboxes (sbx) expertise: run and operate sandboxes, author kits and template images, wire MCP servers through the gateway, govern a fleet, and work out why a sandbox cannot reach, build, or keep something.",
+      "author": {
+        "name": "slurpyb",
+        "email": "slurpyb@fastmail.com"
+      },
+      "components": {
+        "agents": [
+          "agents"
+        ]
+      },
+      "homepage": "https://github.com/slurpyb/sbx-agent",
+      "repository": "https://github.com/slurpyb/sbx-agent",
+      "license": "MIT",
+      "keywords": [
+        "docker",
+        "sbx",
+        "sandboxes",
+        "microvm",
+        "kits",
+        "templates",
+        "governance",
+        "mcp"
+      ]
+    },
+    {
+      "path": "plugins/repository-skills",
+      "channel": "stable",
+      "name": "slurpyb-skills",
+      "version": "1.0.0",
+      "description": "Library selection and engineering skills maintained in this repository.",
+      "components": {
+        "agents": [
+          "agents"
+        ],
+        "commands": [
+          "instructions"
+        ]
+      },
+      "skillCopies": [
+        {
+          "source": "skills/beautiful-mermaid",
+          "name": "beautiful-mermaid"
+        },
+        {
+          "source": "skills/bunup",
+          "name": "bunup"
+        },
+        {
+          "source": "skills/changeset-writing",
+          "name": "changeset-writing"
+        },
+        {
+          "source": "skills/commit-hygiene",
+          "name": "commit-hygiene"
+        },
+        {
+          "source": "skills/generating-fake-data",
+          "name": "generating-fake-data"
+        },
+        {
+          "source": "skills/iterative-retrieval",
+          "name": "iterative-retrieval"
+        },
+        {
+          "source": "skills/pino",
+          "name": "pino"
+        },
+        {
+          "source": "skills/rx",
+          "name": "rx"
+        },
+        {
+          "source": "skills/transforming-data",
+          "name": "transforming-data"
+        },
+        {
+          "source": "skills/typescript-utility-types",
+          "name": "typescript-utility-types"
+        },
+        {
+          "source": "skills/writing-shell-scripts",
+          "name": "writing-shell-scripts"
+        }
+      ],
+      "contentCopies": [
+        {
+          "source": "agents",
+          "destination": "agents"
+        },
+        {
+          "source": "instructions",
+          "destination": "instructions"
+        }
+      ]
+    },
+    {
+      "path": "wip",
+      "channel": "wip",
+      "name": "slurpyb-wip-skills",
+      "version": "0.1.0",
+      "description": "Experimental skills. Install explicitly to try work in progress.",
+      "components": {}
+    },
+    {
+      "path": "plugins/community-skills",
+      "channel": "stable",
+      "name": "community-skills",
+      "version": "1.0.0",
+      "description": "Installed community skills for engineering, documentation, and agent workflows.",
+      "components": {},
+      "skillCopies": [
+        {
+          "source": ".agents/skills/codebase-design",
+          "name": "codebase-design"
+        },
+        {
+          "source": ".agents/skills/documentation",
+          "name": "documentation"
+        },
+        {
+          "source": ".agents/skills/domain-modeling",
+          "name": "domain-modeling"
+        },
+        {
+          "source": ".agents/skills/fastify-best-practices",
+          "name": "fastify-best-practices"
+        },
+        {
+          "source": ".agents/skills/init",
+          "name": "init"
+        },
+        {
+          "source": ".agents/skills/node",
+          "name": "node"
+        },
+        {
+          "source": ".agents/skills/octocat",
+          "name": "octocat"
+        },
+        {
+          "source": ".agents/skills/skill-optimizer",
+          "name": "skill-optimizer"
+        },
+        {
+          "source": ".agents/skills/typescript-magician",
+          "name": "typescript-magician"
+        },
+        {
+          "source": ".agents/skills/writing-for-agents",
+          "name": "writing-for-agents"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "unocss",
+  "version": "0.1.0",
+  "description": "unocss skills and workflows.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "unocss",
+    "shortDescription": "unocss skills and workflows."
+  }
+}

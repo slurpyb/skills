@@ -1,138 +1,71 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "slurpyb-agent-skills",
-  "description": "A curated collection of AI agent plugins and skills for Claude Code",
-  "version": "0.1",
   "owner": {
-    "name": "Jordan Sweeting",
-    "url": "https://github.com/slurpyb",
-    "email": "slurpyb@fastmail.com"
+    "name": "Jordan Sweeting"
   },
   "metadata": {
-    "pluginRoot": "./packages"
+    "description": "Stable Slurpyb plugins and skills"
   },
   "plugins": [
     {
-      "name": "simple-english",
-      "description": "An agent skill that forces LLMs to write docs in ASD-STE100 Simplified Technical English.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/AminBlg/SimpleEnglish.git"
-      },
-      "strict": true,
-      "category": "documentation",
-      "tags": []
+      "name": "ai-engineer",
+      "description": "AI Engineer skill: create new agent skills with proper structure, progressive disclosure, and bundled resources. Enhanced from Matt Pocock's MIT-licensed write-a-skill (https://github.com/mattpocock/skills) with: (1) stdlib Python validation tools (description validator, structure validator, review-checklist runner), (2) 3 reference docs citing 5+ authoritative sources each (progressive disclosure principles, description design patterns, quality gates), (3) cs-skill-author persona agent + /cs:write-a-skill slash command. Matt's voice and 3-phase workflow (Gather → Draft → Review) preserved verbatim per his MIT license. Use when user wants to create, write, build, or author a new agent skill.",
+      "source": "./plugins/ai-engineer"
     },
     {
-      "name": "i-have-adhd",
-      "description": "Shape Claude Code output for an ADHD reader: lead with the next action, number steps, suppress tangents, restate state, make wins visible.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/ayghri/i-have-adhd.git"
-      },
-      "strict": true,
-      "category": "productivity",
-      "tags": []
+      "name": "better-auth",
+      "description": "Better Auth skills for scaffolding, configuring, and hardening authentication in TypeScript/JavaScript apps.",
+      "source": "./plugins/better-auth"
     },
     {
       "name": "design-eng-skills",
-      "description": "State machine design, changeset writing, engineering writing, and component API design skills.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/segunadebayo/design-eng-skills.git"
-      },
-      "strict": true,
-      "category": "engineering",
-      "tags": []
+      "description": "design-eng-skills skills and workflows.",
+      "source": "./plugins/design-eng-skills"
     },
     {
-      "name": "sbx-agent",
-      "description": "Docker Sandboxes (sbx) expertise: run and operate sandboxes, author kits and template images, wire MCP servers through the gateway, govern a fleet, and work out why a sandbox cannot reach, build, or keep something.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/slurpyb/sbx-agent.git"
-      },
-      "strict": true,
-      "category": "development",
-      "tags": []
+      "name": "emdash",
+      "description": "EmDash skills and workflows for building sites, plugins, MCP servers, i18n, deployment, WordPress migration, and GitHub Actions.",
+      "source": "./plugins/emdash"
     },
     {
-      "name": "core",
-      "description": "Shared agent defaults for every project: conventions, tools, and always-on behavior.",
-      "source": "./packages/core",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-    {
-      "name": "writing-code",
-      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
-      "source": "./packages/writing-code",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-    {
-      "name": "pi",
-      "description": "Configure and build with the Pi coding harness through focused skills, prompt templates, SDK-native tool workflows, MCP reconstruction, and deterministic validation.",
-      "source": "./packages/pi",
-      "strict": true,
-      "category": "development",
-      "tags": []
+      "name": "octocode",
+      "description": "Octocode skills for evidence-first code research, idea validation, live Chrome DevTools, documentation, prompt optimization, skill authoring, and worker delegation.",
+      "source": "./plugins/octocode"
     },
     {
       "name": "pandacss",
       "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps.",
-      "source": "./packages/pandacss",
-      "strict": true,
-      "category": "development",
-      "tags": []
-    },
-
-
-
-
-    {
-      "name": "shopify-plugin",
-      "description": "Search Shopify docs, generate and validate GraphQL, Liquid, and UI extension code.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/Shopify/Shopify-AI-Toolkit.git"
-      },
-      "strict": true,
-      "category": "development",
-      "tags": []
+      "source": "./plugins/pandacss"
     },
     {
-      "name": "mattpocock-skills",
-      "description": "Matt Pocock's agent skills for real engineering — grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/mattpocock/skills.git"
-      },
-      "strict": true,
-      "category": "engineering",
-      "tags": []
+      "name": "pi",
+      "description": "Configure and build with the Pi coding harness through focused, testable workflows.",
+      "source": "./plugins/pi"
     },
     {
-      "name": "davidondrej-skills",
-      "displayName": "David Ondrej Skills",
-      "description": "David Ondrej's agent skills: orchestration loops, skill authoring, web research, structured thinking, and ops setup.",
-      "author": {
-        "name": "David Ondrej",
-        "url": "https://github.com/davidondrej"
-      },
-      "homepage": "https://github.com/davidondrej/skills",
-      "repository": "https://github.com/davidondrej/skills",
-      "license": "MIT",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/davidondrej/skills.git"
-      },
-      "strict": false,
-      "category": "engineering",
-      "tags": []
-      
+      "name": "react",
+      "description": "React skills for scaffolding, configuring, and hardening React and React Native apps in TypeScript and JavaScript.",
+      "source": "./plugins/react"
+    },
+    {
+      "name": "simple-english",
+      "description": "Write or rewrite technical text with ASD-STE100 Simplified Technical English: short sentences, one word one meaning, active voice, condition before command.",
+      "source": "./plugins/simple-english"
+    },
+    {
+      "name": "writing-code",
+      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
+      "source": "./plugins/writing-typescript"
+    },
+    {
+      "name": "slurpyb-skills",
+      "description": "Library selection and engineering skills maintained in this repository.",
+      "source": "./plugins/repository-skills"
+    },
+    {
+      "name": "community-skills",
+      "description": "Installed community skills for engineering, documentation, and agent workflows.",
+      "source": "./plugins/community-skills"
     }
   ]
 }

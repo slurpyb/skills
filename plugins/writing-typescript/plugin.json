@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "writing-code",
+  "version": "4.2.0",
+  "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
+  "author": {
+    "name": "Jordan Sweeting",
+    "url": "https://github.com/slurpyb"
+  },
+  "repository": "https://github.com/slurpyb/skills",
+  "keywords": [
+    "typescript",
+    "domain-modeling",
+    "object-oriented-design",
+    "generics",
+    "tsdoc",
+    "tsconfig",
+    "oxlint"
+  ]
+}

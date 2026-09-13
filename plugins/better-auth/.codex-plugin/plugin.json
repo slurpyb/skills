@@ -25,7 +25,10 @@
     "longDescription": "Agent skills for Better Auth in TypeScript and JavaScript: scaffold login and sign-up, configure server/client, database adapters, sessions, and plugins, then apply email/password, security, two-factor, and organization RBAC practices.",
     "developerName": "Better Auth",
     "category": "Productivity",
-    "capabilities": ["Read", "Write"],
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://www.better-auth.com/docs",
     "defaultPrompt": [
       "Scaffold Better Auth for this TypeScript app",

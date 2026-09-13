@@ -16,6 +16,7 @@
     "supabase",
     "httpx"
   ],
+  "skills": "./skills/",
   "interface": {
     "displayName": "API Engineer",
     "shortDescription": "API engineering skills for FastAPI, SQLModel, Alembic, PostgreSQL, Supabase, and HTTPX.",

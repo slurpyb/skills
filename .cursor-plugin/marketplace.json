@@ -1,23 +1,71 @@
 {
   "name": "slurpyb-agent-skills",
   "owner": {
-    "name": "Jordan Sweeting",
-    "email": "slurpyb@fastmail.com"
+    "name": "Jordan Sweeting"
   },
   "metadata": {
-    "description": "A curated collection of AI agent plugins and skills",
-    "pluginRoot": "./packages"
+    "description": "Stable Slurpyb plugins and skills"
   },
   "plugins": [
     {
+      "name": "ai-engineer",
+      "description": "AI Engineer skill: create new agent skills with proper structure, progressive disclosure, and bundled resources. Enhanced from Matt Pocock's MIT-licensed write-a-skill (https://github.com/mattpocock/skills) with: (1) stdlib Python validation tools (description validator, structure validator, review-checklist runner), (2) 3 reference docs citing 5+ authoritative sources each (progressive disclosure principles, description design patterns, quality gates), (3) cs-skill-author persona agent + /cs:write-a-skill slash command. Matt's voice and 3-phase workflow (Gather → Draft → Review) preserved verbatim per his MIT license. Use when user wants to create, write, build, or author a new agent skill.",
+      "source": "./plugins/ai-engineer"
+    },
+    {
+      "name": "better-auth",
+      "description": "Better Auth skills for scaffolding, configuring, and hardening authentication in TypeScript/JavaScript apps.",
+      "source": "./plugins/better-auth"
+    },
+    {
+      "name": "design-eng-skills",
+      "description": "design-eng-skills skills and workflows.",
+      "source": "./plugins/design-eng-skills"
+    },
+    {
+      "name": "emdash",
+      "description": "EmDash skills and workflows for building sites, plugins, MCP servers, i18n, deployment, WordPress migration, and GitHub Actions.",
+      "source": "./plugins/emdash"
+    },
+    {
+      "name": "octocode",
+      "description": "Octocode skills for evidence-first code research, idea validation, live Chrome DevTools, documentation, prompt optimization, skill authoring, and worker delegation.",
+      "source": "./plugins/octocode"
+    },
+    {
       "name": "pandacss",
-      "source": "pandacss",
-      "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps."
+      "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps.",
+      "source": "./plugins/pandacss"
+    },
+    {
+      "name": "pi",
+      "description": "Configure and build with the Pi coding harness through focused, testable workflows.",
+      "source": "./plugins/pi"
+    },
+    {
+      "name": "react",
+      "description": "React skills for scaffolding, configuring, and hardening React and React Native apps in TypeScript and JavaScript.",
+      "source": "./plugins/react"
+    },
+    {
+      "name": "simple-english",
+      "description": "Write or rewrite technical text with ASD-STE100 Simplified Technical English: short sentences, one word one meaning, active voice, condition before command.",
+      "source": "./plugins/simple-english"
     },
     {
       "name": "writing-code",
-      "source": "writing-code",
-      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy."
+      "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
+      "source": "./plugins/writing-typescript"
+    },
+    {
+      "name": "slurpyb-skills",
+      "description": "Library selection and engineering skills maintained in this repository.",
+      "source": "./plugins/repository-skills"
+    },
+    {
+      "name": "community-skills",
+      "description": "Installed community skills for engineering, documentation, and agent workflows.",
+      "source": "./plugins/community-skills"
     }
   ]
 }

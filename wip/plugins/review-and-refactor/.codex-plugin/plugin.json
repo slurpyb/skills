@@ -16,9 +16,6 @@
     "maintainability"
   ],
   "skills": "./skills/",
-  "agents": [
-    "./agents/"
-  ],
   "interface": {
     "displayName": "Review and Refactor",
     "shortDescription": "Review and refactor skills for code simplification, deduplication, best-practice audits, fronten",

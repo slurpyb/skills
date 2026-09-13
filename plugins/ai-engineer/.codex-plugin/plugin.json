@@ -15,12 +15,7 @@
     "agents"
   ],
   "skills": "./skills/",
-  "agents": [
-    "./agents/"
-  ],
-  "commands": [
-    "./instructions/"
-  ],
+  "mcpServers": "./mcp.json",
   "interface": {
     "displayName": "Ai Engineer",
     "shortDescription": "AI Engineer skill: create new agent skills with proper structure, progressive disclosure, and bu",

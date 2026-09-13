@@ -12,7 +12,7 @@
     "skills",
     "agents"
   ],
-  "skills": "./skills/*",
+  "skills": "./skills/",
   "interface": {
     "displayName": "Writing",
     "shortDescription": "Writing and content-craft toolkit: draft long-form articles and guides in a distinctive voice (a",

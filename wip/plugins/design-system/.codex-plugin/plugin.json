@@ -16,9 +16,6 @@
     "ui"
   ],
   "skills": "./skills/",
-  "agents": [
-    "./agents/"
-  ],
   "interface": {
     "displayName": "Design System",
     "shortDescription": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, an",

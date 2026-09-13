@@ -1,0 +1,80 @@
+{
+  "name": "slurpyb-agent-skills-deprecated",
+  "interface": {
+    "displayName": "Opt-in deprecated plugins"
+  },
+  "plugins": [
+    {
+      "name": "autoresearch",
+      "source": {
+        "source": "local",
+        "path": "./plugins/autoresearch"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "code-context",
+      "source": {
+        "source": "local",
+        "path": "./plugins/code-context"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "fuse-prompt-engineer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/fuse-prompt-engineer"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "plugin-optimizer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/plugin-optimizer"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "research",
+      "source": {
+        "source": "local",
+        "path": "./plugins/research"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "sbx-agent",
+      "source": {
+        "source": "local",
+        "path": "./plugins/sbx-agent"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

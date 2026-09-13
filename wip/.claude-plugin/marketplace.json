@@ -1,0 +1,81 @@
+{
+  "name": "slurpyb-agent-skills-wip",
+  "owner": {
+    "name": "Jordan Sweeting"
+  },
+  "metadata": {
+    "description": "Opt-in work-in-progress plugins and skills"
+  },
+  "plugins": [
+    {
+      "name": "api-engineer",
+      "description": "API engineering skills for FastAPI, SQLModel, Alembic, PostgreSQL, Supabase, and HTTPX.",
+      "source": "./plugins/api-engineer"
+    },
+    {
+      "name": "capture",
+      "description": "Brain-dump organizer. Ingests an unstructured stream of mixed thoughts, tasks, ideas and transforms it into a clean four-section actionable system (Projects/Ideas, Tasks, Connections, How I Can Help) with zero information loss. Fast-to-action by design — no upfront intake. Asks at most one mid-organization clarifying question when a single item is genuinely ambiguous between task and project. Workspace detection is real (Glob/Grep) — never fabricates connections. Source spec: megaprompts/05-capture-megaprompt.md (PR #657).",
+      "source": "./plugins/capture"
+    },
+    {
+      "name": "core",
+      "description": "Shared agent defaults for every project: conventions, tools, and always-on MCP.",
+      "source": "./plugins/core"
+    },
+    {
+      "name": "design-system",
+      "description": "Design-system skills for web components, Storybook, state machines, CSS tooling, design docs, and modern web guidance.",
+      "source": "./plugins/design-system"
+    },
+    {
+      "name": "firecrawl",
+      "description": "FireCrawl skills.",
+      "source": "./plugins/firecrawl"
+    },
+    {
+      "name": "i-have-adhd",
+      "description": "Shape Claude Code output for an ADHD reader: lead with the next action, number steps, suppress tangents, restate state, make wins visible.",
+      "source": "./plugins/i-have-adhd"
+    },
+    {
+      "name": "openspec",
+      "description": "OpenSpec skills for proposing, applying, verifying, and archiving spec-driven changes.",
+      "source": "./plugins/openspec"
+    },
+    {
+      "name": "problem-solving",
+      "description": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+      "source": "./plugins/problem-solving"
+    },
+    {
+      "name": "refactor",
+      "description": "Agent and skills for code simplification and refactoring to improve code quality while preserving functionality",
+      "source": "./plugins/refactor"
+    },
+    {
+      "name": "review-and-refactor",
+      "description": "Review and refactor skills for code simplification, deduplication, best-practice audits, frontend refactor planning, and adversarial review.",
+      "source": "./plugins/review-and-refactor"
+    },
+    {
+      "name": "storm",
+      "description": "Wikipedia-style long-form article generation via multi-perspective question asking and retrieval — a Claude-native port of Stanford STORM's two-stage research-to-article pipeline",
+      "source": "./plugins/storm"
+    },
+    {
+      "name": "unocss",
+      "description": "unocss skills and workflows.",
+      "source": "./plugins/unocss"
+    },
+    {
+      "name": "writing",
+      "description": "Writing and content-craft toolkit: draft long-form articles and guides in a distinctive voice (article-writing), develop personal/analytical essays (developing-essays), write and audit persuasive marketing copy (persuasive-copywriting), learn and reproduce a writer's voice from exemplars (style-learner), shape raw material into articles conversationally or beat-by-beat (writing-shape, writing-beats), mine and collect raw fragments before structuring (writing-fragments), apply Strunk's rules for clear concise prose (writing-clearly-and-concisely), strip AI tells from text (writing-humanizer), extract the functional DNA and trope maps from source works for adaptation (dna-extraction), and build a DDD-style ubiquitous-language glossary (ubiquitous-language).",
+      "source": "./plugins/writing"
+    },
+    {
+      "name": "slurpyb-wip-skills",
+      "description": "Experimental skills. Install explicitly to try work in progress.",
+      "source": "./"
+    }
+  ]
+}

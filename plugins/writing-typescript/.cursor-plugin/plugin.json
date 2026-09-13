@@ -1,15 +1,11 @@
 {
   "name": "writing-code",
-  "displayName": "Writing Code",
   "version": "4.2.0",
   "description": "Focused TypeScript skills for runtime code, domain and object modeling, type design, documentation, compiler configuration, and Oxlint policy.",
   "author": {
-    "name": "Jordan Sweeting",
-    "email": "slurpyb@fastmail.com"
+    "name": "Jordan Sweeting"
   },
-  "homepage": "https://github.com/slurpyb/skills",
   "repository": "https://github.com/slurpyb/skills",
-  "license": "MIT",
   "keywords": [
     "typescript",
     "domain-modeling",

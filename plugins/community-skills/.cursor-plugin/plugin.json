@@ -1,0 +1,6 @@
+{
+  "name": "community-skills",
+  "version": "1.0.0",
+  "description": "Installed community skills for engineering, documentation, and agent workflows.",
+  "skills": "./skills/"
+}

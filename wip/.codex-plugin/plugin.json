@@ -1,0 +1,10 @@
+{
+  "name": "slurpyb-wip-skills",
+  "version": "0.1.0",
+  "description": "Experimental skills. Install explicitly to try work in progress.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "slurpyb-wip-skills",
+    "shortDescription": "Experimental skills. Install explicitly to try work in progress."
+  }
+}

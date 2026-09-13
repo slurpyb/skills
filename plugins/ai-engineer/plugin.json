@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ai-engineer",
+  "version": "1.0.0",
+  "description": "AI Engineer skill: create new agent skills with proper structure, progressive disclosure, and bundled resources. Enhanced from Matt Pocock's MIT-licensed write-a-skill (https://github.com/mattpocock/skills) with: (1) stdlib Python validation tools (description validator, structure validator, review-checklist runner), (2) 3 reference docs citing 5+ authoritative sources each (progressive disclosure principles, description design patterns, quality gates), (3) cs-skill-author persona agent + /cs:write-a-skill slash command. Matt's voice and 3-phase workflow (Gather → Draft → Review) preserved verbatim per his MIT license. Use when user wants to create, write, build, or author a new agent skill.",
+  "author": {
+    "name": "Jordan Adams",
+    "url": "https://jordanadams.com"
+  },
+  "homepage": "https://github.com/jordanadams/ai-engineer",
+  "repository": "https://github.com/jordanadams/ai-engineer",
+  "license": "MIT",
+  "keywords": [
+    "ai-engineer",
+    "skills",
+    "agents"
+  ]
+}

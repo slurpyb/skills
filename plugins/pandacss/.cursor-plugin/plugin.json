@@ -1,14 +1,12 @@
 {
   "name": "pandacss",
-  "displayName": "Panda CSS",
   "version": "1.0.0",
   "description": "Panda CSS skills for scaffolding, configuring, and hardening type-safe styling in TypeScript and JavaScript apps.",
   "author": {
-    "name": "Jordan Sweeting",
-    "email": "slurpyb@fastmail.com"
+    "name": "Panda CSS"
   },
   "homepage": "https://panda-css.com/docs",
-  "repository": "https://github.com/slurpyb/skills",
+  "repository": "https://github.com/chakra-ui/panda",
   "license": "MIT",
   "keywords": [
     "pandacss",
@@ -17,8 +15,10 @@
     "styling",
     "design-system",
     "typescript",
-    "frontend",
-    "storybook"
+    "frontend"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "rules": [
+    "./rules/"
+  ]
 }

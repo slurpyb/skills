@@ -1,0 +1,15 @@
+{
+  "name": "writing",
+  "version": "1.0.0",
+  "description": "Writing and content-craft toolkit: draft long-form articles and guides in a distinctive voice (article-writing), develop personal/analytical essays (developing-essays), write and audit persuasive marketing copy (persuasive-copywriting), learn and reproduce a writer's voice from exemplars (style-learner), shape raw material into articles conversationally or beat-by-beat (writing-shape, writing-beats), mine and collect raw fragments before structuring (writing-fragments), apply Strunk's rules for clear concise prose (writing-clearly-and-concisely), strip AI tells from text (writing-humanizer), extract the functional DNA and trope maps from source works for adaptation (dna-extraction), and build a DDD-style ubiquitous-language glossary (ubiquitous-language).",
+  "author": {
+    "name": "Jordan Sweeting"
+  },
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "skills",
+    "agents"
+  ],
+  "skills": "./skills/"
+}

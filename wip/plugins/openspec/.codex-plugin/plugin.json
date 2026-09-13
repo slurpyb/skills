@@ -20,9 +20,6 @@
     "artifacts"
   ],
   "skills": "./skills/",
-  "commands": [
-    "./prompts/"
-  ],
   "interface": {
     "displayName": "Openspec",
     "shortDescription": "OpenSpec skills for proposing, applying, verifying, and archiving spec-driven changes.",

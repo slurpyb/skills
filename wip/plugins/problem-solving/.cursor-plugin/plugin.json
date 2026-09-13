@@ -1,0 +1,18 @@
+{
+  "name": "problem-solving",
+  "version": "1.0.0",
+  "description": "Problem-solving and ideation skills for brainstorming, strategic reasoning, business planning, estimation, and adversarial thinking.",
+  "author": {
+    "name": "Jordan Sweeting"
+  },
+  "license": "MIT",
+  "keywords": [
+    "problem-solving",
+    "brainstorming",
+    "strategy",
+    "reasoning",
+    "planning",
+    "ideation"
+  ],
+  "skills": "./skills/"
+}
