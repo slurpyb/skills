@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://claude.local/skills/deep-research/round-manifest.schema.json",
+  "title": "DeepResearchRoundManifest",
+  "description": "Manifest emitted at the end of each fan-out round of a deep-research run. Subject-neutral; fields describe research workflow state, never topic content.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "topic",
+    "run_date",
+    "round",
+    "phase",
+    "facet_axis",
+    "queries",
+    "artifacts",
+    "gaps",
+    "next_round_hints",
+    "source_mix",
+    "started_at",
+    "ended_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version this manifest conforms to.",
+      "enum": ["1.0.0"]
+    },
+    "topic": {
+      "type": "string",
+      "description": "Verbatim user-supplied research topic. Subject-specific only here and in queries/artifacts.",
+      "minLength": 1
+    },
+    "run_date": {
+      "type": "string",
+      "description": "Run date prefix shared by all artifacts (YYYYMMDD UTC).",
+      "pattern": "^[0-9]{8}$"
+    },
+    "round": {
+      "type": "integer",
+      "description": "0-indexed phase round number. Phase 0 = round 0; Phase 6 = round 6.",
+      "minimum": 0,
+      "maximum": 99
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "scope",
+        "orientation",
+        "primary_surface",
+        "operational",
+        "edge",
+        "authoritative",
+        "synthesis"
+      ]
+    },
+    "facet_axis": {
+      "type": "string",
+      "description": "Domain-neutral axis label this round targets.",
+      "minLength": 1,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "queries": {
+      "type": "array",
+      "description": "Parallel queries fired in this round (or raw URL fetches in Phase 5). May be empty for Phase 0 / Phase 6.",
+      "items": {
+        "type": "object",
+        "required": ["id", "prompt", "source_type"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Letter-suffixed identifier within the round, e.g., r1a, r1b.",
+            "pattern": "^r[0-9]+[a-z][a-z0-9]*$"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Query text or URL fetched.",
+            "minLength": 1
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "perplexity",
+              "exa",
+              "firecrawl",
+              "google",
+              "octocode",
+              "vendor_docs",
+              "registry",
+              "rfc_spec",
+              "local_filesystem",
+              "plaintext_logs",
+              "sibling_llm",
+              "other"
+            ]
+          },
+          "fired_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "succeeded": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "description": "Filesystem paths (relative to <workdir>/resources/) for every artifact saved in this round.",
+      "items": {
+        "type": "object",
+        "required": ["path", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "manifest",
+              "raw_search",
+              "raw_fetch",
+              "repo_walk",
+              "registry_payload",
+              "synthesis",
+              "citation_index",
+              "run_config",
+              "other"
+            ]
+          },
+          "linked_query_id": {
+            "type": "string",
+            "pattern": "^r[0-9]+[a-z][a-z0-9]*$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "description": "Things still unknown after this round. Empty array allowed but discouraged; surface what is missing.",
+      "items": {
+        "type": "object",
+        "required": ["axis", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "axis": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "next_round_hints": {
+      "type": "array",
+      "description": "2-4 candidate follow-up queries or sources for the next round.",
+      "items": {
+        "type": "object",
+        "required": ["axis", "hint"],
+        "additionalProperties": false,
+        "properties": {
+          "axis": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "hint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "preferred_source_type": {
+            "type": "string",
+            "enum": [
+              "perplexity",
+              "exa",
+              "firecrawl",
+              "google",
+              "octocode",
+              "vendor_docs",
+              "registry",
+              "rfc_spec",
+              "local_filesystem",
+              "plaintext_logs",
+              "sibling_llm",
+              "other"
+            ]
+          }
+        }
+      }
+    },
+    "source_mix": {
+      "type": "array",
+      "description": "Distinct source types actually used in this round.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "perplexity",
+          "exa",
+          "firecrawl",
+          "google",
+          "octocode",
+          "vendor_docs",
+          "registry",
+          "rfc_spec",
+          "local_filesystem",
+          "plaintext_logs",
+          "sibling_llm",
+          "other"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "early_stop_reason": {
+      "type": "string",
+      "enum": [
+        "saturation",
+        "diminishing_returns",
+        "budget_exhausted",
+        "user_stop",
+        "none"
+      ],
+      "default": "none"
+    },
+    "back_fill": {
+      "type": "array",
+      "description": "Optional re-runs of failed queries appended after the round closed.",
+      "items": {
+        "type": "object",
+        "required": ["query_id", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "query_id": {
+            "type": "string",
+            "pattern": "^r[0-9]+[a-z][a-z0-9]*$"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "succeeded": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form operator notes about this round."
+    }
+  }
+}

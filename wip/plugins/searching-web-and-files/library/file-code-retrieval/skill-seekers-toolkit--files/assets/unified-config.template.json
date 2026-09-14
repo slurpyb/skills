@@ -1,0 +1,48 @@
+{
+  "name": "REPLACE-with-lowercase-hyphenated-name",
+  "description": "REPLACE: 1-2 sentences. Say what the skill covers AND when to use it.",
+  "merge_mode": "rule-based",
+  "sources": [
+    {
+      "type": "documentation",
+      "base_url": "https://docs.example.com/",
+      "extract_api": true,
+      "start_urls": [
+        "https://docs.example.com/getting-started/"
+      ],
+      "selectors": {
+        "main_content": "article",
+        "title": "h1",
+        "code_blocks": "pre code"
+      },
+      "url_patterns": {
+        "include": ["/docs/", "/guide/", "/api/"],
+        "exclude": ["/blog/", "/changelog/"]
+      },
+      "categories": {
+        "getting_started": ["intro", "install", "quickstart"],
+        "guides": ["guide", "tutorial", "how-to"],
+        "api": ["api", "reference"]
+      },
+      "rate_limit": 0.5
+    },
+    {
+      "type": "github",
+      "repo": "owner/repo",
+      "enable_codebase_analysis": true,
+      "code_analysis_depth": "deep",
+      "fetch_issues": false,
+      "max_issues": 50,
+      "fetch_changelog": true,
+      "file_patterns": ["src/**/*.ts"],
+      "ai_mode": "local"
+    }
+  ],
+  "_notes": [
+    "Delete sources you don't need; a single documentation source is valid.",
+    "Omit max_pages for unlimited (default). Add it only to cap test runs.",
+    "Targets/provider are set on the CLI, not here: skill-seekers create --config this.json (then package --target ...)",
+    "Validate before running: skill-seekers create --config this-file.json --dry-run (no `validate` subcommand in 3.6)",
+    "Remove this _notes key before use — it is documentation only."
+  ]
+}

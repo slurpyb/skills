@@ -540,6 +540,27 @@
       "components": {}
     },
     {
+      "path": "wip/plugins/searching-web-and-files",
+      "channel": "wip",
+      "name": "searching-web-and-files",
+      "version": "0.1.0",
+      "description": "Iterative search and research skills for the web, files, codebases, retrieval systems, source verification, and synthesis.",
+      "author": {
+        "name": "Jordan Sweeting",
+        "url": "https://github.com/slurpyb"
+      },
+      "components": {},
+      "license": "MIT",
+      "keywords": [
+        "research",
+        "web-search",
+        "file-search",
+        "code-search",
+        "retrieval",
+        "synthesis"
+      ]
+    },
+    {
       "path": "wip/plugins/i-have-adhd",
       "channel": "wip",
       "name": "i-have-adhd",

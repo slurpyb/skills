@@ -33,6 +33,11 @@
       "source": "./plugins/firecrawl"
     },
     {
+      "name": "searching-web-and-files",
+      "description": "Iterative search and research skills for the web, files, codebases, retrieval systems, source verification, and synthesis.",
+      "source": "./plugins/searching-web-and-files"
+    },
+    {
       "name": "i-have-adhd",
       "description": "Shape Claude Code output for an ADHD reader: lead with the next action, number steps, suppress tangents, restate state, make wins visible.",
       "source": "./plugins/i-have-adhd"

@@ -1,0 +1,23 @@
+{
+  "name": "writing-react",
+  "displayName": "React",
+  "version": "1.0.0",
+  "description": "React skills for scaffolding, configuring, and hardening React and React Native apps in TypeScript and JavaScript.",
+  "author": {
+    "name": "React",
+    "url": "https://react.dev"
+  },
+  "homepage": "https://react.dev",
+  "repository": "https://github.com/facebook/react",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "react-native",
+    "typescript",
+    "javascript",
+    "frontend",
+    "hooks",
+    "components"
+  ],
+  "skills": "./skills/"
+}

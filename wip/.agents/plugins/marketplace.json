@@ -65,6 +65,18 @@
       "category": "Productivity"
     },
     {
+      "name": "searching-web-and-files",
+      "source": {
+        "source": "local",
+        "path": "./plugins/searching-web-and-files"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "i-have-adhd",
       "source": {
         "source": "local",

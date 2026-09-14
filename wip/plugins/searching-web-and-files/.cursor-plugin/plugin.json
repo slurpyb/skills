@@ -1,0 +1,18 @@
+{
+  "name": "searching-web-and-files",
+  "version": "0.1.0",
+  "description": "Iterative search and research skills for the web, files, codebases, retrieval systems, source verification, and synthesis.",
+  "author": {
+    "name": "Jordan Sweeting"
+  },
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "web-search",
+    "file-search",
+    "code-search",
+    "retrieval",
+    "synthesis"
+  ],
+  "skills": "./skills/"
+}

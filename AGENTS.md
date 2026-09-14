@@ -1,7 +1,3 @@
-# Agent Rules <!-- tessl-managed -->
-
-@../.tessl/RULES.md follow the [instructions](../.tessl/RULES.md)
-
 ## Marketplace compatibility
 
 Use `marketplace.config.json` for plugin membership and metadata. Edit skills at their original sources; `marketplace.generated.json` identifies generated files. Regenerate after source changes, then run `marketplace:check` and `test:marketplace`.

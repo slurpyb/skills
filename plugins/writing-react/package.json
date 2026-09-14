@@ -1,0 +1,17 @@
+{
+  "name": "writing-react",
+  "version": "1.0.0",
+  "description": "React skills for scaffolding, configuring, and hardening React and React Native apps in TypeScript and JavaScript.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  },
+  "homepage": "https://react.dev",
+  "repository": "https://github.com/facebook/react"
+}

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://claude.local/skills/deep-research/synthesis-spec.schema.json",
+  "title": "DeepResearchSynthesisSpec",
+  "description": "Sidecar descriptor for the final synthesis document of a deep-research run. Validates the structural contract; the SUMMARY.md prose is also checked against this descriptor by dr-validate.py.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "topic",
+    "run_date",
+    "summary_path",
+    "citation_index_path",
+    "sections",
+    "round_manifests",
+    "axis_coverage",
+    "claim_count",
+    "validated"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["1.0.0"]
+    },
+    "topic": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_date": {
+      "type": "string",
+      "pattern": "^[0-9]{8}$"
+    },
+    "summary_path": {
+      "type": "string",
+      "description": "Path to <YYYYMMDD>-SUMMARY.md relative to <workdir>/resources/.",
+      "pattern": "^[0-9]{8}-SUMMARY\\.md$"
+    },
+    "citation_index_path": {
+      "type": "string",
+      "pattern": "^[0-9]{8}-citation-index\\.md$"
+    },
+    "sections": {
+      "type": "object",
+      "description": "Required sections. Each must be present in the SUMMARY.md as a level-2 heading.",
+      "required": [
+        "architecture",
+        "install_or_setup",
+        "surface_map",
+        "gotchas_and_limitations",
+        "ecosystem_alternatives",
+        "use_case_mapping",
+        "next_step_toolchain"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "architecture": {"$ref": "#/$defs/sectionStatus"},
+        "install_or_setup": {"$ref": "#/$defs/sectionStatus"},
+        "surface_map": {"$ref": "#/$defs/sectionStatus"},
+        "gotchas_and_limitations": {"$ref": "#/$defs/sectionStatus"},
+        "ecosystem_alternatives": {"$ref": "#/$defs/sectionStatus"},
+        "use_case_mapping": {"$ref": "#/$defs/sectionStatus"},
+        "next_step_toolchain": {"$ref": "#/$defs/sectionStatus"},
+        "limitations": {"$ref": "#/$defs/sectionStatus"}
+      }
+    },
+    "round_manifests": {
+      "type": "array",
+      "description": "Manifests this synthesis was built from.",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9]{8}-r[0-9]+-manifest\\.json$"
+      },
+      "uniqueItems": true
+    },
+    "axis_coverage": {
+      "type": "object",
+      "description": "Per-axis coverage status.",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "artifact_count"],
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["covered", "partial", "uncovered_justified", "uncovered"]
+          },
+          "artifact_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "justification": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "claim_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of cited claims in SUMMARY.md."
+    },
+    "validated": {
+      "type": "boolean",
+      "description": "Set true only after dr-validate.py confirms structural integrity."
+    },
+    "validator_run_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "sectionStatus": {
+      "type": "object",
+      "required": ["present", "anchor"],
+      "additionalProperties": false,
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "anchor": {
+          "type": "string",
+          "description": "Level-2 markdown heading text used as the section anchor.",
+          "minLength": 1
+        },
+        "claim_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

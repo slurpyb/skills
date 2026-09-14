@@ -6,11 +6,11 @@
   "license": "MIT",
   "pi": {
     "skills": [
-      "plugins/*/skills"
+      "plugins/*/skills",
+      "skills"
     ]
   },
   "scripts": {
-    "postinstall": "skills experimental_install",
     "marketplace:generate": "bun scripts/marketplace/cli.mjs generate",
     "marketplace:check": "bun scripts/marketplace/cli.mjs check",
     "marketplace:audit": "bun scripts/marketplace/cli.mjs audit",

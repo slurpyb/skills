@@ -1,0 +1,80 @@
+[
+  {
+    "file_path": "/Users/jordan/code/slurpyb-cli/jina-cli/jina_cli/client.py",
+    "language": "Python",
+    "patterns": [
+      {
+        "pattern_type": "Factory",
+        "category": "Creational",
+        "confidence": 0.6,
+        "location": "/Users/jordan/code/slurpyb-cli/jina-cli/jina_cli/client.py",
+        "class_name": "JinaSearchClient",
+        "method_name": "_search_get",
+        "line_number": 47,
+        "evidence": [
+          "Factory method detected: _search_get"
+        ],
+        "related_classes": []
+      },
+      {
+        "pattern_type": "Decorator",
+        "category": "Structural",
+        "confidence": 0.3,
+        "location": "/Users/jordan/code/slurpyb-cli/jina-cli/jina_cli/client.py",
+        "class_name": "JinaSearchClient",
+        "method_name": "_extract_error_message",
+        "line_number": 94,
+        "evidence": [
+          "Method uses decorators: ['staticmethod']"
+        ],
+        "related_classes": []
+      }
+    ],
+    "total_classes": 2,
+    "total_functions": 0,
+    "analysis_depth": "surface",
+    "pattern_summary": {
+      "Factory": 1,
+      "Decorator": 1
+    }
+  },
+  {
+    "file_path": "/Users/jordan/code/slurpyb-cli/jina-cli/jina_cli/config.py",
+    "language": "Python",
+    "patterns": [
+      {
+        "pattern_type": "Factory",
+        "category": "Creational",
+        "confidence": 0.6,
+        "location": "/Users/jordan/code/slurpyb-cli/jina-cli/jina_cli/config.py",
+        "class_name": "JsonFileSettingsSource",
+        "method_name": "get_field_value",
+        "line_number": 24,
+        "evidence": [
+          "Factory method detected: get_field_value"
+        ],
+        "related_classes": []
+      },
+      {
+        "pattern_type": "Decorator",
+        "category": "Structural",
+        "confidence": 0.3,
+        "location": "/Users/jordan/code/slurpyb-cli/jina-cli/jina_cli/config.py",
+        "class_name": "JinaConfig",
+        "method_name": "settings_customise_sources",
+        "line_number": 81,
+        "evidence": [
+          "Method uses decorators: ['classmethod']"
+        ],
+        "related_classes": []
+      }
+    ],
+    "total_classes": 2,
+    "total_functions": 1,
+    "analysis_depth": "surface",
+    "pattern_summary": {
+      "Factory": 1,
+      "Decorator": 1
+    }
+  }
+]

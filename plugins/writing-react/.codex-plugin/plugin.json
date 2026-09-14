@@ -1,0 +1,39 @@
+{
+  "name": "writing-react",
+  "version": "1.0.0",
+  "description": "React skills for scaffolding, configuring, and hardening React and React Native apps in TypeScript and JavaScript.",
+  "author": {
+    "name": "React",
+    "url": "https://react.dev"
+  },
+  "homepage": "https://react.dev",
+  "repository": "https://github.com/facebook/react",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "react-native",
+    "typescript",
+    "javascript",
+    "frontend",
+    "hooks",
+    "components"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "React",
+    "shortDescription": "Scaffold, configure, and harden React",
+    "longDescription": "Agent skills for React and React Native in TypeScript and JavaScript: scaffold components, hooks, and utilities, then apply best practices for performance, accessibility, state, server components, and testing.",
+    "developerName": "React",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://react.dev",
+    "defaultPrompt": [
+      "Scaffold React for this TypeScript app",
+      "Review this React component for performance and accessibility",
+      "Apply React best practices for hooks, state, and testing"
+    ],
+    "brandColor": "#61DAFB"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "searching-web-and-files",
+  "version": "0.1.0",
+  "description": "Iterative search and research skills for the web, files, codebases, retrieval systems, source verification, and synthesis.",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "research",
+    "web-search",
+    "file-search",
+    "retrieval"
+  ],
+  "pi": {
+    "skills": [
+      "./skills/*"
+    ]
+  }
+}

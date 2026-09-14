@@ -1,0 +1,28 @@
+# Custom enhancement workflow for Skill Seekers (v3.1+).
+# Register:  skill-seekers workflows add this-file.yaml
+# Validate:  skill-seekers workflows validate this-file.yaml
+# Apply:     skill-seekers create <source> --enhance-workflow custom-analysis
+# Chain:     --enhance-workflow minimal --enhance-workflow custom-analysis
+#
+# Bundled presets you can use without writing YAML:
+#   default | minimal | security-focus | architecture-comprehensive | api-documentation
+
+name: "custom-analysis"
+description: "REPLACE: what this workflow improves and when to use it."
+
+stages:
+  - name: "Deep Analysis"
+    prompt: >
+      Analyze this content for performance patterns, edge cases, and gotchas.
+      Extract concrete, runnable examples and call out common mistakes.
+    # model is optional; omit to use the default. Prefer local (free) enhancement.
+    model: "claude-sonnet-4"
+
+  - name: "Examples"
+    prompt: >
+      For each key concept, add a minimal working code example and a one-line
+      explanation of when to reach for it.
+
+  - name: "Pitfalls"
+    prompt: >
+      Add a short "common mistakes" section: each item = the mistake + the fix.

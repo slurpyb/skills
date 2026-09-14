@@ -1,0 +1,346 @@
+---
+name: jina-cli
+description: jina-cli — Jina Search API CLI. Fuses the CLI's own repo (commands, README, AGENTS.md) with the upstream Jina API: both vendored OpenAPI specs (search + reader) plus the docs.jina.ai llms.txt prose.
+---
+
+# Jina AI Search Foundation APIs
+
+This skill is your reference for implementing against the **Jina AI Search Foundation** API suite: five HTTP endpoints that cover the full "retrieve → embed → rerank" loop for search and RAG systems.
+
+> **Currency note (per source, 2026):** The latest text embedding models are `jina-embeddings-v5-text-nano` and `jina-embeddings-v5-text-small`. The latest reranker is `jina-reranker-v3`. Default to these unless you specifically need multimodal (`jina-embeddings-v4`, `jina-clip-v2`, `jina-reranker-m0`) or code (`jina-code-embeddings-*`) variants.
+
+## Source Synthesis & Confidence
+
+This skill is synthesized from **3 source files** (`llms-full.md`, `llms-small.md`, `llms.md`). The three files are **byte-for-byte identical** (verified by checksum), so every statement below is corroborated by all sources — there are **no discrepancies** and confidence is high on content even though the source type was tagged "unknown / medium." The single full reference lives in `references/llms-full.md`.
+
+---
+
+## When to Use This Skill
+
+Reach for these APIs when the task is one of:
+
+- **Generate embeddings** — turn text, code, images, or PDFs into fixed-length vectors for similarity search, clustering, or classification. → Embeddings API
+- **Embed at scale** — thousands to millions of documents, offline indexing, bulk jobs you can poll instead of blocking on. → Batch Embeddings API
+- **Improve result relevance** — you have a query and a candidate list (search hits or RAG chunks) and want them re-ordered by true relevance. → Reranker API
+- **Read one known URL** — scrape a specific web page into clean markdown/HTML/text/screenshot for an LLM. → Reader API
+- **Search the web** — you know *what* you're looking for but not *where*; get SERP results already converted to LLM-friendly content. → Search API
+
+**Do NOT use this skill for** (explicit out-of-scope per source): generating images, editing/modifying content, executing code or doing calculations, or permanently storing/caching results. For those tasks, answer plainly that it "can't be done" with these APIs.
+
+---
+
+## Core Principles (from the source's engineering guidance)
+
+0. **Auth via env var.** Assume the bearer token is in `JINA_API_KEY`. When you generate code, include the comment: `Get your Jina AI API key for free: https://jina.ai/?sui=apikey`.
+1. **Simplest solution wins.** Prefer a single API call; don't over-engineer or chain APIs unnecessarily.
+2. **Always send `Accept: application/json`** on every request (use `text/event-stream` only when you explicitly want Reader stream mode).
+3. **Parse before use.** Never feed a raw API response downstream — extract the right field first (e.g. `response.data.content`).
+4. **Handle errors + retry.** Wrap calls in try/catch, retry transient network failures, validate inputs first.
+5. Choose **built-in features over custom implementations**; reach for **multimodal models** when the input demands it.
+
+---
+
+## API Quick Reference
+
+| API | Endpoint | Method(s) | Best for |
+|-----|----------|-----------|----------|
+| Embeddings | `https://api.jina.ai/v1/embeddings` | POST | semantic search, similarity, clustering |
+| Batch Embeddings | `https://api.jina.ai/v1/batch/embeddings` | POST / GET / DELETE | bulk/offline embedding (10k inline, 50k via GCS) |
+| Reranker | `https://api.jina.ai/v1/rerank` | POST | refining search results & RAG chunks |
+| Reader | `https://r.jina.ai/` | POST | scrape a single URL → LLM-friendly content |
+| Search | `https://s.jina.ai/` | POST | web search → SERP with clean content |
+
+> **EU residency:** Reader and Search offer EU-only variants `https://eu.r.jina.ai/` and `https://eu.s.jina.ai/` to keep all processing within EU jurisdiction.
+
+All endpoints share these headers:
+
+```
+Authorization: Bearer $JINA_API_KEY
+Content-Type: application/json
+Accept: application/json
+```
+
+---
+
+## Quick Reference — Code Examples
+
+All examples below are drawn directly from the source documentation's schemas and the canonical request shapes. Replace inputs with real data — **never use placeholder data** in generated code.
+
+### 1. Embeddings — basic text embedding (cURL)
+
+```bash
+# Get your Jina AI API key for free: https://jina.ai/?sui=apikey
+curl https://api.jina.ai/v1/embeddings \
+  -H "Authorization: Bearer $JINA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "model": "jina-embeddings-v5-text-small",
+    "task": "retrieval.passage",
+    "input": ["A document chunk to index for semantic search."]
+  }'
+```
+
+### 2. Embeddings — query vs. passage (Python)
+
+Use the matching `task` for each side of a retrieval pair — `retrieval.query` for the search query, `retrieval.passage` for indexed documents.
+
+```python
+import os, requests
+
+# Get your Jina AI API key for free: https://jina.ai/?sui=apikey
+def embed(texts, task):
+    resp = requests.post(
+        "https://api.jina.ai/v1/embeddings",
+        headers={
+            "Authorization": f"Bearer {os.environ['JINA_API_KEY']}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        json={"model": "jina-embeddings-v5-text-nano", "task": task, "input": texts},
+    )
+    resp.raise_for_status()
+    return [d["embedding"] for d in resp.json()["data"]]
+
+query_vec = embed(["how do transformers work"], "retrieval.query")[0]
+```
+
+### 3. Embeddings — Matryoshka truncation + normalization
+
+`v5` models support Matryoshka truncation (32, 64, 128, 256, 512, 1024 for `-small`; up to 768 for `-nano`). Set `dimensions` to shrink vectors and `normalized` for unit L2 norm.
+
+```json
+{
+  "model": "jina-embeddings-v5-text-small",
+  "task": "retrieval.passage",
+  "dimensions": 256,
+  "normalized": true,
+  "input": ["short, fast, storage-friendly embedding"]
+}
+```
+
+### 4. Reranker — refine candidate results (cURL)
+
+```bash
+# Get your Jina AI API key for free: https://jina.ai/?sui=apikey
+curl https://api.jina.ai/v1/rerank \
+  -H "Authorization: Bearer $JINA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "model": "jina-reranker-v3",
+    "query": "best practices for vector search",
+    "top_n": 3,
+    "documents": [
+      "Vector databases store high-dimensional embeddings.",
+      "A recipe for sourdough bread.",
+      "Approximate nearest neighbor search trades recall for speed."
+    ]
+  }'
+```
+
+### 5. Reader — scrape one URL to markdown (cURL)
+
+The page content arrives in `response.data.content`.
+
+```bash
+# Get your Jina AI API key for free: https://jina.ai/?sui=apikey
+curl https://r.jina.ai/ \
+  -H "Authorization: Bearer $JINA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -H "X-Return-Format: markdown" \
+  -d '{"url": "https://example.com/article"}'
+```
+
+### 6. Reader — focus, clean, and summarize links
+
+Use the `X-*` control headers to target content and strip noise.
+
+```bash
+curl https://r.jina.ai/ \
+  -H "Authorization: Bearer $JINA_API_KEY" \
+  -H "Accept: application/json" \
+  -H "X-Target-Selector: article" \
+  -H "X-Remove-Selector: header, footer, nav" \
+  -H "X-With-Links-Summary: true" \
+  -d '{"url": "https://example.com/blog/post"}'
+# links land in response.data.links
+```
+
+### 7. Search — web search returning page content (cURL)
+
+```bash
+# Get your Jina AI API key for free: https://jina.ai/?sui=apikey
+curl https://s.jina.ai/ \
+  -H "Authorization: Bearer $JINA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"q": "latest advances in retrieval augmented generation", "gl": "US", "hl": "en"}'
+```
+
+### 8. Search — in-site search + metadata-only results
+
+`X-Site` restricts to one domain; `X-Respond-With: no-content` returns SERP metadata without scraping each page.
+
+```bash
+curl https://s.jina.ai/ \
+  -H "Authorization: Bearer $JINA_API_KEY" \
+  -H "Accept: application/json" \
+  -H "X-Site: https://arxiv.org" \
+  -H "X-Respond-With: no-content" \
+  -d '{"q": "matryoshka representation learning"}'
+```
+
+### 9. Batch Embeddings — submit then poll (cURL)
+
+Submit returns a `batch_id` immediately (HTTP 202); poll status until `completed`, then download the JSONL output.
+
+```bash
+# 1. Submit
+curl -X POST https://api.jina.ai/v1/batch/embeddings \
+  -H "Authorization: Bearer $JINA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"model": "jina-embeddings-v5-text-small",
+       "task": "retrieval.passage",
+       "input": ["doc one", "doc two", "... up to 10,000 items"]}'
+# -> {"batch_id":"batch_xxxx","status":"submitted","created_at":...}
+
+# 2. Poll status
+curl https://api.jina.ai/v1/batch/batch_xxxx \
+  -H "Authorization: Bearer $JINA_API_KEY" -H "Accept: application/json"
+
+# 3. Download output when status == "completed"
+curl https://api.jina.ai/v1/batch/batch_xxxx/output \
+  -H "Authorization: Bearer $JINA_API_KEY"
+```
+
+### 10. Reranking RAG chunks (Python, end-to-end pattern)
+
+The canonical two-step flow from the source: **search → rerank**.
+
+```python
+import os, requests
+
+# Get your Jina AI API key for free: https://jina.ai/?sui=apikey
+HEADERS = {
+    "Authorization": f"Bearer {os.environ['JINA_API_KEY']}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+def rerank(query, documents, top_n=5):
+    resp = requests.post(
+        "https://api.jina.ai/v1/rerank",
+        headers=HEADERS,
+        json={"model": "jina-reranker-v3", "query": query,
+              "documents": documents, "top_n": top_n},
+    )
+    resp.raise_for_status()
+    return resp.json()["results"]  # each: {index, document, relevance_score}
+```
+
+---
+
+## Key Concepts
+
+### `task` parameter (Embeddings)
+Tells the model which downstream job to optimize for. Picking the right one materially improves quality.
+
+| Model family | Available `task` values |
+|--------------|--------------------------|
+| `v5-text-*` | `retrieval.query`, `retrieval.passage`, `text-matching`, `classification`, `clustering` |
+| `v4` (multimodal) | `retrieval.query`, `retrieval.passage`, `text-matching`, `code.query`, `code.passage` |
+| `v3` / `clip-v2` | `retrieval.query`, `retrieval.passage`, `text-matching`, `classification`, `separation` |
+| `code-embeddings-*` | `nl2code`, `code2code`, `code2nl`, `code2completion`, `qa` (each `.query`/`.passage`) |
+
+**Rule of thumb:** for asymmetric search, embed the query with `retrieval.query` and documents with `retrieval.passage`.
+
+### Matryoshka representation learning
+`v5` and code models produce embeddings that can be **truncated** to smaller dimensions (via the `dimensions` param) with graceful quality degradation — trade vector size/storage for accuracy without re-embedding.
+
+### `embedding_type`
+Output format: `float` (default), `base64`, `binary`, or `ubinary`. Use binary formats to cut storage/bandwidth when your vector store supports them.
+
+### Reader control headers
+The Reader API is steered almost entirely through `X-*` headers (see `references/llms-full.md` for the full ~30-header list). High-value ones: `X-Return-Format` (markdown/html/text/screenshot/pageshot), `X-Engine` (`browser` for quality, `direct` for speed, `cf-browser-rendering` for JS-heavy sites), `X-Target-Selector` / `X-Remove-Selector` / `X-Wait-For-Selector`, `X-With-Links-Summary`, `X-With-Images-Summary`, `X-No-Cache`, `X-Token-Budget`.
+
+### Response parsing (important)
+- **Reader/Search:** content is in `response.data.content`; links/images (when requested) in `response.data.links` / `response.data.images`.
+- **Embeddings:** vectors in `response.data[i].embedding`.
+- **Reranker:** ordered hits in `response.results[i]` with `index`, `document`, and `relevance_score`.
+
+---
+
+## Model Selection Cheat Sheet
+
+**Text embeddings**
+- `jina-embeddings-v5-text-small` — 677M, 32K context, 1024-dim, Matryoshka → 32–1024. The default workhorse.
+- `jina-embeddings-v5-text-nano` — 239M, 8K context, 768-dim, Matryoshka → 32–768. Low-latency / edge.
+- `jina-embeddings-v3` — 570M, 1024-dim, 100+ languages. Prior generation.
+
+**Multimodal embeddings**
+- `jina-embeddings-v4` — 3.8B, text + images + PDFs, 2048-dim, supports `return_multivector` for late interaction.
+- `jina-clip-v2` — 885M, cross-modal text–image retrieval, zero-shot image classification.
+
+**Code embeddings**
+- `jina-code-embeddings-0.5b` (494M) / `jina-code-embeddings-1.5b` (1.54B) — NL2Code, TechQA, Code2Code, etc.
+
+**Rerankers**
+- `jina-reranker-v3` — 0.6B, multilingual, last-but-not-late interaction. The default.
+- `jina-reranker-m0` — 2.4B, multimodal (text + image documents).
+- `jina-reranker-v2-base-multilingual` — 278M, lighter text reranker.
+- `jina-colbert-v2` — 560M, ColBERT-style multi-vector matching.
+
+---
+
+## Common Solution Recipes (from source)
+
+1. **Basic search** → Search API for simple queries. For better relevancy: Search API to retrieve, then Reranker API to refine.
+2. **Web content processing** → Reader API to scrape a page. To embed it: Reader API → Embeddings API.
+3. **Large-scale embedding** → For thousands+ documents, use the **Batch** Embeddings API (submit once, poll), not the synchronous endpoint.
+
+---
+
+## Rate Limits
+
+| API | Standard | Premium |
+|-----|----------|---------|
+| Embeddings & Reranker | 500 RPM / 1M TPM | 2k RPM / 5M TPM |
+| Reader (`r.jina.ai`) | 500 RPM | 5k RPM |
+| Search (`s.jina.ai`) | 100 RPM | 1000 RPM |
+
+Build retry/backoff around these — search is the tightest at 100 RPM standard.
+
+---
+
+## Integration Guidelines
+
+**Always:** handle API errors with try/catch · retry network failures · validate inputs before calling · parse responses before using them · read `JINA_API_KEY` from the environment and remind the user to set it.
+
+**Never:** chain APIs unnecessarily · call the Reranker without query–document pairs · use a raw response without parsing it · hardcode the API key or use placeholder data.
+
+---
+
+## Reference Files
+
+| File | Source type | Confidence | Contents |
+|------|-------------|------------|----------|
+| `references/llms-full.md` | unknown (Jina `llms.txt`) | medium | **Authoritative full spec.** Every endpoint, complete request-body JSON schemas, the full Reader `X-*` header catalog, model specs, batch workflow, rate limits, and integration rules. |
+| `references/llms-small.md` | unknown | medium | Identical to `llms-full.md` (verified by checksum). |
+| `references/llms.md` | unknown | medium | Identical to `llms-full.md` (verified by checksum). |
+
+Because all three are byte-identical, **read `references/llms-full.md`** for any detail not covered here — the full request-body schemas (e.g. every Embeddings field, `late_chunking`, `truncate`, `return_multivector`) and the complete Reader header list live there.
+
+---
+
+## Working with This Skill
+
+**Beginners** — Start with the Quick Reference cURL examples (1, 4, 5, 7). Set `export JINA_API_KEY=...` first. Each API is a single POST; copy an example, swap the input, and inspect `response.data` / `response.results`.
+
+**Intermediate** — Combine APIs using the recipes above (Search → Rerank, Reader → Embeddings). Pay attention to the `task` parameter for embeddings and to response parsing. Wrap each API in its own function with error handling, as examples 2 and 10 show.
+
+**Advanced** — Tune Matryoshka `dimensions` and `embedding_type` for storage/latency budgets; drive the Reader with `X-*` headers for hard-to-scrape pages; use Batch Embeddings + GCS input for million-scale indexing; choose multimodal (`v4` / `clip-v2` / `reranker-m0`) or code models when inputs demand it. Consult `references/llms-full.md` for the exhaustive schema options.
+
+**Navigating the references** — There is effectively one reference document (the three files are duplicates). Treat `references/llms-full.md` as ground truth for anything ambiguous or unstated above.

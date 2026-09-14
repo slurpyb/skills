@@ -1,3 +1,0 @@
-interface:
-  display_name: "Changeset Writing"
-  short_description: "Write changesets, pick semver bumps, flag breaking changes"

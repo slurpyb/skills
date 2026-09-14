@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "topic": "REPLACE_WITH_USER_TOPIC",
+  "run_date": "20260101",
+  "round": 1,
+  "phase": "orientation",
+  "facet_axis": "orientation",
+  "queries": [
+    {
+      "id": "r1a",
+      "prompt": "REPLACE_WITH_QUERY_A",
+      "source_type": "perplexity",
+      "fired_at": "2026-01-01T00:00:00Z",
+      "succeeded": true
+    },
+    {
+      "id": "r1b",
+      "prompt": "REPLACE_WITH_QUERY_B",
+      "source_type": "exa",
+      "fired_at": "2026-01-01T00:00:01Z",
+      "succeeded": true
+    },
+    {
+      "id": "r1c",
+      "prompt": "REPLACE_WITH_QUERY_C",
+      "source_type": "vendor_docs",
+      "fired_at": "2026-01-01T00:00:02Z",
+      "succeeded": true
+    },
+    {
+      "id": "r1d",
+      "prompt": "REPLACE_WITH_QUERY_D",
+      "source_type": "octocode",
+      "fired_at": "2026-01-01T00:00:03Z",
+      "succeeded": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "20260101-r1a-replace-slug.json",
+      "kind": "raw_search",
+      "linked_query_id": "r1a",
+      "bytes": 0
+    },
+    {
+      "path": "20260101-r1b-replace-slug.json",
+      "kind": "raw_search",
+      "linked_query_id": "r1b",
+      "bytes": 0
+    },
+    {
+      "path": "20260101-r1c-replace-slug.md",
+      "kind": "raw_fetch",
+      "linked_query_id": "r1c",
+      "bytes": 0
+    },
+    {
+      "path": "20260101-r1d-replace-slug.json",
+      "kind": "repo_walk",
+      "linked_query_id": "r1d",
+      "bytes": 0
+    }
+  ],
+  "gaps": [
+    {
+      "axis": "orientation",
+      "description": "REPLACE_WITH_GAP_DESCRIPTION"
+    }
+  ],
+  "next_round_hints": [
+    {
+      "axis": "core_mechanics",
+      "hint": "REPLACE_WITH_NEXT_QUERY_HINT",
+      "preferred_source_type": "vendor_docs"
+    },
+    {
+      "axis": "interfaces",
+      "hint": "REPLACE_WITH_NEXT_QUERY_HINT",
+      "preferred_source_type": "perplexity"
+    }
+  ],
+  "source_mix": ["perplexity", "exa", "vendor_docs", "octocode"],
+  "started_at": "2026-01-01T00:00:00Z",
+  "ended_at": "2026-01-01T00:05:00Z",
+  "early_stop_reason": "none",
+  "notes": "Template manifest; replace placeholders before use."
+}
