@@ -8,6 +8,9 @@
     "skills": [
       "plugins/*/skills",
       "skills"
+    ],
+    "prompts": [
+      "prompts"
     ]
   },
   "scripts": {
