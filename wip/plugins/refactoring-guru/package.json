@@ -1,0 +1,40 @@
+{
+  "name": "refactoring-guru",
+  "version": "0.1.0",
+  "description": "A dedicated Pi refactoring agent with isolated sessions, repository impact tracing, and behavior-preservation checkpoints.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "bun test tests",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "pi-package",
+    "refactoring",
+    "code-quality"
+  ],
+  "files": [
+    "extensions",
+    "references",
+    "README.md",
+    "LICENSE",
+    "plugin.json"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions/refactoring-guru.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "0.85.1",
+    "@types/bun": "1.4.2",
+    "typebox": "1.3.7",
+    "typescript": "^5.9.3"
+  },
+  "homepage": "https://github.com/ciembor/agent-rules-books/tree/main/refactoring-guru",
+  "repository": "https://github.com/ciembor/agent-rules-books"
+}

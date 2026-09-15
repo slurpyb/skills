@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "refactoring-guru",
+  "version": "0.1.0",
+  "description": "A dedicated Pi refactoring agent with isolated sessions, repository impact tracing, and behavior-preservation checkpoints.",
+  "author": {
+    "name": "Maciej Ciemborowicz",
+    "url": "https://github.com/ciembor"
+  },
+  "homepage": "https://github.com/ciembor/agent-rules-books/tree/main/refactoring-guru",
+  "repository": "https://github.com/ciembor/agent-rules-books",
+  "license": "MIT",
+  "keywords": [
+    "refactoring",
+    "code-smells",
+    "code-quality",
+    "maintainability",
+    "pi-extension"
+  ]
+}
