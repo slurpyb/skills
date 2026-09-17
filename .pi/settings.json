@@ -1,0 +1,11 @@
+{
+  "packages": [
+    {
+      "source": "https://github.com/slurpyb/skills",
+      "autoload": false,
+      "skills": [
+        "+wip/plugins/api-engineer/skills/httpx/SKILL.md"
+      ]
+    }
+  ]
+}
