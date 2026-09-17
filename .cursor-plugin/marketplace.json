@@ -55,6 +55,10 @@
     {
       "name": "agent-rule-books",
       "source": "https://github.com/slurpyb/agent-rules-books"
+    },
+    {
+      "name": "searching-web-and-files",
+      "source": "plugins/searching-web-and-files"
     }
   ]
 }
