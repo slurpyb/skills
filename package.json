@@ -11,15 +11,8 @@
       "skills"
     ],
     "prompts": [
-      "prompts"
+      "prompts"    
     ]
-  },
-  "scripts": {
-    "marketplace:generate": "bun scripts/marketplace/cli.mjs generate",
-    "marketplace:check": "bun scripts/marketplace/cli.mjs check",
-    "marketplace:audit": "bun scripts/marketplace/cli.mjs audit",
-    "marketplace:release": "bun scripts/marketplace/cli.mjs release",
-    "test:marketplace": "bun test tests/marketplace.test.mjs tests/codex-marketplace.test.mjs"
   },
   "dependencies": {
     "skills": "^1.5.25"
