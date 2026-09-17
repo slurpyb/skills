@@ -42,6 +42,37 @@ This table routes investigation; it does not prescribe extraction. Prefer an exi
 
 When a named-style type rejects a token type accepted by the recipe property, use a component-scoped CSS custom property as a **typed bridge**. Define the variable at the semantic owner, consume it through the correctly typed recipe property, and retain the original token's resolved CSS variable as fallback. Use the bridge instead of changing the intended token or casting away the mismatch.
 
+
+### Optimize for ownership visibility and one update point                                           
+                                                                                                      
+Treat `textStyles`, `layerStyles`, and `animationStyles` as the preset’s catalog of styling          
+decisions and token usage, not merely as deduplication mechanisms. A coherent component-scoped style   
+may belong there even when it currently has only one consumer.                                         
+                                                                                                      
+Centralizing these decisions should:                                                                 
+                                                                                                      
+- give each styling decision one authoritative update point;                                         
+- make token usage auditable from the named-style registries;                                        
+- expose similar property groups so shared semantics can be identified later;                        
+- allow token or semantic changes without searching through recipes.                                 
+                                                                                                      
+Recipes and slot recipes own public variants, slots, states, selectors, alignment, interaction, and  
+orchestration. Named styles own the coherent values selected by that orchestration:                    
+                                                                                                      
+- typography compositions belong in component-scoped text styles;                                    
+- geometry, surface, border, and effect compositions belong in component-scoped layer styles;        
+- motion compositions belong in animation styles.                                                    
+                                                                                                      
+Current declaration count and current consumer count are not reasons to keep styling local. Stable   
+meaning and a clearer authoritative owner are sufficient. Prefer component-scoped names when no        
+broader shared meaning is established; broader reuse can be introduced later when the centralized      
+styles reveal genuine commonality.                                                                     
+                                                                                                      
+Leave declarations in the recipe only when the recipe itself is their clearest single owner. Do not  
+duplicate values between a named style and its recipe. Verification is complete when changing any      
+coherent styling decision requires editing exactly one authoritative source location.                  
+
+
 ## Workflow
 
 1. **Establish the behavior baseline**
@@ -72,7 +103,7 @@ When a named-style type rejects a token type accepted by the recipe property, us
 4. **Verify equivalence and semantics**
    - Reconcile the final diff with the baseline; account for every moved, retained, added, and removed declaration.
    - Confirm each new abstraction has a clear meaning and actual owner, rather than existing solely to shorten the recipe.
-   - Run the repository's configured formatter, Panda codegen, type-check, and smallest relevant tests.
+   - Run the repository's configured formatter, Panda codegen (if there is a panda.config.ts|mts or runtime), type-check, and smallest relevant tests.
    - Inspect resolved configuration, generated types, and representative generated CSS.
    - For every typed bridge, confirm the variable resolves to the intended token and its consumer resolves to valid CSS.
    - Test observable preset behavior, not the file or primitive in which a declaration now lives.
